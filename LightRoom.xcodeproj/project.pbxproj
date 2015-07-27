@@ -29,6 +29,7 @@
 		4B2238691B668F23000F735E /* LightRoomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightRoomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B22386E1B668F23000F735E /* LightRoomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightRoomTests.swift; sourceTree = "<group>"; };
 		4B2238701B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B22387A1B668F8E000F735E /* Main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Main.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		4B2238551B668F23000F735E = {
 			isa = PBXGroup;
 			children = (
+				4B2238791B668F82000F735E /* Playgrounds */,
 				4B2238611B668F23000F735E /* LightRoom */,
 				4B22386D1B668F23000F735E /* LightRoomTests */,
 				4B2238601B668F23000F735E /* Products */,
@@ -84,6 +86,14 @@
 				4B2238701B668F23000F735E /* Info.plist */,
 			);
 			path = LightRoomTests;
+			sourceTree = "<group>";
+		};
+		4B2238791B668F82000F735E /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				4B22387A1B668F8E000F735E /* Main.playground */,
+			);
+			path = Playgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
