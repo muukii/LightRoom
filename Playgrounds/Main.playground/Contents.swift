@@ -3,4 +3,6 @@
 import UIKit
 import LightRoom
 
-var str = "Hello, playground"
+let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("sample1", ofType: "jpg")!))!
+
+let result = Filters.blur(40)(image)
