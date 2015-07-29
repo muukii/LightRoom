@@ -9,12 +9,7 @@
 import Foundation
 import QuartzCore
 
-public typealias Filter = CIImage -> CIImage
 
-infix operator >>> { associativity left }
-public func >>> (filter1: Filter, filter2: Filter) -> Filter {
-    return { image in filter2(filter1(image)) }
-}
 
 public enum Filters {
     
@@ -93,30 +88,6 @@ public enum Filters {
         }
         
         /*!
-        @available(OSX 10.10, *)
-        CIMaskedVariableBlur
-        
-        Blurs the source image according to the brightness levels in a mask image.
-        
-        :param: mask
-        :param: radius
-        
-        :returns:
-        */
-        public static func maskedVariableBlur(#mask: CIImage, radius: Double) -> Filter {
-            return { image in
-                
-                let parameters = [
-                    kCIInputRadiusKey: radius,
-                    kCIInputMaskImageKey: mask,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMaskedVariableBlur", withInputParameters: parameters)
-                return filter!.outputImage
-            }
-        }
-        
-        /*!
         @available(iOS 9.0, OSX 10.4, *)
 
         CIMedianFilter
@@ -167,12 +138,12 @@ public enum Filters {
         
         CINoiseReduction
         
-        :param: noiseLevel Default value: 0.02
-        :param: sharpness Default value: 0.40
+        :param: noiseLevel
+        :param: sharpness
         
         :returns:
         */
-        public static func noiseReduction(#noiseLevel: Double, sharpness: Double) -> Filter {
+        public static func noiseReduction(noiseLevel: Double = 0.02, sharpness: Double = 0.40) -> Filter {
             return { image in
                 
                 let parameters = [
@@ -192,16 +163,16 @@ public enum Filters {
         
         Simulates the effect of zooming the camera while capturing the image.
         
-        :param: center Default value: [150 150]
-        :param: amount Default value: 20.00
+        :param: center
+        :param: amount
         
         :returns:
         */
-        public static func zoomBlur(#center: CIVector, amount: Double) -> Filter {
+        public static func zoomBlur(center: Vector = [150,150], amount: Double = 20) -> Filter {
             return { image in
                 
                 let parameters = [
-                    kCIInputCenterKey: center,
+                    kCIInputCenterKey: center.CIVector,
                     "inputAmount": amount,
                     kCIInputImageKey: image,
                 ]
@@ -209,5 +180,136 @@ public enum Filters {
                 return filter!.outputImage
             }
         }
+    }
+    
+    /*!
+    CICategoryColorAdjustment
+    */
+    public enum ColorAdjustment {
+        
+        /*!
+        @available(iOS 7.0, OSX 10.9, *)
+        
+        CIColorClamp
+        
+        :param: minComponents
+        :param: maxComponents
+        
+        :returns:
+        */
+        public static func colorClamp(
+            minComponents: Vector = [0,0,0,0],
+            maxComponents: Vector = [0,0,0,0]) -> Filter {
+                
+            return { image in
+                
+                let parameters = [
+                    "inputMinComponents": minComponents.CIVector,
+                    "inputMaxComponents": maxComponents.CIVector,
+                    kCIInputImageKey: image,
+                ]
+                let filter = CIFilter(name: "CIColorClamp", withInputParameters: parameters)
+                return filter!.outputImage
+            }
+        }
+        
+        /*!
+        @available(iOS 5.0, OSX 10.9, *)
+        
+        CIColorControls
+        
+        Adjusts saturation, brightness, and contrast values.
+        
+        :param: saturation
+        :param: brightness
+        :param: contrast
+        
+        :returns:
+        */
+        public static func colorControls(
+            saturation: Double = 1,
+            brightness: Double = 1,
+            contrast: Double = 1) -> Filter {
+                
+                return { image in
+                    
+                    let parameters = [
+                        kCIInputSaturationKey: saturation,
+                        kCIInputBrightnessKey: brightness,
+                        kCIInputContrastKey: contrast,
+                        kCIInputImageKey: image,
+                    ]
+                    let filter = CIFilter(name: "CIColorControls", withInputParameters: parameters)
+                    return filter!.outputImage
+                }
+        }
+        
+        /*!
+        @available(iOS 5.0, OSX 10.4, *)
+        
+        CIColorMatrix
+        
+        Multiplies source color values and adds a bias factor to each color component.
+        
+        :param: rVector
+        :param: gVector
+        :param: bVector
+        :param: aVector
+        
+        :returns:
+        */
+        public static func colorMatrix(
+            rVector: Vector = [1,0,0,0],
+            gVector: Vector = [0,1,0,0],
+            bVector: Vector = [0,0,1,0],
+            aVector: Vector = [0,0,0,1]) -> Filter {
+                
+                return { image in
+                    
+                    let parameters = [
+                        "inputRVector": rVector.CIVector,
+                        "inputGVector": gVector.CIVector,
+                        "inputBVector": bVector.CIVector,
+                        "inputAVector": aVector.CIVector,
+                        kCIInputImageKey: image,
+                    ]
+                    let filter = CIFilter(name: "CIColorMatrix", withInputParameters: parameters)
+                    return filter!.outputImage
+                }
+        }
+        
+        /*!
+        @available(iOS 7.0, OSX 10.9, *)
+        
+        CIColorPolynomial
+        Modifies the pixel values in an image by applying a set of cubic polynomials.
+        
+        :param: redCoefficients  
+        :param: greenCoefficients
+        :param: blueCoefficients
+        :param: alphaCoefficients
+        
+        :returns:
+        */
+        public static func colorPolynomial(
+            redCoefficients: Vector = [0,1,0,0],
+            greenCoefficients: Vector = [0,1,0,0],
+            blueCoefficients: Vector = [0,1,0,0],
+            alphaCoefficients: Vector = [0,1,0,0]) -> Filter {
+                
+                return { image in
+                    
+                    let parameters = [
+                        "inputRedCoefficients": redCoefficients.CIVector,
+                        "inputGreenCoefficients": greenCoefficients.CIVector,
+                        "inputBlueCoefficients": blueCoefficients.CIVector,
+                        "inputAlphaCoefficients": alphaCoefficients.CIVector,
+                        kCIInputImageKey: image,
+                    ]
+                    let filter = CIFilter(name: "CIColorPolynomial", withInputParameters: parameters)
+                    return filter!.outputImage
+                }
+        }
+        
     }
 }
