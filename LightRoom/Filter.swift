@@ -9,8 +9,13 @@
 import Foundation
 import QuartzCore
 
+/** 
+About Core Image
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_intro/ci_intro.html
 
-
+Filters
+https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
+*/
 public enum Filters {
     
     /*!
@@ -29,7 +34,7 @@ public enum Filters {
         
         :returns: Filter
         */
-        public static func boxBlur(#radius: Double) -> Filter {
+        public static func boxBlur(radius radius: Double) -> Filter {
             return { image in
                 
                 let parameters = [
@@ -52,7 +57,7 @@ public enum Filters {
         
         :returns: Filter
         */
-        public static func discBlur(#radius: Double) -> Filter {
+        public static func discBlur(radius radius: Double) -> Filter {
             return { image in
                 
                 let parameters = [
@@ -75,7 +80,7 @@ public enum Filters {
         
         :returns:
         */
-        public static func gaussianBlur(#radius: Double) -> Filter {
+        public static func gaussianBlur(radius radius: Double) -> Filter {
             return { image in
                 
                 let parameters = [
@@ -120,7 +125,7 @@ public enum Filters {
         
         :returns:
         */
-        public static func motionBlur(#radius: Double, angle: Double) -> Filter {
+        public static func motionBlur(radius radius: Double, angle: Double) -> Filter {
             return { image in
                 
                 let parameters = [

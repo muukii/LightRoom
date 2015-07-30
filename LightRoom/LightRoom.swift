@@ -11,23 +11,23 @@ import QuartzCore
 
 public struct Vector: ArrayLiteralConvertible {
     
-    private let values: [CGFloat]
+    private let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
         
-        self.values = elements
+        self.v = elements
     }
     
     public var CIVector: CoreImage.CIVector {
         
-        switch self.values.count {
+        switch self.v.count {
         case 1:
-            return CoreImage.CIVector(x: values[0], y: values[1], z: values[2], w: values[3])
+            return CoreImage.CIVector(x: v[0])
         case 2:
-            return CoreImage.CIVector(x: values[0], y: values[1], z: values[2], w: values[3])
+            return CoreImage.CIVector(x: v[0], y: v[1])
         case 3:
-            return CoreImage.CIVector(x: values[0], y: values[1], z: values[2], w: values[3])
+            return CoreImage.CIVector(x: v[0], y: v[1], z: v[2])
         case 4:
-            return CoreImage.CIVector(x: values[0], y: values[1], z: values[2], w: values[3])
+            return CoreImage.CIVector(x: v[0], y: v[1], z: v[2], w: v[3])
         default:
             return CoreImage.CIVector(x: 0, y: 0, z: 0, w: 0)
         }
