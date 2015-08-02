@@ -11,7 +11,8 @@
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B22386F1B668F23000F735E /* LightRoomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22386E1B668F23000F735E /* LightRoomTests.swift */; };
 		4B2238991B6690CB000F735E /* LightRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2238981B6690CB000F735E /* LightRoom.swift */; };
-		4B22389D1B669113000F735E /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22389C1B669113000F735E /* Filter.swift */; };
+		4B22389D1B669113000F735E /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22389C1B669113000F735E /* Filters.swift */; };
+		4BD351A81B6DDB0800E7E038 /* Detectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD351A71B6DDB0800E7E038 /* Detectors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,9 @@
 		4B2238701B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B22387A1B668F8E000F735E /* Main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Main.playground; sourceTree = "<group>"; };
 		4B2238981B6690CB000F735E /* LightRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRoom.swift; sourceTree = "<group>"; };
-		4B22389C1B669113000F735E /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		4B22389C1B669113000F735E /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		4BD351A71B6DDB0800E7E038 /* Detectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detectors.swift; sourceTree = "<group>"; };
+		4BD351AA1B6DDEC500E7E038 /* QRCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QRCode.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +83,8 @@
 				4B2238621B668F23000F735E /* LightRoom.h */,
 				4B2238641B668F23000F735E /* Info.plist */,
 				4B2238981B6690CB000F735E /* LightRoom.swift */,
-				4B22389C1B669113000F735E /* Filter.swift */,
+				4B22389C1B669113000F735E /* Filters.swift */,
+				4BD351A71B6DDB0800E7E038 /* Detectors.swift */,
 			);
 			path = LightRoom;
 			sourceTree = "<group>";
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4B22387A1B668F8E000F735E /* Main.playground */,
+				4BD351AA1B6DDEC500E7E038 /* QRCode.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
@@ -212,7 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2238991B6690CB000F735E /* LightRoom.swift in Sources */,
-				4B22389D1B669113000F735E /* Filter.swift in Sources */,
+				4B22389D1B669113000F735E /* Filters.swift in Sources */,
+				4BD351A81B6DDB0800E7E038 /* Detectors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

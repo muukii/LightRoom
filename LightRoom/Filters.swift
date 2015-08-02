@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import QuartzCore
+import CoreImage
 
 /** 
 About Core Image
