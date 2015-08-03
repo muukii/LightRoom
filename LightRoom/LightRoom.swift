@@ -9,6 +9,18 @@
 import Foundation
 import QuartzCore
 
+/**
+About Core Image
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_intro/ci_intro.html
+
+Filters
+https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
+*/
+
+public enum LightRoom {
+    
+}
+
 public struct Vector: ArrayLiteralConvertible {
     
     private let v: [CGFloat]
@@ -40,3 +52,4 @@ infix operator >>> { associativity left }
 public func >>> (filter1: Filter, filter2: Filter) -> Filter {
     return { image in filter2(filter1(image)) }
 }
+
