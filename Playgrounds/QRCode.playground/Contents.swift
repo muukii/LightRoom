@@ -4,7 +4,7 @@ import LightRoom
 
 func foo(image: CIImage) -> [String] {
     
-    println(image)
+    print(image, appendNewLine: true)
     let detector = CIDetector(
         ofType: CIDetectorTypeQRCode,
         context: nil,
@@ -12,7 +12,7 @@ func foo(image: CIImage) -> [String] {
             :
         ])
     
-    println(detector)
+    print(detector, appendNewLine: true)
     if let features = detector.featuresInImage(image) as? [CIQRCodeFeature] {
         features
         let messageStrings: [String] = features.map { $0.messageString } ?? []
@@ -21,7 +21,7 @@ func foo(image: CIImage) -> [String] {
     return []
 }
 
-let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("qrcode", ofType: "png")!))!
+let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("qrcode", ofType: "png")!)!)!
 
 //let result = Detectors.QRCode()(image)
 //result

@@ -8,7 +8,3 @@
 
 import Foundation
 import CoreImage
-
-public enum Filters {
-    
-}

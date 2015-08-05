@@ -40,6 +40,8 @@ public struct Vector: ArrayLiteralConvertible {
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2])
         case 4:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2], w: v[3])
+        case 10:
+            return CoreImage.CIVector(values: v, count: 10)
         default:
             return CoreImage.CIVector(x: 0, y: 0, z: 0, w: 0)
         }

@@ -16,15 +16,13 @@ public extension LightRoom {
         
         /*!
         CIBoxBlur
-        
-        @available(iOS 9.0, OSX 10.5, *)
-        
         Blurs an image using a box-shaped convolution kernel.
         
         :param: radius
         
         :returns: Filter
         */
+        @available(iOS 9.0, OSX 10.5, *)
         public static func boxBlur(radius radius: Double) -> Filter {
             return { image in
                 
@@ -38,8 +36,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 9.0, OSX 10.5, *)
-        
         CIDiscBlur
         
         Blurs an image using a disc-shaped convolution kernel.
@@ -48,6 +44,7 @@ public extension LightRoom {
         
         :returns: Filter
         */
+        @available(iOS 9.0, OSX 10.5, *)
         public static func discBlur(radius radius: Double) -> Filter {
             return { image in
                 
@@ -61,8 +58,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 6.0, OSX 10.4, *)
-        
         CIGaussianBlur
         
         Spreads source pixels by an amount specified by a Gaussian distribution.
@@ -71,6 +66,7 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 6.0, OSX 10.4, *)
         public static func gaussianBlur(radius radius: Double) -> Filter {
             return { image in
                 
@@ -84,8 +80,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 9.0, OSX 10.4, *)
-        
         CIMedianFilter
         
         Discussion
@@ -93,6 +87,7 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 9.0, OSX 10.4, *)
         public static func medianBlur() -> Filter {
             return { image in
                 
@@ -105,8 +100,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 9.0, OSX 10.4, *)
-        
         CIMotionBlur
         
         Blurs an image to simulate the effect of using a camera that moves a specified angle and distance while capturing the image.
@@ -116,6 +109,7 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 9.0, OSX 10.4, *)
         public static func motionBlur(radius radius: Double, angle: Double) -> Filter {
             return { image in
                 
@@ -130,8 +124,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 9.0, OSX 10.4, *)
-        
         CINoiseReduction
         
         :param: noiseLevel
@@ -139,7 +131,8 @@ public extension LightRoom {
         
         :returns:
         */
-        public static func noiseReduction(noiseLevel: Double = 0.02, sharpness: Double = 0.40) -> Filter {
+        @available(iOS 9.0, OSX 10.4, *)
+        public static func noiseReduction(noiseLevel noiseLevel: Double = 0.02, sharpness: Double = 0.40) -> Filter {
             return { image in
                 
                 let parameters = [
@@ -153,8 +146,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS9, OSX 10.4, *)
-        
         CIZoomBlur
         
         Simulates the effect of zooming the camera while capturing the image.
@@ -164,7 +155,8 @@ public extension LightRoom {
         
         :returns:
         */
-        public static func zoomBlur(center: Vector = [150,150], amount: Double = 20) -> Filter {
+        @available(iOS 9.0, OSX 10.4, *)
+        public static func zoomBlur(center center: Vector = [150,150], amount: Double = 20) -> Filter {
             return { image in
                 
                 let parameters = [

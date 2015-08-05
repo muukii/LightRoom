@@ -15,8 +15,6 @@ public extension LightRoom {
     public enum ColorAdjustment {
         
         /*!
-        @available(iOS 7.0, OSX 10.9, *)
-        
         CIColorClamp
         
         :param: minComponents
@@ -24,8 +22,9 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 7.0, OSX 10.9, *)
         public static func colorClamp(
-            minComponents: Vector = [0,0,0,0],
+            minComponents minComponents: Vector = [0,0,0,0],
             maxComponents: Vector = [0,0,0,0]) -> Filter {
                 
                 return { image in
@@ -41,8 +40,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 5.0, OSX 10.9, *)
-        
         CIColorControls
         
         Adjusts saturation, brightness, and contrast values.
@@ -53,8 +50,9 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 5.0, OSX 10.9, *)
         public static func colorControls(
-            saturation: Double = 1,
+            saturation saturation: Double = 1,
             brightness: Double = 1,
             contrast: Double = 1) -> Filter {
                 
@@ -72,8 +70,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 5.0, OSX 10.4, *)
-        
         CIColorMatrix
         
         Multiplies source color values and adds a bias factor to each color component.
@@ -85,8 +81,9 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 5.0, OSX 10.4, *)
         public static func colorMatrix(
-            rVector: Vector = [1,0,0,0],
+            rVector rVector: Vector = [1,0,0,0],
             gVector: Vector = [0,1,0,0],
             bVector: Vector = [0,0,1,0],
             aVector: Vector = [0,0,0,1]) -> Filter {
@@ -106,8 +103,6 @@ public extension LightRoom {
         }
         
         /*!
-        @available(iOS 7.0, OSX 10.9, *)
-        
         CIColorPolynomial
         Modifies the pixel values in an image by applying a set of cubic polynomials.
         
@@ -118,8 +113,9 @@ public extension LightRoom {
         
         :returns:
         */
+        @available(iOS 7.0, OSX 10.9, *)
         public static func colorPolynomial(
-            redCoefficients: Vector = [0,1,0,0],
+            redCoefficients redCoefficients: Vector = [0,1,0,0],
             greenCoefficients: Vector = [0,1,0,0],
             blueCoefficients: Vector = [0,1,0,0],
             alphaCoefficients: Vector = [0,1,0,0]) -> Filter {
@@ -139,8 +135,6 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5, OSX 10.4, *)
-        
         CIExposureAdjust
         
         Adjusts the exposure setting for an image similar to the way you control exposure for a camera when you change the F-stop.
@@ -148,7 +142,8 @@ public extension LightRoom {
         :param: ev
         
         */
-        public static func exposureAdjust(ev: Double = 0.5) -> Filter {
+        @available(iOS 5, OSX 10.4, *)
+        public static func exposureAdjust(ev ev: Double = 0.5) -> Filter {
             
             return { image in
                 
@@ -162,15 +157,14 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5.0, OSX 10.4, *)
-        
         CIGammaAdjust
         
         Adjusts midtone brightness.
         
         :param: power
         */
-        public static func gammaAdjust(power: Double = 0.75) -> Filter {
+        @available(iOS 5.0, OSX 10.4, *)
+        public static func gammaAdjust(power power: Double = 0.75) -> Filter {
             
             return { image in
                 
@@ -184,15 +178,14 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5.0, OSX 10.4, *)
-        
         CIHueAdjust
         
         Changes the overall hue, or tint, of the source pixels.
         
         :param: angle
         */
-        public static func hueAdjust(angle: Double = 0) -> Filter {
+        @available(iOS 5.0, OSX 10.4, *)
+        public static func hueAdjust(angle angle: Double = 0) -> Filter {
             
             return { image in
                 
@@ -206,12 +199,11 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 7.0, OSX 10.10, *)
-        
         CILinearToSRGBToneCurve
         
         Maps color intensity from a linear gamma curve to the sRGB color space.
         */
+        @available(iOS 7.0, OSX 10.10, *)
         public static func linerToSRGBToneCurve() -> Filter {
             
             return { image in
@@ -225,11 +217,10 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 7.0, OSX 10.10, *)
-        
         CISRGBToneCurveToLinear
         Maps color intensity from the sRGB color space to a linear gamma curve.
         */
+        @available(iOS 7.0, OSX 10.10, *)
         public static func sRGBToneCurveToLinear() -> Filter {
             
             return { image in
@@ -243,8 +234,6 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5.0, OSX 10.7, *)
-        
         CITemperatureAndTint
         
         Adapts the reference white point for an image.
@@ -252,8 +241,9 @@ public extension LightRoom {
         :param: neutral
         :param: targetNeutral
         */
+        @available(iOS 5.0, OSX 10.7, *)
         public static func temperatureAndTint(
-            neutral: Vector = [6500,0],
+            neutral neutral: Vector = [6500,0],
             targetNeutral: Vector = [6500,0]) -> Filter {
                 
                 return { image in
@@ -269,8 +259,6 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5.0, OSX 10.7, *)
-        
         CIToneCurve
         
         Adjusts tone response of the R, G, and B channels of an image.
@@ -281,8 +269,9 @@ public extension LightRoom {
         :param: point3
         :param: point4
         */
+        @available(iOS 5.0, OSX 10.7, *)
         public static func toneCurve(
-            point0: Vector = [0.00,0.00],
+            point0 point0: Vector = [0.00,0.00],
             point1: Vector = [0.25,0.25],
             point2: Vector = [0.50,0.50],
             point3: Vector = [0.75,0.75],
@@ -304,12 +293,11 @@ public extension LightRoom {
         }
         
         /**
-        @available(iOS 5.0, OSX 10.7, *)
-        
         CIVibrance
         
         Adjusts the saturation of an image while keeping pleasing skin tones.
         */
+        @available(iOS 5.0, OSX 10.7, *)
         public static func vibrance(amount: Double) -> Filter {
             
             return { image in
@@ -323,15 +311,14 @@ public extension LightRoom {
             }
         }
         
-        /**
-        @available(iOS 5.0, OSX 10.4, *)
-        
+        /**        
         CIWhitePointAdjust
         
         Adjusts the reference white point for an image and maps all colors in the source using the new reference.
         
         :param: color A CIColor object whose display name is Color.
         */
+        @available(iOS 5.0, OSX 10.4, *)
         public static func whitePointAdjust(color: CIColor) -> Filter {
             
             return { image in
