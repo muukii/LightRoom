@@ -35,7 +35,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorClamp", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -65,7 +65,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorControls", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -98,7 +98,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorMatrix", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -130,7 +130,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorPolynomial", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -152,7 +152,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIExposureAdjust", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -173,7 +173,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIGammaAdjust", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -194,7 +194,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIHueAdjust", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -212,7 +212,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CILinearToSRGBToneCurve", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -229,7 +229,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CISRGBToneCurveToLinear", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -254,7 +254,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CITemperatureAndTint", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -288,7 +288,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIToneCurve", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -307,7 +307,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIVibrance", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -328,7 +328,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIWhitePointAdjust", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
     }

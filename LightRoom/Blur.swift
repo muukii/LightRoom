@@ -31,7 +31,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIBoxBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -53,7 +53,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIDiscBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -75,7 +75,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -95,7 +95,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIMedianFilter", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -119,7 +119,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIMotionBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -141,7 +141,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CINoiseReductionBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
         
@@ -165,7 +165,7 @@ public extension LightRoom {
                     kCIInputImageKey: image,
                 ]
                 let filter = CIFilter(name: "CIZoomBlur", withInputParameters: parameters)
-                return filter!.outputImage
+                return filter!.outputImage!
             }
         }
     }

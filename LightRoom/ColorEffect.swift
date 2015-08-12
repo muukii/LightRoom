@@ -35,7 +35,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorCrossPolynomial", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
         
@@ -56,7 +56,7 @@ public extension LightRoom {
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorCube", withInputParameters: parameters)
-                    return filter!.outputImage
+                    return filter!.outputImage!
                 }
         }
     }
