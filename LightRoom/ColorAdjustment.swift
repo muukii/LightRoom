@@ -53,7 +53,7 @@ public extension LightRoom {
         @available(iOS 5.0, OSX 10.9, *)
         public static func colorControls(
             saturation saturation: Double = 1,
-            brightness: Double = 1,
+            brightness: Double = 0,
             contrast: Double = 1) -> Filter {
                 
                 return { image in

@@ -7,6 +7,8 @@ let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForRe
 
 //let result = Filters.Blur.motionBlur(radius: 20, angle: 0.2)(image)
 
+LightRoom.ColorAdjustment.colorControls(saturation: 1, brightness: 1, contrast: 1)(image)
+
 let filter = LightRoom.ColorAdjustment.colorPolynomial(
     redCoefficients: [0,0.4,0.6,0],
     greenCoefficients: [0,1,0,0],
