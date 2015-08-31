@@ -21,7 +21,7 @@ public enum LightRoom {
     
 }
 
-public struct Vector: ArrayLiteralConvertible {
+public struct Vector2: ArrayLiteralConvertible {
     
     private let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
@@ -32,18 +32,67 @@ public struct Vector: ArrayLiteralConvertible {
     public var CIVector: CoreImage.CIVector {
         
         switch self.v.count {
-        case 1:
-            return CoreImage.CIVector(x: v[0])
         case 2:
             return CoreImage.CIVector(x: v[0], y: v[1])
+        default:
+            assert(false, "Can't convert CIVector 2")
+        }
+    }
+}
+
+public struct Vector3: ArrayLiteralConvertible {
+    
+    private let v: [CGFloat]
+    public init(arrayLiteral elements: CGFloat...) {
+        
+        self.v = elements
+    }
+    
+    public var CIVector: CoreImage.CIVector {
+        
+        switch self.v.count {
         case 3:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2])
-        case 4:
+        default:
+            assert(false, "Can't convert CIVector 3")
+        }
+    }
+}
+
+public struct Vector4: ArrayLiteralConvertible {
+    
+    private let v: [CGFloat]
+    public init(arrayLiteral elements: CGFloat...) {
+        
+        self.v = elements
+    }
+    
+    public var CIVector: CoreImage.CIVector {
+        
+        switch self.v.count {
+        case 3:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2], w: v[3])
+        default:
+            assert(false, "Can't convert CIVector 4")
+        }
+    }
+}
+
+public struct Vector10: ArrayLiteralConvertible {
+    
+    private let v: [CGFloat]
+    public init(arrayLiteral elements: CGFloat...) {
+        
+        self.v = elements
+    }
+    
+    public var CIVector: CoreImage.CIVector {
+        
+        switch self.v.count {
         case 10:
             return CoreImage.CIVector(values: v, count: 10)
         default:
-            return CoreImage.CIVector(x: 0, y: 0, z: 0, w: 0)
+            assert(false, "Can't convert CIVector 10")
         }
     }
 }

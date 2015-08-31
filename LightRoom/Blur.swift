@@ -156,7 +156,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public static func zoomBlur(center center: Vector = [150,150], amount: Double = 20) -> Filter {
+        public static func zoomBlur(center center: Vector2, amount: Double) -> Filter {
             return { image in
                 
                 let parameters = [

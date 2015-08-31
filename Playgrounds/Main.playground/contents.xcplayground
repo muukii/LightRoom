@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' requires-full-environment='true'>
+<playground version='6.0' target-platform='ios' auto-termination-delay='29' requires-full-environment='true' timelineScrubberEnabled='true'>
     <pages>
         <page name='test'/>
         <page name='TempletureAndTint'/>
+        <page name='Sharpen'/>
+        <page name='ToneCurve'/>
+        <page name='colorPolynomial'/>
+        <page name='colorMatrix'/>
     </pages>
 </playground>

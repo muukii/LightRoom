@@ -24,8 +24,8 @@ public extension LightRoom {
         */
         @available(iOS 7.0, OSX 10.9, *)
         public static func colorClamp(
-            minComponents minComponents: Vector = [0,0,0,0],
-            maxComponents: Vector = [0,0,0,0]) -> Filter {
+            minComponents minComponents: Vector4,
+            maxComponents: Vector4) -> Filter {
                 
                 return { image in
                     
@@ -83,10 +83,10 @@ public extension LightRoom {
         */
         @available(iOS 5.0, OSX 10.4, *)
         public static func colorMatrix(
-            rVector rVector: Vector = [1,0,0,0],
-            gVector: Vector = [0,1,0,0],
-            bVector: Vector = [0,0,1,0],
-            aVector: Vector = [0,0,0,1]) -> Filter {
+            rVector rVector: Vector4,
+            gVector: Vector4,
+            bVector: Vector4,
+            aVector: Vector4) -> Filter {
                 
                 return { image in
                     
@@ -115,10 +115,10 @@ public extension LightRoom {
         */
         @available(iOS 7.0, OSX 10.9, *)
         public static func colorPolynomial(
-            redCoefficients redCoefficients: Vector = [0,1,0,0],
-            greenCoefficients: Vector = [0,1,0,0],
-            blueCoefficients: Vector = [0,1,0,0],
-            alphaCoefficients: Vector = [0,1,0,0]) -> Filter {
+            redCoefficients redCoefficients: Vector4,
+            greenCoefficients: Vector4,
+            blueCoefficients: Vector4,
+            alphaCoefficients: Vector4) -> Filter {
                 
                 return { image in
                     
@@ -143,7 +143,7 @@ public extension LightRoom {
         
         */
         @available(iOS 5, OSX 10.4, *)
-        public static func exposureAdjust(ev ev: Double = 0.5) -> Filter {
+        public static func exposureAdjust(ev ev: Double) -> Filter {
             
             return { image in
                 
@@ -164,7 +164,7 @@ public extension LightRoom {
         :param: power
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func gammaAdjust(power power: Double = 0.75) -> Filter {
+        public static func gammaAdjust(power power: Double) -> Filter {
             
             return { image in
                 
@@ -185,7 +185,7 @@ public extension LightRoom {
         :param: angle
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func hueAdjust(angle angle: Double = 0) -> Filter {
+        public static func hueAdjust(angle angle: Double) -> Filter {
             
             return { image in
                 
@@ -243,8 +243,8 @@ public extension LightRoom {
         */
         @available(iOS 5.0, OSX 10.7, *)
         public static func temperatureAndTint(
-            neutral neutral: Vector = [6500,0],
-            targetNeutral: Vector = [6500,0]) -> Filter {
+            neutral neutral: Vector2,
+            targetNeutral: Vector2) -> Filter {
                 
                 return { image in
                     
@@ -271,22 +271,22 @@ public extension LightRoom {
         */
         @available(iOS 5.0, OSX 10.7, *)
         public static func toneCurve(
-            point0 point0: Vector = [0.00,0.00],
-            point1: Vector = [0.25,0.25],
-            point2: Vector = [0.50,0.50],
-            point3: Vector = [0.75,0.75],
-            point4: Vector = [1.00,1.00]) -> Filter {
+            point0 point0: Vector2,
+            point1: Vector2,
+            point2: Vector2,
+            point3: Vector2,
+            point4: Vector2) -> Filter {
                 
                 return { image in
                     
-                    let parameters = [
-                        "inputPoint0": point0.CIVector,
-                        "inputPoint1": point1.CIVector,
-                        "inputPoint2": point2.CIVector,
-                        "inputPoint3": point3.CIVector,
-                        "inputPoint4": point4.CIVector,
-                        kCIInputImageKey: image,
-                    ]
+                    var parameters: [String: AnyObject] = [kCIInputImageKey: image]
+                    
+                    parameters["inputPoint0"] = point0.CIVector
+                    parameters["inputPoint1"] = point1.CIVector
+                    parameters["inputPoint2"] = point2.CIVector
+                    parameters["inputPoint3"] = point3.CIVector
+                    parameters["inputPoint4"] = point4.CIVector
+                    
                     let filter = CIFilter(name: "CIToneCurve", withInputParameters: parameters)
                     return filter!.outputImage!
                 }

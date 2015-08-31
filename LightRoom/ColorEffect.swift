@@ -22,9 +22,9 @@ public extension LightRoom {
         */
         @available(iOS 7.0, OSX 10.9, *)
         public static func crossPolynomial(
-            redCoefficients redCoefficients: Vector = [1,0,0,0,0,0,0,0,0,0],
-            greenCoefficients: Vector = [0,1,0,0,0,0,0,0,0,0],
-            blueCoefficients: Vector = [0,0,1,0,0,0,0,0,0,0]) -> Filter {
+            redCoefficients redCoefficients: Vector10,
+            greenCoefficients: Vector10,
+            blueCoefficients: Vector10) -> Filter {
                 
                 return { image in
                     
@@ -45,7 +45,7 @@ public extension LightRoom {
         */
         @available(iOS 6.0, OSX 10.4, *)
         public static func colorCube(
-            cubeDimension cubeDimension: Double = 2.00,
+            cubeDimension cubeDimension: Double,
             cubeData: NSData) -> Filter {
                 
                 return { image in
@@ -67,7 +67,7 @@ public extension LightRoom {
         */
         @available(iOS 7.0, OSX 10.9, *)
         public static func colorCubeWithColorSpace(
-            cubeDimension cubeDimension: Double = 2.00,
+            cubeDimension cubeDimension: Double,
             cubeData: NSData,
             colorSpace: CGColorSpaceRef) -> Filter {
                 
