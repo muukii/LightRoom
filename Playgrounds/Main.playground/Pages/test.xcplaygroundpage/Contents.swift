@@ -5,6 +5,7 @@ import LightRoom
 
 let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("sample1", ofType: "jpg")!)!)!
 
+image.properties
 let filter = LightRoom.ColorAdjustment.colorPolynomial(
     redCoefficients: [0,0.4,0.6,0],
     greenCoefficients: [0,1,0,0],
