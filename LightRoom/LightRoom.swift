@@ -70,7 +70,7 @@ public struct Vector4: ArrayLiteralConvertible {
     public var CIVector: CoreImage.CIVector {
         
         switch self.v.count {
-        case 3:
+        case 4:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2], w: v[3])
         default:
             assert(false, "Can't convert CIVector 4")
