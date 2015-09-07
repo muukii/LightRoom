@@ -5,6 +5,8 @@ ImageFilter with CoreImage
 
 Steadily in development.
 
+**I'm waiting your Pull Request!**
+
 
 # Example
 
