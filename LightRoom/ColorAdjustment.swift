@@ -298,7 +298,7 @@ public extension LightRoom {
         Adjusts the saturation of an image while keeping pleasing skin tones.
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public static func vibrance(amount: Double) -> Filter {
+        public static func vibrance(amount amount: Double) -> Filter {
             
             return { image in
                 
