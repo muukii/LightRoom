@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias GradientGenerator = () -> CIImage
+
 public extension LightRoom {
     
     /**
@@ -24,14 +26,13 @@ public extension LightRoom {
             center center: Vector2,
             color0: UIColor,
             color1: UIColor,
-            radius: Double) -> Filter {
+            radius: Double) -> GradientGenerator {
                 return { image in
 
                     let parameters = [
                         kCIInputCenterKey: center.CIVector,
                         "inputColor0": color0,
-                        "inputColor1": color1,
-                        kCIInputImageKey: image
+                        "inputColor1": color1
                     ]
                     
                     let filter = CIFilter(name: "CIGaussianGradient", withInputParameters: parameters)
@@ -48,7 +49,7 @@ public extension LightRoom {
             point0 point0: Vector2,
             point1: Vector2,
             color0: UIColor,
-            color1: UIColor) -> Filter {
+            color1: UIColor) -> GradientGenerator {
                 return { image in
                     
                     let parameters = [
@@ -56,7 +57,6 @@ public extension LightRoom {
                         "inputPoint1": point1.CIVector,
                         "inputColor0": color0,
                         "inputColor1": color1,
-                        kCIInputImageKey: image
                     ]
                     
                     let filter = CIFilter(name: "CILinearGradient", withInputParameters: parameters)
@@ -75,7 +75,7 @@ public extension LightRoom {
             radius0: Double,
             radius1: Double,
             color0: UIColor,
-            color1: UIColor) -> Filter {
+            color1: UIColor) -> GradientGenerator {
                 return { image in
                     
                     let parameters = [
@@ -84,7 +84,6 @@ public extension LightRoom {
                         "inputRadius1": radius1,
                         "inputColor0": color0,
                         "inputColor1": color1,
-                        kCIInputImageKey: image
                     ]
                     
                     let filter = CIFilter(name: "CIRadialGradient", withInputParameters: parameters)
@@ -101,7 +100,7 @@ public extension LightRoom {
             point0 point0: Vector2,
             point1: Vector2,
             color0: UIColor,
-            color1: UIColor) -> Filter {
+            color1: UIColor) -> GradientGenerator {
                 return { image in
                     
                     let parameters = [
@@ -109,7 +108,6 @@ public extension LightRoom {
                         "inputPoint1": point1.CIVector,
                         "inputColor0": color0,
                         "inputColor1": color1,
-                        kCIInputImageKey: image
                     ]
                     
                     let filter = CIFilter(name: "CISmoothLinearGradient", withInputParameters: parameters)
