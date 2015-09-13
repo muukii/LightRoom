@@ -35,7 +35,7 @@ public struct Vector2: ArrayLiteralConvertible {
         case 2:
             return CoreImage.CIVector(x: v[0], y: v[1])
         default:
-            assert(false, "Can't convert CIVector 2")
+            assert(false, "Can't convert CIVector2 count: \(self.v.count) ")
         }
     }
 }

@@ -50,6 +50,7 @@
 		4B553E3A1B6FD7F4002AC791 /* CompositeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeOperation.swift; sourceTree = "<group>"; };
 		4B553E3C1B6FD84A002AC791 /* DistortionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistortionEffect.swift; sourceTree = "<group>"; };
 		4B7C13A51B9F227700B17D36 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		4BA380E61BA5DA6000C98D59 /* Filter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Filter.playground; sourceTree = "<group>"; };
 		4BC493801B8E839900156901 /* Sharpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sharpen.swift; sourceTree = "<group>"; };
 		4BD351A71B6DDB0800E7E038 /* Detectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detectors.swift; sourceTree = "<group>"; };
 		4BD351AA1B6DDEC500E7E038 /* QRCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QRCode.playground; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 			children = (
 				4B22387A1B668F8E000F735E /* Main.playground */,
 				4BD351AA1B6DDEC500E7E038 /* QRCode.playground */,
+				4BA380E61BA5DA6000C98D59 /* Filter.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";

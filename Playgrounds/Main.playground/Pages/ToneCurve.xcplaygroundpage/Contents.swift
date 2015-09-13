@@ -5,32 +5,27 @@ import LightRoom
 
 let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("sample1", ofType: "jpg")!)!)!
 
-func toneCurve(
-    point0 point0: Vector = [0.00,0.00],
-    point1: Vector?,
-    point2: Vector?,
-    point3: Vector?,
-    point4: Vector = [1.00,1.00]) -> Filter {
-        
-        return { image in
-            
-            var parameters: [String: AnyObject] = [kCIInputImageKey: image]
-            
-            parameters["inputPoint0"] = point0.CIVector
-            parameters["inputPoint1"] = point1?.CIVector
-            parameters["inputPoint2"] = point2?.CIVector
-            parameters["inputPoint3"] = point3?.CIVector
-            parameters["inputPoint4"] = point4.CIVector
-            
-            let filter = CIFilter(name: "CIToneCurve", withInputParameters: parameters)
-            return filter!.outputImage!
-        }
+
+do {
+    let image1 = LightRoom.ColorAdjustment.toneCurve(
+        point0: [0,0],
+        point1: [79.0/255.0,41.0/255.0],
+        point2: [142.0/255.0,150.0/255.0],
+        point3: [202.0/255.0,218.0/255.0],
+        point4: [1,1])(image)
+    
+    image1
+    
 }
 
-toneCurve(
-    point0: [0,0],
-    point1: nil,
-    point2: nil,
-    point3: [0.2,0.5],
-    point4: [1.1])(image)
-
+do {
+    let image1 = LightRoom.ColorAdjustment.toneCurve(
+        point0: [0,0],
+        point1: [0,0],
+        point2: [0,0],
+        point3: [1,0],
+        point4: [1,1])(image)
+    
+    image1
+    
+}

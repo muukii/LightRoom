@@ -86,7 +86,8 @@ public extension LightRoom {
             rVector rVector: Vector4,
             gVector: Vector4,
             bVector: Vector4,
-            aVector: Vector4) -> Filter {
+            aVector: Vector4,
+            biasVector: Vector4) -> Filter {
                 
                 return { image in
                     
@@ -95,6 +96,7 @@ public extension LightRoom {
                         "inputGVector": gVector.CIVector,
                         "inputBVector": bVector.CIVector,
                         "inputAVector": aVector.CIVector,
+                        "inputBiasVector": biasVector.CIVector,
                         kCIInputImageKey: image,
                     ]
                     let filter = CIFilter(name: "CIColorMatrix", withInputParameters: parameters)
@@ -331,5 +333,68 @@ public extension LightRoom {
                 return filter!.outputImage!
             }
         }
+    }
+}
+
+public extension LightRoom.ColorAdjustment {
+    
+    public static func toneCurve(
+        rPoints rPoints: [Vector2],
+        gPoints: [Vector2],
+        bPoints: [Vector2],
+        rgbPoints: [Vector2]) -> Filter {
+            
+            return { image in
+                
+                
+                let rImage = LightRoom.ColorAdjustment.toneCurve(
+                    point0: rPoints[0],
+                    point1: rPoints[1],
+                    point2: rPoints[2],
+                    point3: rPoints[3],
+                    point4: rPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                        rVector: [1,0,0,0],
+                        gVector: [0,0,0,0],
+                        bVector: [0,0,0,0],
+                        aVector: [0,0,0,1],
+                        biasVector: [0,0,0,0])(image))
+                
+                let gImage = LightRoom.ColorAdjustment.toneCurve(
+                    point0: gPoints[0],
+                    point1: gPoints[1],
+                    point2: gPoints[2],
+                    point3: gPoints[3],
+                    point4: gPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                        rVector: [0,0,0,0],
+                        gVector: [0,1,0,0],
+                        bVector: [0,0,0,0],
+                        aVector: [0,0,0,1],
+                        biasVector: [0,0,0,0])(image))
+                
+                let bImage = LightRoom.ColorAdjustment.toneCurve(
+                    point0: bPoints[0],
+                    point1: bPoints[1],
+                    point2: bPoints[2],
+                    point3: bPoints[3],
+                    point4: bPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                        rVector: [0,0,0,0],
+                        gVector: [0,0,0,0],
+                        bVector: [0,0,1,0],
+                        aVector: [0,0,0,1],
+                        biasVector: [0,0,0,0])(image))
+                
+                let screenBlend = LightRoom.CompositeOperation.screenBlendMode()
+                
+                let blendImage = screenBlend(
+                    image: screenBlend(image: rImage, backgroundImage: bImage),
+                    backgroundImage: gImage)
+                
+                return LightRoom.ColorAdjustment.toneCurve(
+                    point0: rgbPoints[0],
+                    point1: rgbPoints[1],
+                    point2: rgbPoints[2],
+                    point3: rgbPoints[3],
+                    point4: rgbPoints[4])(blendImage)
+            }
     }
 }

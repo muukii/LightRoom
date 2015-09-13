@@ -225,5 +225,105 @@ public extension LightRoom {
                 return filter!.outputImage!
             }
         }
+        
+        /**
+        CILinearBurnBlendMode
+        Darkens the background image samples to reflect the source image samples while also increasing contrast.
+        */
+        
+        /**
+        CILinearDodgeBlendMode
+        Brightens the background image samples to reflect the source image samples while also increasing contrast.
+        */
+        /**
+        CILuminosityBlendMode
+        Uses the hue and saturation of the background image with the luminance of the input image.
+        */
+        /**
+        CIMaximumCompositing
+        Computes the maximum value, by color component, of two input images and creates an output image using the maximum values.
+        */
+        /**
+        CIMinimumCompositing
+        Computes the minimum value, by color component, of two input images and creates an output image using the minimum values.
+        */
+        /**
+        CIMultiplyBlendMode
+        Multiplies the input image samples with the background image samples.
+        */
+        /**
+        CIMultiplyCompositing
+        Multiplies the color component of two input images and creates an output image using the multiplied values.
+        */
+        /**
+        CIOverlayBlendMode
+        Either multiplies or screens the input image samples with the background image samples, depending on the background color.
+        */
+        
+        /**
+        CIPinLightBlendMode
+        Conditionally replaces background image samples with source image samples depending on the brightness of the source image samples.
+        */
+        /**
+        CISaturationBlendMode
+        Uses the luminance and hue values of the background image with the saturation of the input image.
+        
+
+        */
+        /**
+        CIScreenBlendMode
+        Multiplies the inverse of the input image samples with the inverse of the background image samples.
+        */
+        @available(iOS 6.0, OSX 10.4, *)
+        public static func screenBlendMode() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CIScreenBlendMode", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
+        /**
+        CISoftLightBlendMode
+        Either darkens or lightens colors, depending on the input image sample color.
+        
+
+        */
+        /**
+        CISourceAtopCompositing
+        Places the input image over the background image, then uses the luminance of the background image to determine what to show.
+        */
+        /**
+        CISourceInCompositing
+        Uses the background image to define what to leave in the input image, effectively cropping the input image.
+        
+
+        */
+        /**
+        CISourceOutCompositing
+        Uses the background image to define what to take out of the input image.
+        
+
+        */
+        /**
+        
+        CISourceOverCompositing
+        Places the input image over the input background image.
+        
+
+        */
+        
+        /**
+        CISubtractBlendMode
+        Subtracts the background image sample color from the source image sample color.
+        
+
+        */
+        
     }
 }
