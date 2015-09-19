@@ -383,7 +383,7 @@ public extension LightRoom.ColorAdjustment {
                         aVector: [0,0,0,1],
                         biasVector: [0,0,0,0])(image))
                 
-                let screenBlend = LightRoom.CompositeOperation.screenBlendMode()
+                let screenBlend = LightRoom.CompositeOperation.lightenBlendMode()
                 
                 let blendImage = screenBlend(
                     image: screenBlend(image: rImage, backgroundImage: bImage),
