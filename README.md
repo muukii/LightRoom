@@ -29,6 +29,17 @@ let combinedFilter = colorMatrixFilter >>> motionBlurFilter
 let outputImage = combinedFilter(image)
 ```
 
+# Bridge Filter <-> JSON
+
+## Create Filter from JSON
+
+WIP
+
+## Export JSON from Filter
+
+WIP
+
+
 
 ---
 
