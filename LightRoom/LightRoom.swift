@@ -19,6 +19,14 @@ https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging
 
 public enum LightRoom {
     
+    static func createFilter(name name: String, var parameters: [String: AnyObject]?) -> Filter {
+        
+        return { image in
+            
+            parameters?[kCIInputImageKey] = image
+            return CIFilter(name: name, withInputParameters: parameters)!.outputImage!
+        }
+    }
     
 }
 
