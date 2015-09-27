@@ -19,6 +19,7 @@ https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging
 
 public enum LightRoom {
     
+    
 }
 
 public struct Vector2: ArrayLiteralConvertible {
@@ -35,7 +36,7 @@ public struct Vector2: ArrayLiteralConvertible {
         case 2:
             return CoreImage.CIVector(x: v[0], y: v[1])
         default:
-            assert(false, "Can't convert CIVector2 count: \(self.v.count) ")
+            fatalError("Can't convert CIVector2 count: \(self.v.count) ")
         }
     }
 }
@@ -54,7 +55,7 @@ public struct Vector3: ArrayLiteralConvertible {
         case 3:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2])
         default:
-            assert(false, "Can't convert CIVector 3")
+            fatalError("Can't convert CIVector 3")
         }
     }
 }
@@ -73,7 +74,7 @@ public struct Vector4: ArrayLiteralConvertible {
         case 4:
             return CoreImage.CIVector(x: v[0], y: v[1], z: v[2], w: v[3])
         default:
-            assert(false, "Can't convert CIVector 4")
+            fatalError("Can't convert CIVector 4")
         }
     }
 }
@@ -92,7 +93,7 @@ public struct Vector10: ArrayLiteralConvertible {
         case 10:
             return CoreImage.CIVector(values: v, count: 10)
         default:
-            assert(false, "Can't convert CIVector 10")
+            fatalError("Can't convert CIVector 10")
         }
     }
 }
@@ -103,4 +104,7 @@ infix operator >>> { associativity left }
 public func >>> (filter1: Filter, filter2: Filter) -> Filter {
     return { image in filter2(filter1(image)) }
 }
+
+
+
 
