@@ -25,6 +25,3 @@ LightRoom.ColorAdjustment.temperatureAndTint(
 LightRoom.ColorAdjustment.temperatureAndTint(
     neutral: [6500,0],
     targetNeutral: [3500,0])(image)
-
-
-

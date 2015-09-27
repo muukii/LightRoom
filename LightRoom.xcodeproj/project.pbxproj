@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B0C9F141BB8319D006C3CF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0C9F0B1BB83195006C3CF8 /* SwiftyJSON.framework */; };
+		4B0C9F161BB85958006C3CF8 /* FilterGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9F151BB85958006C3CF8 /* FilterGen.swift */; settings = {ASSET_TAGS = (); }; };
 		4B2238631B668F23000F735E /* LightRoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2238621B668F23000F735E /* LightRoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B2238991B6690CB000F735E /* LightRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2238981B6690CB000F735E /* LightRoom.swift */; };
@@ -67,6 +68,13 @@
 			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
 			remoteInfo = "SwiftyJSON watchOS";
 		};
+		4B0C9F1C1BB8600F006C3CF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B0C9EED1BB83195006C3CF8 /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
 		4B22386B1B668F23000F735E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4B2238561B668F23000F735E /* Project object */;
@@ -113,6 +121,7 @@
 		4B0C9EFF1BB83195006C3CF8 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		4B0C9F001BB83195006C3CF8 /* SubscriptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptTests.swift; sourceTree = "<group>"; };
 		4B0C9F011BB83195006C3CF8 /* Tests.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
+		4B0C9F151BB85958006C3CF8 /* FilterGen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterGen.swift; sourceTree = "<group>"; };
 		4B22385F1B668F23000F735E /* LightRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2238621B668F23000F735E /* LightRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightRoom.h; sourceTree = "<group>"; };
 		4B2238641B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -284,6 +293,7 @@
 				4B2238621B668F23000F735E /* LightRoom.h */,
 				4B2238641B668F23000F735E /* Info.plist */,
 				4B2238981B6690CB000F735E /* LightRoom.swift */,
+				4B0C9F151BB85958006C3CF8 /* FilterGen.swift */,
 				4B22389C1B669113000F735E /* JSONBridge.swift */,
 				4B553E341B6FD6C7002AC791 /* Blur.swift */,
 				4B553E361B6FD753002AC791 /* ColorAdjustment.swift */,
@@ -343,6 +353,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B0C9F1D1BB8600F006C3CF8 /* PBXTargetDependency */,
 			);
 			name = LightRoom;
 			productName = LightRoom;
@@ -487,6 +498,7 @@
 				4BC493811B8E839900156901 /* Sharpen.swift in Sources */,
 				4B553E3B1B6FD7F4002AC791 /* CompositeOperation.swift in Sources */,
 				4B29C5681B94AA530058AB86 /* Stylize.swift in Sources */,
+				4B0C9F161BB85958006C3CF8 /* FilterGen.swift in Sources */,
 				4B553E351B6FD6C7002AC791 /* Blur.swift in Sources */,
 				4B553E371B6FD753002AC791 /* ColorAdjustment.swift in Sources */,
 				4B553E3D1B6FD84A002AC791 /* DistortionEffect.swift in Sources */,
@@ -506,6 +518,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4B0C9F1D1BB8600F006C3CF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 4B0C9F1C1BB8600F006C3CF8 /* PBXContainerItemProxy */;
+		};
 		4B22386C1B668F23000F735E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4B22385E1B668F23000F735E /* LightRoom */;

@@ -17,7 +17,7 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
-public enum LightRoom {
+public struct LightRoom {
     
     static func createFilter(name name: String, var parameters: [String: AnyObject]?) -> Filter {
         

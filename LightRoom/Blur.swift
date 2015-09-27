@@ -12,7 +12,7 @@ public extension LightRoom {
     /*!
     CICategoryBlur
     */
-    public enum Blur {
+    public struct Blur {
         
         /*!
         CIBoxBlur
@@ -21,17 +21,16 @@ public extension LightRoom {
         :param: radius
         
         :returns: Filter
-        */
+        */     
         @available(iOS 9.0, OSX 10.5, *)
-        public static func boxBlur(radius radius: Double) -> Filter {
-            return { image in
+        public class BoxBlur: CIFilterGen {
+            
+            public required init(radius: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIBoxBlur", parameters: [
                     kCIInputRadiusKey: radius,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIBoxBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -45,15 +44,14 @@ public extension LightRoom {
         :returns: Filter
         */
         @available(iOS 9.0, OSX 10.5, *)
-        public static func discBlur(radius radius: Double) -> Filter {
-            return { image in
+        public class DiscBlur: CIFilterGen {
+            
+            public required init(radius: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIDiscBlur", parameters: [
                     kCIInputRadiusKey: radius,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIDiscBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -67,15 +65,14 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func gaussianBlur(radius radius: Double) -> Filter {
-            return { image in
+        public class GaussianBlur: CIFilterGen {
+            
+            public required init(radius: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIGaussianBlur", parameters: [
                     kCIInputRadiusKey: radius,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIGaussianBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -88,14 +85,11 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public static func medianBlur() -> Filter {
-            return { image in
+        public class MedianBlur: CIFilterGen {
+            
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMedianFilter", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIMedianFilter", parameters: [:])
             }
         }
         
@@ -110,16 +104,15 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public static func motionBlur(radius radius: Double, angle: Double) -> Filter {
-            return { image in
+        public class MotionBlur: CIFilterGen {
+            
+            public required init(radius: Double, angle: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIMotionBlur", parameters: [
                     kCIInputRadiusKey: radius,
                     kCIInputAngleKey: angle,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMotionBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -132,16 +125,15 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public static func noiseReduction(noiseLevel noiseLevel: Double = 0.02, sharpness: Double = 0.40) -> Filter {
-            return { image in
+        public class NoiseReduction: CIFilterGen {
+            
+            public required init(noiseLevel: Double, sharpness: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CINoiseReductionBlur", parameters: [
                     "inputNoizeLevel": noiseLevel,
                     kCIInputSharpnessKey: sharpness,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CINoiseReductionBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -156,19 +148,16 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public static func zoomBlur(center center: Vector2, amount: Double) -> Filter {
-            return { image in
+        public class ZoomBlur: CIFilterGen {
+            
+            public required init(center: Vector2, amount: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIZoomBlur", parameters: [
                     kCIInputCenterKey: center.CIVector,
                     "inputAmount": amount,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIZoomBlur", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
-    }
-    
-
+    }    
 }
