@@ -12,7 +12,7 @@ public extension LightRoom {
     /*!
     CICategoryColorAdjustment
     */
-    public enum ColorAdjustment {
+    public struct ColorAdjustment {
         
         /*!
         CIColorClamp
@@ -23,20 +23,17 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func colorClamp(
-            minComponents minComponents: Vector4,
-            maxComponents: Vector4) -> Filter {
+        public class ColorClamp: CIFilterGen {
+            
+            public required init(minComponents: Vector4,
+                maxComponents: Vector4) {
                 
-                return { image in
-                    
-                    let parameters = [
+                super.init(filterName: "CIColorClamp", parameters: [
                         "inputMinComponents": minComponents.CIVector,
                         "inputMaxComponents": maxComponents.CIVector,
-                        kCIInputImageKey: image,
                     ]
-                    let filter = CIFilter(name: "CIColorClamp", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                )
+            }
         }
         
         /*!
@@ -51,22 +48,19 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.9, *)
-        public static func colorControls(
-            saturation saturation: Double = 1,
-            brightness: Double = 0,
-            contrast: Double = 1) -> Filter {
-                
-                return { image in
+        public class ColorControls: CIFilterGen {
+            
+            public required init(saturation: Double,
+                brightness: Double,
+                contrast: Double) {
                     
-                    let parameters = [
+                    super.init(filterName: "CIColorControls", parameters: [
                         kCIInputSaturationKey: saturation,
                         kCIInputBrightnessKey: brightness,
                         kCIInputContrastKey: contrast,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorControls", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /*!
@@ -82,26 +76,24 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func colorMatrix(
-            rVector rVector: Vector4,
-            gVector: Vector4,
-            bVector: Vector4,
-            aVector: Vector4,
-            biasVector: Vector4) -> Filter {
-                
-                return { image in
+        public class ColorMatrix: CIFilterGen {
+            
+            public required init(
+                rVector: Vector4,
+                gVector: Vector4,
+                bVector: Vector4,
+                aVector: Vector4,
+                biasVector: Vector4) {
                     
-                    let parameters = [
+                    super.init(filterName: "CIColorMatrix", parameters: [
                         "inputRVector": rVector.CIVector,
                         "inputGVector": gVector.CIVector,
                         "inputBVector": bVector.CIVector,
                         "inputAVector": aVector.CIVector,
                         "inputBiasVector": biasVector.CIVector,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorMatrix", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /*!
@@ -116,24 +108,22 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func colorPolynomial(
-            redCoefficients redCoefficients: Vector4,
-            greenCoefficients: Vector4,
-            blueCoefficients: Vector4,
-            alphaCoefficients: Vector4) -> Filter {
-                
-                return { image in
+        public class ColorPolynomial: CIFilterGen {
+            
+            public required init(
+                redCoefficients: Vector4,
+                greenCoefficients: Vector4,
+                blueCoefficients: Vector4,
+                alphaCoefficients: Vector4) {
                     
-                    let parameters = [
+                    super.init(filterName: "CIColorPolynomial", parameters: [
                         "inputRedCoefficients": redCoefficients.CIVector,
                         "inputGreenCoefficients": greenCoefficients.CIVector,
                         "inputBlueCoefficients": blueCoefficients.CIVector,
                         "inputAlphaCoefficients": alphaCoefficients.CIVector,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorPolynomial", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /**
@@ -145,16 +135,14 @@ public extension LightRoom {
         
         */
         @available(iOS 5, OSX 10.4, *)
-        public static func exposureAdjust(ev ev: Double) -> Filter {
+        public class ExposureAdjust: CIFilterGen {
             
-            return { image in
-                
-                let parameters = [
-                    kCIInputEVKey: ev,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIExposureAdjust", withInputParameters: parameters)
-                return filter!.outputImage!
+            public required init(ev: Double) {
+                    
+                    super.init(filterName: "CIExposureAdjust", parameters: [
+                        kCIInputEVKey: ev,
+                        ]
+                    )
             }
         }
         
@@ -166,16 +154,14 @@ public extension LightRoom {
         :param: power
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func gammaAdjust(power power: Double) -> Filter {
+        public class GammmaAdjust: CIFilterGen {
             
-            return { image in
+            public required init(power: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIGammaAdjust", parameters: [
                     "inputPower": power,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIGammaAdjust", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -187,16 +173,14 @@ public extension LightRoom {
         :param: angle
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func hueAdjust(angle angle: Double) -> Filter {
+        public class HueAdjust: CIFilterGen {
             
-            return { image in
+            public required init(angle: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIHueAdjust", parameters: [
                     kCIInputAngleKey: angle,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIHueAdjust", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -206,15 +190,11 @@ public extension LightRoom {
         Maps color intensity from a linear gamma curve to the sRGB color space.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public static func linerToSRGBToneCurve() -> Filter {
+        public class LinerToSRGBToneCurve: CIFilterGen {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CILinearToSRGBToneCurve", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CILinearToSRGBToneCurve", parameters: [:])
             }
         }
         
@@ -223,15 +203,11 @@ public extension LightRoom {
         Maps color intensity from the sRGB color space to a linear gamma curve.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public static func sRGBToneCurveToLinear() -> Filter {
+        public class SRGBToneCurveToLinear: CIFilterGen {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CISRGBToneCurveToLinear", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CISRGBToneCurveToLinear", parameters: [:])
             }
         }
         
@@ -244,20 +220,17 @@ public extension LightRoom {
         :param: targetNeutral
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public static func temperatureAndTint(
-            neutral neutral: Vector2,
-            targetNeutral: Vector2) -> Filter {
+        public class TemperatureAndTint: CIFilterGen {
+            
+            public required init(neutral: Vector2,
+                targetNeutral: Vector2) {
                 
-                return { image in
-                    
-                    let parameters = [
+                super.init(filterName: "CITemperatureAndTint", parameters: [
                         "inputNeutral": neutral.CIVector,
                         "inputTargetNeutral": targetNeutral.CIVector,
-                        kCIInputImageKey: image,
                     ]
-                    let filter = CIFilter(name: "CITemperatureAndTint", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                )
+            }
         }
         
         /**
@@ -272,26 +245,27 @@ public extension LightRoom {
         :param: point4
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public static func toneCurve(
-            point0 point0: Vector2,
-            point1: Vector2,
-            point2: Vector2,
-            point3: Vector2,
-            point4: Vector2) -> Filter {
-                
-                return { image in
+        public class ToneCurve: CIFilterGen {
+            
+            public required init(
+                point0: Vector2,
+                point1: Vector2,
+                point2: Vector2,
+                point3: Vector2,
+                point4: Vector2) {
                     
-                    var parameters: [String: AnyObject] = [kCIInputImageKey: image]
-                    
-                    parameters["inputPoint0"] = point0.CIVector
-                    parameters["inputPoint1"] = point1.CIVector
-                    parameters["inputPoint2"] = point2.CIVector
-                    parameters["inputPoint3"] = point3.CIVector
-                    parameters["inputPoint4"] = point4.CIVector
-                    
-                    let filter = CIFilter(name: "CIToneCurve", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                    super.init(
+                        filterName: "CIToneCurve",
+                        parameters:
+                        [
+                            "inputPoint0":point0.CIVector,
+                            "inputPoint1":point1.CIVector,
+                            "inputPoint2":point2.CIVector,
+                            "inputPoint3":point3.CIVector,
+                            "inputPoint4":point4.CIVector,
+                        ]
+                    )
+            }
         }
         
         /**
@@ -300,16 +274,14 @@ public extension LightRoom {
         Adjusts the saturation of an image while keeping pleasing skin tones.
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public static func vibrance(amount amount: Double) -> Filter {
+        public class Vibrance: CIFilterGen {
             
-            return { image in
-                
-                let parameters = [
-                    "inputAmount": amount,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIVibrance", withInputParameters: parameters)
-                return filter!.outputImage!
+            public required init(amount: Double) {
+                    
+                    super.init(filterName: "CIVibrance", parameters: [
+                        "inputAmount": amount,
+                        ]
+                    )
             }
         }
         
@@ -321,16 +293,14 @@ public extension LightRoom {
         :param: color A CIColor object whose display name is Color.
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func whitePointAdjust(color: CIColor) -> Filter {
+        public class WhitePointAdjust: CIFilterGen {
             
-            return { image in
+            public required init(color: CIColor) {
                 
-                let parameters = [
+                super.init(filterName: "CIWhitePointAdjust", parameters: [
                     kCIInputColorKey: color,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIWhitePointAdjust", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
     }
@@ -364,41 +334,41 @@ public extension LightRoom.ColorAdjustment {
             
             return { image in
                 
-                let rImage = LightRoom.ColorAdjustment.toneCurve(
+                let rImage = LightRoom.ColorAdjustment.ToneCurve(
                     point0: self.rPoints[0],
                     point1: self.rPoints[1],
                     point2: self.rPoints[2],
                     point3: self.rPoints[3],
-                    point4: self.rPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                    point4: self.rPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
                         rVector: [1,0,0,0],
                         gVector: [0,0,0,0],
                         bVector: [0,0,0,0],
                         aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0])(image))
+                        biasVector: [0,0,0,0]).filter(image))
                 
-                let gImage = LightRoom.ColorAdjustment.toneCurve(
+                let gImage = LightRoom.ColorAdjustment.ToneCurve(
                     point0: self.gPoints[0],
                     point1: self.gPoints[1],
                     point2: self.gPoints[2],
                     point3: self.gPoints[3],
-                    point4: self.gPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                    point4: self.gPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
                         rVector: [0,0,0,0],
                         gVector: [0,1,0,0],
                         bVector: [0,0,0,0],
                         aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0])(image))
+                        biasVector: [0,0,0,0]).filter(image))
                 
-                let bImage = LightRoom.ColorAdjustment.toneCurve(
+                let bImage = LightRoom.ColorAdjustment.ToneCurve(
                     point0: self.bPoints[0],
                     point1: self.bPoints[1],
                     point2: self.bPoints[2],
                     point3: self.bPoints[3],
-                    point4: self.bPoints[4])(LightRoom.ColorAdjustment.colorMatrix(
+                    point4: self.bPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
                         rVector: [0,0,0,0],
                         gVector: [0,0,0,0],
                         bVector: [0,0,1,0],
                         aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0])(image))
+                        biasVector: [0,0,0,0]).filter(image))
                 
                 let screenBlend = LightRoom.CompositeOperation.lightenBlendMode()
                 
@@ -406,12 +376,12 @@ public extension LightRoom.ColorAdjustment {
                     image: screenBlend(image: rImage, backgroundImage: bImage),
                     backgroundImage: gImage)
                 
-                return LightRoom.ColorAdjustment.toneCurve(
+                return LightRoom.ColorAdjustment.ToneCurve(
                     point0: self.rgbPoints[0],
                     point1: self.rgbPoints[1],
                     point2: self.rgbPoints[2],
                     point3: self.rgbPoints[3],
-                    point4: self.rgbPoints[4])(blendImage)
+                    point4: self.rgbPoints[4]).filter(blendImage)
             }
         }
     }
