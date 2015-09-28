@@ -50,9 +50,9 @@ public extension LightRoom {
         @available(iOS 5.0, OSX 10.9, *)
         public class ColorControls: CIFilterGen {
             
-            public required init(saturation: Double,
-                brightness: Double,
-                contrast: Double) {
+            public required init(saturation: Double = 1,
+                brightness: Double = 0,
+                contrast: Double = 1) {
                     
                     super.init(filterName: "CIColorControls", parameters: [
                         kCIInputSaturationKey: saturation,
