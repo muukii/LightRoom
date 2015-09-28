@@ -17,17 +17,18 @@ public extension LightRoom {
         
         Adjust the tonal mapping of an image while preserving spatial detail.
         */
-        public static func highlightShadowAdjust(
-            highlightAmount highlightAmount: Double? = nil,
-            shadowAmount: Double? = nil) -> Filter {
-            return { image in
+        @available(iOS 5.0, OSX 10.7, *)
+        public class HighlightShadowAdjust: CIFilterGen, FilterJSONConvertible {
+            
+            public required init(
+                highlightAmount: Double? = nil,
+                shadowAmount: Double? = nil) {
                 
-                var parameters: [String: AnyObject] = [kCIInputImageKey: image]
-                parameters["inputHighlightAmount"] = highlightAmount
-                parameters["inputShadowAmount"] = shadowAmount
-
-                let filter = CIFilter(name: "CIHighlightShadowAdjust", withInputParameters: parameters)
-                return filter!.outputImage!
+                    var parameters: [String: AnyObject] = [:]
+                    parameters["inputHighlightAmount"] = highlightAmount
+                    parameters["inputShadowAmount"] = shadowAmount
+                    
+                    super.init(filterName: "CIHighlightShadowAdjust", parameters: parameters)
             }
         }
     }

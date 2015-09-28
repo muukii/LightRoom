@@ -17,15 +17,13 @@ public extension LightRoom {
         Increases image detail by sharpening.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func sharpenLuminance(sharpness sharpness: Double) -> Filter {
-            return { image in
+        public class SharpenLuminance: CIFilterGen, FilterJSONConvertible {
+            
+            public required init(sharpness: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CISharpenLuminance", parameters: [
                     kCIInputSharpnessKey: sharpness,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CISharpenLuminance", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ])
             }
         }
         
@@ -34,16 +32,14 @@ public extension LightRoom {
         Increases the contrast of the edges between pixels of different colors in an image.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func unsharpMask(radius radius: Double, intencity: Double) -> Filter {
-            return { image in
+        public class UnsharpMask: CIFilterGen, FilterJSONConvertible {
+            
+            public required init(radius: Double, intencity: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIUnsharpMask", parameters: [
                     kCIInputRadiusKey: radius,
                     kCIInputIntensityKey: intencity,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIUnsharpMask", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ])
             }
         }
     }

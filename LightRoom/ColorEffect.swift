@@ -13,7 +13,7 @@ public extension LightRoom {
     /**
     CICategoryColorEffect
     */
-    public enum ColorEffect {
+    public struct ColorEffect {
         
         /**
         CIColorCrossPolynomial
@@ -21,22 +21,20 @@ public extension LightRoom {
         Modifies the pixel values in an image by applying a set of polynomial cross-products.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func crossPolynomial(
-            redCoefficients redCoefficients: Vector10,
-            greenCoefficients: Vector10,
-            blueCoefficients: Vector10) -> Filter {
-                
-                return { image in
+        public class CrossPolynomial: CIFilterGen, FilterJSONConvertible {
+            
+            public required init(
+                redCoefficients: Vector10,
+                greenCoefficients: Vector10,
+                blueCoefficients: Vector10) {
                     
-                    let parameters = [
+                    super.init(filterName: "CIColorCrossPolynomial", parameters: [
                         "inputRedCoefficients": redCoefficients.CIVector,
                         "inputGreenCoefficients": greenCoefficients.CIVector,
                         "inputBlueCoefficients": blueCoefficients.CIVector,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorCrossPolynomial", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /**
@@ -44,20 +42,18 @@ public extension LightRoom {
         Uses a three-dimensional color table to transform the source image pixels.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func colorCube(
-            cubeDimension cubeDimension: Double,
-            cubeData: NSData) -> Filter {
-                
-                return { image in
+        public class ColorCube: CIFilterGen {
+            
+            public required init(
+                cubeDimension: Double,
+                cubeData: NSData) {
                     
-                    let parameters = [
+                    super.init(filterName: "CIColorCube", parameters: [
                         "inputCubeDimension": cubeDimension,
                         "inputCubeData": cubeData,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorCube", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /**
@@ -66,22 +62,20 @@ public extension LightRoom {
         
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func colorCubeWithColorSpace(
-            cubeDimension cubeDimension: Double,
-            cubeData: NSData,
-            colorSpace: CGColorSpaceRef) -> Filter {
-                
-                return { image in
+        public class ColorCubeWithColorSpace: CIFilterGen {
+            
+            public required init(
+                cubeDimension: Double,
+                cubeData: NSData,
+                colorSpace: CGColorSpaceRef) {
                     
-                    let parameters: [String : AnyObject] = [
+                    super.init(filterName: "CIColorCube", parameters: [
                         "inputCubeDimension": cubeDimension,
                         "inputCubeData": cubeData,
                         "inputColorSpace": colorSpace,
-                        kCIInputImageKey: image,
-                    ]
-                    let filter = CIFilter(name: "CIColorCubeWithColorSpace", withInputParameters: parameters)
-                    return filter!.outputImage!
-                }
+                        ]
+                    )
+            }
         }
         
         /**
@@ -89,15 +83,11 @@ public extension LightRoom {
         Inverts the colors in an image.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func colorInvert() -> Filter {
+        public class ColorInvert: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIColorInvert", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIColorInvert", parameters: [:])
             }
         }
         
@@ -106,16 +96,14 @@ public extension LightRoom {
         Performs a nonlinear transformation of source color values using mapping values provided in a table.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func colorMap(gradientImage gradientImage: CIImage) -> Filter {
+        public class CIColorMap: CIFilterGen {
             
-            return { image in
-                
-                let parameters = [
-                    "inputGradientImage": gradientImage,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIColorMap", withInputParameters: parameters)
-                return filter!.outputImage!
+            public required init(gradientImage: CIImage) {
+                    
+                    super.init(filterName: "CIColorMap", parameters: [
+                        "inputGradientImage": gradientImage,
+                        ]
+                    )
             }
         }
         
@@ -124,17 +112,15 @@ public extension LightRoom {
         Remaps colors so they fall within shades of a single color.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func colorMonochrome(color color: CIColor, intencity: Double) -> Filter {
+        public class ColorMonochrome: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(color: CIColor, intencity: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIColorMonochrome", parameters: [
                     kCIInputColorKey: color,
                     "inputIntencity": intencity,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIColorMonochrome", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -143,16 +129,14 @@ public extension LightRoom {
         Remaps red, green, and blue color components to the number of brightness values you specify for each color component.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func colorPosterize(levels levels: Double) -> Filter {
+        public class CIColorPosterize: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(levels: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIColorPosterize", parameters: [
                     "input": levels,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIColorPosterize", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -161,17 +145,15 @@ public extension LightRoom {
         Maps luminance to a color ramp of two colors.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func falseColor(color0 color0: CIColor, color1: CIColor) -> Filter {
+        public class FalseColor: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(color0: CIColor, color1: CIColor) {
                 
-                let parameters = [
+                super.init(filterName: "CIFalseColor", parameters: [
                     "inputColor0": color0,
                     "inputColor1": color1,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIFalseColor", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
@@ -180,32 +162,25 @@ public extension LightRoom {
         Converts a grayscale image to a white image that is masked by alpha.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public static func maskToAlpha() -> Filter {
+        public class MaskToAlpha: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMaskToAlpha", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIMaskToAlpha", parameters: [:])
             }
         }
+
         
         /**
         CIMaximumComponent
         Returns a grayscale image from max(r,g,b).
         */
         @available(iOS 6.0, OSX 10.5, *)
-        public static func maximumComponent() -> Filter {
+        public class MaximumComponent: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMaximumComponent", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIMaximumComponent", parameters: [:])
             }
         }
         
@@ -214,15 +189,11 @@ public extension LightRoom {
         Returns a grayscale image from min(r,g,b).
         */
         @available(iOS 6.0, OSX 10.5, *)
-        public static func minimumComponent() -> Filter {
+        public class MinimumComponent: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIMinimumComponent", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIMinimumComponent", parameters: [:])
             }
         }
         
@@ -231,15 +202,11 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with exaggerated color.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectChrome() -> Filter {
+        public class PhotoEffectChrome: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectChrome", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectChrome", parameters: [:])
             }
         }
         
@@ -248,15 +215,11 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with diminished color.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectFade() -> Filter {
+        public class PhotoEffectFade: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectFade", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectFade", parameters: [:])
             }
         }
         
@@ -265,32 +228,25 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with distorted colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectInstant() -> Filter {
+        public class PhotoEffectInstant: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectInstant", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectInstant", parameters: [:])
             }
         }
+        
         
         /**
         CIPhotoEffectMono
         Applies a preconfigured set of effects that imitate black-and-white photography film with low contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectMono() -> Filter {
+        public class PhotoEffectMono: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectMono", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectMono", parameters: [:])
             }
         }
         
@@ -299,15 +255,11 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate black-and-white photography film with exaggerated contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectNoir() -> Filter {
+        public class PhotoEffectNoir: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectNoir", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectNoir", parameters: [:])
             }
         }
         
@@ -316,32 +268,25 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with emphasized cool colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectProcess() -> Filter {
+        public class PhotoEffectProcess: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectProcess", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectProcess", parameters: [:])
             }
         }
+        
         
         /**
         CIPhotoEffectTonal
         Applies a preconfigured set of effects that imitate black-and-white photography film without significantly altering contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectTonal() -> Filter {
+        public class PhotoEffectTonal: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectTonal", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectTonal", parameters: [:])
             }
         }
         
@@ -350,15 +295,11 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with emphasized warm colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func photoEffectTransfer() -> Filter {
+        public class PhotoEffectTransfer: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init() {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIPhotoEffectTransfer", withInputParameters: parameters)
-                return filter!.outputImage!
+                super.init(filterName: "CIPhotoEffectTransfer", parameters: [:])
             }
         }
         
@@ -367,16 +308,13 @@ public extension LightRoom {
         Maps the colors of an image to various shades of brown.
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func sepiaTone(intencity intencity: Double) -> Filter {
+        public class SepiaTone: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(intencity: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CISepiaTone", parameters: [
                     kCIInputIntensityKey: intencity,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CISepiaTone", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ])
             }
         }
         
@@ -385,17 +323,14 @@ public extension LightRoom {
         Reduces the brightness of an image at the periphery.
         */
         @available(iOS 5.0, OSX 10.9, *)
-        public static func vignette(radius radius: Double, intencity: Double) -> Filter {
+        public class Vignette: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(radius: Double, intencity: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIVignette", parameters: [
                     kCIInputRadiusKey: radius,
                     kCIInputIntensityKey: intencity,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIVignette", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ])
             }
         }
         
@@ -404,20 +339,16 @@ public extension LightRoom {
         Modifies the brightness of an image around the periphery of a specified region.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public static func vignetteEffect(center center: Vector2, radius: Double, intencity: Double) -> Filter {
+        public class VignetteEffect: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(center: Vector2, radius: Double, intencity: Double) {
                 
-                let parameters = [
+                super.init(filterName: "CIVignetteEffect", parameters: [
                     kCIInputCenterKey: center.CIVector,
                     kCIInputRadiusKey: radius,
                     kCIInputIntensityKey: intencity,
-                    kCIInputImageKey: image,
-                ]
-                let filter = CIFilter(name: "CIVignetteEffect", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ])
             }
         }
-        
     }
 }

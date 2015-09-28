@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 muukii. All rights reserved.
 //
 
-import Foundation
+import SwiftyJSON
 
 public extension LightRoom {
     /*!
@@ -23,7 +23,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public class ColorClamp: CIFilterGen {
+        public class ColorClamp: CIFilterGen, FilterJSONConvertible {
             
             public required init(minComponents: Vector4,
                 maxComponents: Vector4) {
@@ -48,7 +48,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.9, *)
-        public class ColorControls: CIFilterGen {
+        public class ColorControls: CIFilterGen, FilterJSONConvertible {
             
             public required init(saturation: Double = 1,
                 brightness: Double = 0,
@@ -76,7 +76,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class ColorMatrix: CIFilterGen {
+        public class ColorMatrix: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 rVector: Vector4,
@@ -108,7 +108,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public class ColorPolynomial: CIFilterGen {
+        public class ColorPolynomial: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 redCoefficients: Vector4,
@@ -135,7 +135,7 @@ public extension LightRoom {
         
         */
         @available(iOS 5, OSX 10.4, *)
-        public class ExposureAdjust: CIFilterGen {
+        public class ExposureAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(ev: Double) {
                     
@@ -154,7 +154,7 @@ public extension LightRoom {
         :param: power
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class GammmaAdjust: CIFilterGen {
+        public class GammmaAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(power: Double) {
                 
@@ -173,7 +173,7 @@ public extension LightRoom {
         :param: angle
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class HueAdjust: CIFilterGen {
+        public class HueAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(angle: Double) {
                 
@@ -190,7 +190,7 @@ public extension LightRoom {
         Maps color intensity from a linear gamma curve to the sRGB color space.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public class LinerToSRGBToneCurve: CIFilterGen {
+        public class LinerToSRGBToneCurve: CIFilterGen, FilterJSONConvertible {
             
             public required init() {
                 
@@ -203,7 +203,7 @@ public extension LightRoom {
         Maps color intensity from the sRGB color space to a linear gamma curve.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public class SRGBToneCurveToLinear: CIFilterGen {
+        public class SRGBToneCurveToLinear: CIFilterGen, FilterJSONConvertible {
             
             public required init() {
                 
@@ -220,7 +220,7 @@ public extension LightRoom {
         :param: targetNeutral
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class TemperatureAndTint: CIFilterGen {
+        public class TemperatureAndTint: CIFilterGen, FilterJSONConvertible {
             
             public required init(neutral: Vector2,
                 targetNeutral: Vector2) {
@@ -245,7 +245,7 @@ public extension LightRoom {
         :param: point4
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class ToneCurve: CIFilterGen {
+        public class ToneCurve: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 point0: Vector2,
@@ -274,7 +274,7 @@ public extension LightRoom {
         Adjusts the saturation of an image while keeping pleasing skin tones.
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class Vibrance: CIFilterGen {
+        public class Vibrance: CIFilterGen, FilterJSONConvertible {
             
             public required init(amount: Double) {
                     
@@ -293,7 +293,7 @@ public extension LightRoom {
         :param: color A CIColor object whose display name is Color.
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class WhitePointAdjust: CIFilterGen {
+        public class WhitePointAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(color: CIColor) {
                 
@@ -383,6 +383,11 @@ public extension LightRoom.ColorAdjustment {
                     point3: self.rgbPoints[3],
                     point4: self.rgbPoints[4]).filter(blendImage)
             }
+        }
+        
+        public var json: JSON {
+            
+            return JSON([ : ])
         }
     }
 }
