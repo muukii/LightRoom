@@ -23,7 +23,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public class ColorClamp: CIFilterGen, FilterJSONConvertible {
+        public final class ColorClamp: CIFilterGen, FilterJSONConvertible {
             
             public required init(minComponents: Vector4,
                 maxComponents: Vector4) {
@@ -48,7 +48,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.9, *)
-        public class ColorControls: CIFilterGen, FilterJSONConvertible {
+        public final class ColorControls: CIFilterGen, FilterJSONConvertible {
             
             public required init(saturation: Double = 1,
                 brightness: Double = 0,
@@ -76,7 +76,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class ColorMatrix: CIFilterGen, FilterJSONConvertible {
+        public final class ColorMatrix: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 rVector: Vector4,
@@ -108,7 +108,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public class ColorPolynomial: CIFilterGen, FilterJSONConvertible {
+        public final class ColorPolynomial: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 redCoefficients: Vector4,
@@ -135,7 +135,7 @@ public extension LightRoom {
         
         */
         @available(iOS 5, OSX 10.4, *)
-        public class ExposureAdjust: CIFilterGen, FilterJSONConvertible {
+        public final class ExposureAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(ev: Double) {
                     
@@ -154,7 +154,7 @@ public extension LightRoom {
         :param: power
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class GammmaAdjust: CIFilterGen, FilterJSONConvertible {
+        public final class GammmaAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(power: Double) {
                 
@@ -173,7 +173,7 @@ public extension LightRoom {
         :param: angle
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class HueAdjust: CIFilterGen, FilterJSONConvertible {
+        public final class HueAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(angle: Double) {
                 
@@ -190,7 +190,7 @@ public extension LightRoom {
         Maps color intensity from a linear gamma curve to the sRGB color space.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public class LinerToSRGBToneCurve: CIFilterGen, FilterJSONConvertible {
+        public final class LinerToSRGBToneCurve: CIFilterGen, FilterJSONConvertible {
             
             public required init() {
                 
@@ -203,7 +203,7 @@ public extension LightRoom {
         Maps color intensity from the sRGB color space to a linear gamma curve.
         */
         @available(iOS 7.0, OSX 10.10, *)
-        public class SRGBToneCurveToLinear: CIFilterGen, FilterJSONConvertible {
+        public final class SRGBToneCurveToLinear: CIFilterGen, FilterJSONConvertible {
             
             public required init() {
                 
@@ -220,7 +220,7 @@ public extension LightRoom {
         :param: targetNeutral
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class TemperatureAndTint: CIFilterGen, FilterJSONConvertible {
+        public final class TemperatureAndTint: CIFilterGen, FilterJSONConvertible {
             
             public required init(neutral: Vector2,
                 targetNeutral: Vector2) {
@@ -245,7 +245,7 @@ public extension LightRoom {
         :param: point4
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class ToneCurve: CIFilterGen, FilterJSONConvertible {
+        public final class ToneCurve: CIFilterGen, FilterJSONConvertible {
             
             public required init(
                 point0: Vector2,
@@ -274,7 +274,7 @@ public extension LightRoom {
         Adjusts the saturation of an image while keeping pleasing skin tones.
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public class Vibrance: CIFilterGen, FilterJSONConvertible {
+        public final class Vibrance: CIFilterGen, FilterJSONConvertible {
             
             public required init(amount: Double) {
                     
@@ -293,7 +293,7 @@ public extension LightRoom {
         :param: color A CIColor object whose display name is Color.
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public class WhitePointAdjust: CIFilterGen, FilterJSONConvertible {
+        public final class WhitePointAdjust: CIFilterGen, FilterJSONConvertible {
             
             public required init(color: CIColor) {
                 
@@ -306,88 +306,3 @@ public extension LightRoom {
     }
 }
 
-public extension LightRoom.ColorAdjustment {
-    
-    public class RGBToneCurve: FilterGen {
-        
-        public var filterName: String {
-            return "RGBToneCurve"
-        }
-        
-        let rPoints: [Vector2]
-        let gPoints: [Vector2]
-        let bPoints: [Vector2]
-        let rgbPoints: [Vector2]
-        
-        public required init(rPoints: [Vector2],
-            gPoints: [Vector2],
-            bPoints: [Vector2],
-            rgbPoints: [Vector2]) {
-                
-                self.rPoints = rPoints
-                self.gPoints = gPoints
-                self.bPoints = bPoints
-                self.rgbPoints = rgbPoints
-        }
-        
-        public var filter: Filter {
-            
-            return { image in
-                
-                let rImage = LightRoom.ColorAdjustment.ToneCurve(
-                    point0: self.rPoints[0],
-                    point1: self.rPoints[1],
-                    point2: self.rPoints[2],
-                    point3: self.rPoints[3],
-                    point4: self.rPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
-                        rVector: [1,0,0,0],
-                        gVector: [0,0,0,0],
-                        bVector: [0,0,0,0],
-                        aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0]).filter(image))
-                
-                let gImage = LightRoom.ColorAdjustment.ToneCurve(
-                    point0: self.gPoints[0],
-                    point1: self.gPoints[1],
-                    point2: self.gPoints[2],
-                    point3: self.gPoints[3],
-                    point4: self.gPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
-                        rVector: [0,0,0,0],
-                        gVector: [0,1,0,0],
-                        bVector: [0,0,0,0],
-                        aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0]).filter(image))
-                
-                let bImage = LightRoom.ColorAdjustment.ToneCurve(
-                    point0: self.bPoints[0],
-                    point1: self.bPoints[1],
-                    point2: self.bPoints[2],
-                    point3: self.bPoints[3],
-                    point4: self.bPoints[4]).filter(LightRoom.ColorAdjustment.ColorMatrix(
-                        rVector: [0,0,0,0],
-                        gVector: [0,0,0,0],
-                        bVector: [0,0,1,0],
-                        aVector: [0,0,0,1],
-                        biasVector: [0,0,0,0]).filter(image))
-                
-                let screenBlend = LightRoom.CompositeOperation.lightenBlendMode()
-                
-                let blendImage = screenBlend(
-                    image: screenBlend(image: rImage, backgroundImage: bImage),
-                    backgroundImage: gImage)
-                
-                return LightRoom.ColorAdjustment.ToneCurve(
-                    point0: self.rgbPoints[0],
-                    point1: self.rgbPoints[1],
-                    point2: self.rgbPoints[2],
-                    point3: self.rgbPoints[3],
-                    point4: self.rgbPoints[4]).filter(blendImage)
-            }
-        }
-        
-        public var json: JSON {
-            
-            return JSON([ : ])
-        }
-    }
-}

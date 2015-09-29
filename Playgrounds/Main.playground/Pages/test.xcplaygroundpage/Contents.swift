@@ -19,28 +19,47 @@ let sharpen = LightRoom.Sharpen.SharpenLuminance(sharpness: 20)
 (matrix.filter >>> sharpen.filter)(image)
 
 //FilterGen.export(filterGens: [matrix, sharpen])
-let json = try! ExportFilterGen(filterGens: [sharpen,matrix])
+let json = try! ExportFilterGen(filterGens: [matrix,sharpen])
 json.description
 let filter = try! CreateFilterGen(json: json).map { $0.filter }
 
 (filter[0] >>> filter[1])(image)
 
-//try! LightRoom.CIFilterGen.filterGen(json: json).filter(image)
 
-//let colorMatrixFilter = LightRoom.ColorAdjustment.exposureAdjust(ev: 0.1)
-//let motionBlurFilter = LightRoom.Blur.motionBlur(radius: 10, angle: 0.2)
-//
-//let combinedFilter = colorMatrixFilter >>> motionBlurFilter
-//
-//let outputImage = combinedFilter(image)
+let toneCurve = LightRoom.CombinedFilter.RGBToneCurve(
+    rPoints: [
+        [0,0],
+        [0.2,0.2],
+        [0.5,0.5],
+        [0.7,0.7],
+        [1,1],
+    ],
+    gPoints: [
+        [0,0],
+        [0.2,0.2],
+        [0.5,0.5],
+        [0.7,0.7],
+        [1,1],
+    ], bPoints: [
+        [0,0],
+        [0.2,0.2],
+        [0.5,0.5],
+        [0.7,0.7],
+        [1,1],
+    ], rgbPoints: [
+        [0,0.5],
+        [0.2,0.2],
+        [0.5,0.5],
+        [0.7,0.7],
+        [1,1],
+    ])
 
-CIVector(CGPoint: CGPoint(x: 0, y: 0))
+toneCurve.json.description
 
-CIVector(string: "[0 0]")
-CIVector(string: "0 1")
+let json100 = try? ExportFilterGen(filterGens: [toneCurve])
 
-Double("[3]")
+let filters = try! CreateFilterGen(json: json100!)
 
-let string = CIColor(red: 0.2, green: 0, blue: 0, alpha: 0).stringRepresentation
+filters.first?.filter(image)
 
-CIVector(string: string)
+

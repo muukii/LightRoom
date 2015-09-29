@@ -23,7 +23,7 @@ public extension LightRoom {
         :returns: Filter
         */     
         @available(iOS 9.0, OSX 10.5, *)
-        public class BoxBlur: CIFilterGen, FilterJSONConvertible {
+        public final class BoxBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init(radius: Double) {
                 
@@ -44,7 +44,7 @@ public extension LightRoom {
         :returns: Filter
         */
         @available(iOS 9.0, OSX 10.5, *)
-        public class DiscBlur: CIFilterGen, FilterJSONConvertible {
+        public final class DiscBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init(radius: Double) {
                 
@@ -65,7 +65,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public class GaussianBlur: CIFilterGen, FilterJSONConvertible {
+        public final class GaussianBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init(radius: Double) {
                 
@@ -85,7 +85,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public class MedianBlur: CIFilterGen, FilterJSONConvertible {
+        public final class MedianBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init() {
                 
@@ -104,7 +104,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public class MotionBlur: CIFilterGen, FilterJSONConvertible {
+        public final class MotionBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init(radius: Double, angle: Double) {
                 
@@ -125,7 +125,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public class NoiseReduction: CIFilterGen, FilterJSONConvertible {
+        public final class NoiseReduction: CIFilterGen, FilterJSONConvertible {
             
             public required init(noiseLevel: Double, sharpness: Double) {
                 
@@ -148,7 +148,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public class ZoomBlur: CIFilterGen, FilterJSONConvertible {
+        public final class ZoomBlur: CIFilterGen, FilterJSONConvertible {
             
             public required init(center: Vector2, amount: Double) {
                 
