@@ -259,6 +259,20 @@ public extension LightRoom {
         CIOverlayBlendMode
         Either multiplies or screens the input image samples with the background image samples, depending on the background color.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public static func overlayBlendMode() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CIOverlayBlendMode", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
         
         /**
         CIPinLightBlendMode
@@ -298,6 +312,20 @@ public extension LightRoom {
         CISourceAtopCompositing
         Places the input image over the background image, then uses the luminance of the background image to determine what to show.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public static func sourceAtopCompositing() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CISourceAtopCompositing", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
         /**
         CISourceInCompositing
         Uses the background image to define what to leave in the input image, effectively cropping the input image.

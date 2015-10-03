@@ -12,6 +12,61 @@ public extension LightRoom {
     
     public struct CombinedFilter {
         
+        public class Fade: FilterGen, FilterJSONConvertible {
+            
+            public var filterName: String {
+                return "Fade"
+            }
+            
+            let alpha: Double
+            
+            public required init(alpha: Double) {
+                
+                self.alpha = alpha
+            }
+            
+            public required init(json: JSON) throws {
+                
+                guard let _parameters = json[LightRoomJSONKeys.Parameters].dictionaryObject else {
+                    
+                    fatalError("")
+                }
+                
+                let parameters = StringParametersToCIFilterParameters(_parameters)
+                
+                self.alpha = parameters["alpha"] as! Double
+                
+                guard json[LightRoomJSONKeys.FilterName].string == self.filterName else {
+                    throw FilterJSONConvertErrorType.CanNotConvertJSON(filterGen: self)
+                }
+            }
+            
+            public var filter: Filter {
+                
+                return { image in
+                    
+                    let color = CIColor(red: 1, green: 1, blue: 1, alpha: CGFloat(self.alpha))
+                    
+                    let fadeImage = LightRoom.Generator.constantColorGenerator(color: color)().imageByCroppingToRect(image.extent)
+                    
+                    return LightRoom.CompositeOperation.sourceAtopCompositing()(image: fadeImage, backgroundImage: image)
+                }
+            }
+            
+            public var json: JSON {
+                
+                var rawJSON: [String: AnyObject] = [ : ]
+                
+                var parameters: [String: AnyObject] = [ : ]
+                parameters["alpha"] = self.alpha
+                    
+                rawJSON[LightRoomJSONKeys.FilterName] = self.filterName
+                rawJSON[LightRoomJSONKeys.Parameters] = CIFilterParametersToStringParameters(parameters)
+                
+                return JSON(rawJSON) 
+            }
+        }
+        
         public class RGBToneCurve: FilterGen, FilterJSONConvertible {
             
             public var filterName: String {

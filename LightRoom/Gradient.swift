@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias GradientGenerator = () -> CIImage
+public typealias ImageGenerator = () -> CIImage
 
 public extension LightRoom {
     
@@ -26,8 +26,8 @@ public extension LightRoom {
             center center: Vector2,
             color0: UIColor,
             color1: UIColor,
-            radius: Double) -> GradientGenerator {
-                return { image in
+            radius: Double) -> ImageGenerator {
+                return {
 
                     let parameters = [
                         kCIInputCenterKey: center.CIVector,
@@ -49,8 +49,8 @@ public extension LightRoom {
             point0 point0: Vector2,
             point1: Vector2,
             color0: UIColor,
-            color1: UIColor) -> GradientGenerator {
-                return { image in
+            color1: UIColor) -> ImageGenerator {
+                return {
                     
                     let parameters = [
                         "inputPoint0": point0.CIVector,
@@ -75,8 +75,8 @@ public extension LightRoom {
             radius0: Double,
             radius1: Double,
             color0: UIColor,
-            color1: UIColor) -> GradientGenerator {
-                return { image in
+            color1: UIColor) -> ImageGenerator {
+                return {
                     
                     let parameters = [
                         kCIInputCenterKey: center.CIVector,
@@ -100,8 +100,8 @@ public extension LightRoom {
             point0 point0: Vector2,
             point1: Vector2,
             color0: UIColor,
-            color1: UIColor) -> GradientGenerator {
-                return { image in
+            color1: UIColor) -> ImageGenerator {
+                return {
                     
                     let parameters = [
                         "inputPoint0": point0.CIVector,

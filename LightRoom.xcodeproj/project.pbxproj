@@ -12,6 +12,7 @@
 		4B2238631B668F23000F735E /* LightRoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2238621B668F23000F735E /* LightRoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B2238991B6690CB000F735E /* LightRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2238981B6690CB000F735E /* LightRoom.swift */; };
+		4B254A471BC0416700C20E65 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B254A461BC0416700C20E65 /* Generator.swift */; };
 		4B29C5681B94AA530058AB86 /* Stylize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29C5671B94AA530058AB86 /* Stylize.swift */; };
 		4B2E07AB1B6FD04E005B9278 /* CreateFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */; };
 		4B553E351B6FD6C7002AC791 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B553E341B6FD6C7002AC791 /* Blur.swift */; };
@@ -129,6 +130,7 @@
 		4B2238701B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B22387A1B668F8E000F735E /* Main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Main.playground; sourceTree = "<group>"; };
 		4B2238981B6690CB000F735E /* LightRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRoom.swift; sourceTree = "<group>"; };
+		4B254A461BC0416700C20E65 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4B29C5671B94AA530058AB86 /* Stylize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylize.swift; sourceTree = "<group>"; };
 		4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFilterTests.swift; sourceTree = "<group>"; };
 		4B553E341B6FD6C7002AC791 /* Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				4B553E3A1B6FD7F4002AC791 /* CompositeOperation.swift */,
 				4B553E3C1B6FD84A002AC791 /* DistortionEffect.swift */,
 				4B7C13A51B9F227700B17D36 /* Gradient.swift */,
+				4B254A461BC0416700C20E65 /* Generator.swift */,
 				4BD351A71B6DDB0800E7E038 /* Detectors.swift */,
 			);
 			path = LightRoom;
@@ -504,6 +507,7 @@
 				4B553E3D1B6FD84A002AC791 /* DistortionEffect.swift in Sources */,
 				4B553E391B6FD796002AC791 /* ColorEffect.swift in Sources */,
 				4BD351A81B6DDB0800E7E038 /* Detectors.swift in Sources */,
+				4B254A471BC0416700C20E65 /* Generator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
