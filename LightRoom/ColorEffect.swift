@@ -114,11 +114,11 @@ public extension LightRoom {
         @available(iOS 6.0, OSX 10.4, *)
         public final class ColorMonochrome: CIFilterGen, FilterJSONConvertible {
             
-            public required init(color: CIColor, intencity: Double) {
+            public required init(color: CIColor, intensity: Double) {
                 
                 super.init(filterName: "CIColorMonochrome", parameters: [
                     kCIInputColorKey: color,
-                    "inputIntencity": intencity,
+                    "inputIntensity": intensity,
                     ]
                 )
             }

@@ -121,7 +121,7 @@ public class CIFilterGen: FilterGen {
     
     public var filter: Filter {
         
-        return LightRoom.createFilter(name: filterName, parameters: parameters)
+        return LightRoom.createFilter(CIFilterName: filterName, parameters: parameters)
     }
 }
 

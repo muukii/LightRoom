@@ -19,7 +19,15 @@ https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging
 
 public struct LightRoom {
     
-    static func createFilter(name name: String, var parameters: [String: AnyObject]?) -> Filter {
+    public static func createCombinedFilter(filterGens: [FilterGen]) -> Filter? {
+        return filterGens.reduce({ image in return image }) {
+            (stackFilter, filterGen) -> Filter in
+            let filter = stackFilter >>> filterGen.filter
+            return filter
+        }
+    }
+    
+    static func createFilter(CIFilterName name: String, var parameters: [String: AnyObject]?) -> Filter {
         
         return { image in
             
