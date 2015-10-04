@@ -227,29 +227,29 @@ public extension LightRoom {
             
             private struct JSONKeys {
             
-                static var RPoint0 = "RPoint0"
-                static var RPoint1 = "RPoint1"
-                static var RPoint2 = "RPoint2"
-                static var RPoint3 = "RPoint3"
-                static var RPoint4 = "RPoint4"
+                static var RPoint0 = "rPoint0"
+                static var RPoint1 = "rPoint1"
+                static var RPoint2 = "rPoint2"
+                static var RPoint3 = "rPoint3"
+                static var RPoint4 = "rPoint4"
                 
-                static var GPoint0 = "GPoint0"
-                static var GPoint1 = "GPoint1"
-                static var GPoint2 = "GPoint2"
-                static var GPoint3 = "GPoint3"
-                static var GPoint4 = "GPoint4"
+                static var GPoint0 = "gPoint0"
+                static var GPoint1 = "gPoint1"
+                static var GPoint2 = "gPoint2"
+                static var GPoint3 = "gPoint3"
+                static var GPoint4 = "gPoint4"
                 
-                static var BPoint0 = "BPoint0"
-                static var BPoint1 = "BPoint1"
-                static var BPoint2 = "BPoint2"
-                static var BPoint3 = "BPoint3"
-                static var BPoint4 = "BPoint4"
+                static var BPoint0 = "bPoint0"
+                static var BPoint1 = "bPoint1"
+                static var BPoint2 = "bPoint2"
+                static var BPoint3 = "bPoint3"
+                static var BPoint4 = "bPoint4"
                 
-                static var RGBPoint0 = "RGBPoint0"
-                static var RGBPoint1 = "RGBPoint1"
-                static var RGBPoint2 = "RGBPoint2"
-                static var RGBPoint3 = "RGBPoint3"
-                static var RGBPoint4 = "RGBPoint4"
+                static var RGBPoint0 = "rgbPoint0"
+                static var RGBPoint1 = "rgbPoint1"
+                static var RGBPoint2 = "rgbPoint2"
+                static var RGBPoint3 = "rgbPoint3"
+                static var RGBPoint4 = "rgbPoint4"
             }
         }
     }
