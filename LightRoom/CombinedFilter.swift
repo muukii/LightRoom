@@ -12,6 +12,56 @@ public extension LightRoom {
     
     public struct CombinedFilter {
         
+        public class Structure: FilterGen, FilterJSONConvertible {
+            
+            public var filterName: String {
+                return "Structure"
+            }
+            
+            let amount: Double
+            
+            public required init(amount: Double) {
+                
+                self.amount = amount
+            }
+            
+            public required init(json: JSON) throws {
+                
+                guard let _parameters = json[LightRoomJSONKeys.Parameters].dictionaryObject else {
+                    
+                    fatalError("")
+                }
+                
+                let parameters = StringParametersToCIFilterParameters(_parameters)
+                
+                self.amount = parameters["amount"] as! Double
+                
+                guard json[LightRoomJSONKeys.FilterName].string == self.filterName else {
+                    throw FilterJSONConvertErrorType.CanNotConvertJSON(filterGen: self)
+                }
+            }
+            
+            public var filter: Filter {
+                
+                return LightRoom.ColorAdjustment.Vibrance(amount: amount * 0.2).filter >>>
+                    LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 1, shadowAmount: amount * 0.2).filter >>>
+                    LightRoom.Sharpen.UnsharpMask(radius: 1.5, intencity: amount * 1.4).filter
+            }
+            
+            public var json: JSON {
+                
+                var rawJSON: [String: AnyObject] = [ : ]
+                
+                var parameters: [String: AnyObject] = [ : ]
+                parameters["amount"] = self.amount
+                
+                rawJSON[LightRoomJSONKeys.FilterName] = self.filterName
+                rawJSON[LightRoomJSONKeys.Parameters] = CIFilterParametersToStringParameters(parameters)
+                
+                return JSON(rawJSON)
+            }
+        }
+        
         public class Fade: FilterGen, FilterJSONConvertible {
             
             public var filterName: String {
@@ -49,7 +99,7 @@ public extension LightRoom {
                     
                     let fadeImage = LightRoom.Generator.constantColorGenerator(color: color)().imageByCroppingToRect(image.extent)
                     
-                    return LightRoom.CompositeOperation.sourceAtopCompositing()(image: fadeImage, backgroundImage: image)
+                    return LightRoom.CompositeOperation.sourceOverCompositing()(image: fadeImage, backgroundImage: image)
                 }
             }
             

@@ -342,9 +342,21 @@ public extension LightRoom {
         
         CISourceOverCompositing
         Places the input image over the input background image.
-        
-
         */
+        @available(iOS 5.0, OSX 10.4, *)
+        public static func sourceOverCompositing() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CISourceOverCompositing", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
         
         /**
         CISubtractBlendMode
