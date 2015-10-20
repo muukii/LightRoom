@@ -10,22 +10,25 @@ import Foundation
 
 public extension LightRoom {
     
-    /**
-    CILanczosScaleTransform
-    Produces a high-quality, scaled version of a source image.
-    */
-    public static func lanczosScaleTransform(scale scale: Double, aspectRatio: Double) -> Filter {
-        
-        return { image in
+    
+    public struct GeometryAdjustment {
+        /**
+        CILanczosScaleTransform
+        Produces a high-quality, scaled version of a source image.
+        */
+        public static func lanczosScaleTransform(scale scale: Double, aspectRatio: Double) -> Filter {
             
-            let parameters = [
-                kCIInputImageKey: image,
-                "inputScale": scale,
-                "inputAspectRatio" : aspectRatio,
-            ]
-            
-            let filter = CIFilter(name: "CILanczosScaleTransform", withInputParameters: parameters)
-            return filter!.outputImage!
+            return { image in
+                
+                let parameters = [
+                    kCIInputImageKey: image,
+                    "inputScale": scale,
+                    "inputAspectRatio" : aspectRatio,
+                ]
+                
+                let filter = CIFilter(name: "CILanczosScaleTransform", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
         }
     }
 }
