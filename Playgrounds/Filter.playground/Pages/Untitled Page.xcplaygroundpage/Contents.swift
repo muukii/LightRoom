@@ -5,7 +5,7 @@ import QuartzCore
 import FilterGen
 import LightRoom
 
-let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("sample", ofType: "jpg")!)!)!
+let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("garden", ofType: "jpg")!)!)!
 image
 
 let rImage = LightRoom.ColorAdjustment.colorMatrix(
