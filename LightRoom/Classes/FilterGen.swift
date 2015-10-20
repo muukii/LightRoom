@@ -60,6 +60,10 @@ public func CreateFilterGen(json json: JSON) throws -> [FilterGen] {
             switch filterName {
             case "RGBToneCurve":
                 filterGens.append(try LightRoom.CombinedFilter.RGBToneCurve(json: json))
+            case "Fade":
+                filterGens.append(try LightRoom.CombinedFilter.Fade(json: json))
+            case "Structure":
+                filterGens.append(try LightRoom.CombinedFilter.Structure(json: json))
             default:
                 break
             }
