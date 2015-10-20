@@ -43,8 +43,8 @@ public extension LightRoom {
             
             public var filter: Filter {
                 
-                return LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 1, shadowAmount: amount * 0.2).filter >>>
-                    LightRoom.Sharpen.UnsharpMask(radius: 5 * amount, intencity: 1).filter
+                return LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 1, shadowAmount: -amount * 0.2).filter >>>
+                    LightRoom.Sharpen.UnsharpMask(radius: 3 * amount, intencity: 1).filter
             }
             
             public var json: JSON {

@@ -12,8 +12,8 @@ LightRoom.ColorAdjustment.GammmaAdjust(power: 0.7).filter(image)
 
 let amount: Double = 0.8
 (
-    LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 1, shadowAmount: amount * 0.2).filter >>>
-        LightRoom.Sharpen.UnsharpMask(radius: 5 * amount, intencity: 1).filter
+    LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 1, shadowAmount: -amount * 0.2).filter >>>
+        LightRoom.Sharpen.UnsharpMask(radius: 3 * amount, intencity: 1).filter
 )(image)
 
 
