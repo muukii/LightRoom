@@ -96,7 +96,7 @@ public extension LightRoom {
         Performs a nonlinear transformation of source color values using mapping values provided in a table.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class CIColorMap: CIFilterGen {
+        public final class ColorMap: CIFilterGen {
             
             public required init(gradientImage: CIImage) {
                     
