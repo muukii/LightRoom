@@ -61,6 +61,69 @@ public extension LightRoom {
             }
         }
         
+        public class HighlightShadowTint: FilterGen, FilterJSONConvertible {
+            
+            public var filterName: String {
+                return "HighlightShadowTint"
+            }
+            
+            let highlightTintColor: CIColor
+            let shadowTintColor: CIColor
+            
+            public required init(highlightTintColor: CIColor, shadowTintColor: CIColor) {
+                
+                self.highlightTintColor = highlightTintColor
+                self.shadowTintColor = shadowTintColor
+            }
+            
+            public required init(json: JSON) throws {
+                
+                guard let _parameters = json[LightRoomJSONKeys.Parameters].dictionaryObject else {
+                    
+                    fatalError("")
+                }
+                
+                let parameters = StringParametersToCIFilterParameters(_parameters)
+                
+                self.highlightTintColor = parameters["highlight_tint_color"] as! CIColor
+                self.shadowTintColor = parameters["shadow_tint_color"] as! CIColor
+                
+                guard json[LightRoomJSONKeys.FilterName].string == self.filterName else {
+                    throw FilterJSONConvertErrorType.CanNotConvertJSON(filterGen: self)
+                }
+            }
+            
+            public var filter: Filter {
+                
+                return { image in
+                                        
+                    let highlightConstantImage = LightRoom.Generator.constantColorGenerator(color: self.highlightTintColor)().imageByCroppingToRect(image.extent)
+                    
+                    let shadowConstantImage = LightRoom.Generator.constantColorGenerator(color: self.shadowTintColor)().imageByCroppingToRect(image.extent)
+                    
+                    let darkenImage = LightRoom.CompositeOperation.lightenBlendMode()(image: shadowConstantImage, backgroundImage: image)
+                    let lightenImage = LightRoom.CompositeOperation.darkenBlendMode()(image: highlightConstantImage, backgroundImage: darkenImage)
+                    
+                    return lightenImage
+                }
+            }
+            
+            public var json: JSON {
+                
+                var rawJSON: [String: AnyObject] = [ : ]
+                var parameters: [String: AnyObject] = [ : ]
+                
+                parameters["highlight_tint_color"] = self.highlightTintColor
+                parameters["shadow_tint_color"] = self.shadowTintColor
+                
+                rawJSON[LightRoomJSONKeys.FilterName] = self.filterName
+                rawJSON[LightRoomJSONKeys.Parameters] = CIFilterParametersToStringParameters(parameters)
+                
+                return JSON(rawJSON)
+            }
+            
+        }
+        
         public class Fade: FilterGen, FilterJSONConvertible {
             
             public var filterName: String {

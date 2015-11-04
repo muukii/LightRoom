@@ -58,6 +58,8 @@ public func CreateFilterGen(json json: JSON) throws -> [FilterGen] {
         } else {
             
             switch filterName {
+            case "HighlightShadowTint":
+                filterGens.append(try LightRoom.CombinedFilter.HighlightShadowTint(json: json))
             case "RGBToneCurve":
                 filterGens.append(try LightRoom.CombinedFilter.RGBToneCurve(json: json))
             case "Fade":

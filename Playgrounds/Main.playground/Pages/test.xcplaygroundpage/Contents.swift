@@ -10,10 +10,7 @@ let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForRe
 //LightRoom.ColorAdjustment.GammmaAdjust(power: 0.7).filter(image)
 
 
-let amount: Double = 0.8
-(
-    LightRoom.Sharpen.UnsharpMask(radius: 100, intencity: 1).filter
-)(image)
+let image1 = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 1, green: 0, blue: 0, alpha: 0.4), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0.1)).filter(image)
 
 
 
