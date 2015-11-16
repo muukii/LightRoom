@@ -130,7 +130,7 @@ public extension LightRoom {
             public required init(noiseLevel: Double, sharpness: Double) {
 
                 super.init(filterName: "CINoiseReduction", parameters: [
-                    "inputNoizeLevel": noiseLevel,
+                    "inputNoiseLevel": noiseLevel,
                     kCIInputSharpnessKey: sharpness,
                     ]
                 )
