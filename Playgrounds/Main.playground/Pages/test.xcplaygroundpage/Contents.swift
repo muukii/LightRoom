@@ -13,7 +13,14 @@ let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForRe
 let image1 = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 1, green: 0, blue: 0, alpha: 0.4), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0.1)).filter(image)
 
 
+let a = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 0, green: 0, blue: 0, alpha: 0), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0.1)).filter(image)
 
+let b = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 1, green: 0, blue: 0, alpha: 0.4), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0)).filter(a)
+
+
+let c = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 1, green: 0, blue: 0, alpha: 0.4), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0)).filter(image)
+
+let d = LightRoom.CombinedFilter.HighlightShadowTint(highlightTintColor: CIColor(red: 1, green: 0, blue: 0, alpha: 0), shadowTintColor: CIColor(red: 0, green: 1, blue: 0, alpha: 0.1)).filter(c)
 
 
 
