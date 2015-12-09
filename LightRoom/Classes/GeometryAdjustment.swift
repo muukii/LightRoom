@@ -17,7 +17,7 @@ public extension LightRoom {
          CILanczosScaleTransform
          Produces a high-quality, scaled version of a source image.
          */
-        public static func crop(rect rect: Vector4) -> Filter {
+        public static func Crop(rect rect: Vector4) -> Filter {
             
             return { image in
                 
