@@ -12,7 +12,7 @@ public extension LightRoom {
     /*!
     CICategoryBlur
     */
-    public struct Blur {
+    public enum Blur {
 
         /*!
         CIBoxBlur

@@ -17,36 +17,30 @@ public extension LightRoom {
          CILanczosScaleTransform
          Produces a high-quality, scaled version of a source image.
          */
-        public static func Crop(rect rect: Vector4) -> Filter {
+        public final class Crop: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(rect: Vector4) {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
+                super.init(filterName: "CICrop", parameters: [
                     "inputRectangle": rect.CIVector,
-                ]
-                
-                let filter = CIFilter(name: "CICrop", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
         
         /**
         CILanczosScaleTransform
         Produces a high-quality, scaled version of a source image.
-        */
-        public static func lanczosScaleTransform(scale scale: Double, aspectRatio: Double) -> Filter {
+        */      
+        public final class LanczosScaleTransform: CIFilterGen, FilterJSONConvertible {
             
-            return { image in
+            public required init(scale: Double, aspectRatio: Double) {
                 
-                let parameters = [
-                    kCIInputImageKey: image,
+                super.init(filterName: "CILanczosScaleTransform", parameters: [
                     "inputScale": scale,
                     "inputAspectRatio" : aspectRatio,
-                ]
-                
-                let filter = CIFilter(name: "CILanczosScaleTransform", withInputParameters: parameters)
-                return filter!.outputImage!
+                    ]
+                )
             }
         }
     }
