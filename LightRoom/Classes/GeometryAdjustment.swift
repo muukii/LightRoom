@@ -11,7 +11,26 @@ import Foundation
 public extension LightRoom {
     
     
-    public struct GeometryAdjustment {
+    public enum GeometryAdjustment {
+        
+        /**
+         CILanczosScaleTransform
+         Produces a high-quality, scaled version of a source image.
+         */
+        public static func crop(rect rect: Vector4) -> Filter {
+            
+            return { image in
+                
+                let parameters = [
+                    kCIInputImageKey: image,
+                    "inputRectangle": rect.CIVector,
+                ]
+                
+                let filter = CIFilter(name: "CICrop", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
+        
         /**
         CILanczosScaleTransform
         Produces a high-quality, scaled version of a source image.
