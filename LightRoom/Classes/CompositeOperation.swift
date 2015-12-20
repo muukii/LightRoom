@@ -230,11 +230,38 @@ public extension LightRoom {
         CILinearBurnBlendMode
         Darkens the background image samples to reflect the source image samples while also increasing contrast.
         */
-        
+        @available(iOS 8.0, OSX 10.4, *)
+        public static func linearBurnBlendMode() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CILinearBurnBlendMode", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
         /**
         CILinearDodgeBlendMode
         Brightens the background image samples to reflect the source image samples while also increasing contrast.
         */
+        @available(iOS 8.0, OSX 10.4, *)
+        public static func linearDodgeBlendMode() -> Composite {
+            return { image, backgroundImage in
+                
+                let parameters = [
+                    
+                    kCIInputImageKey: image,
+                    kCIInputBackgroundImageKey: backgroundImage
+                ]
+                
+                let filter = CIFilter(name: "CILinearDodgeBlendMode", withInputParameters: parameters)
+                return filter!.outputImage!
+            }
+        }
         /**
         CILuminosityBlendMode
         Uses the hue and saturation of the background image with the luminance of the input image.

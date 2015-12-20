@@ -179,6 +179,69 @@ public extension LightRoom {
             }
         }
         
+        public class Grain: FilterGen, FilterJSONConvertible {
+            
+            public var filterName: String {
+                return "Grain"
+            }
+            
+            let intencity: Double
+            
+            public required init(intencity: Double) {
+                
+                self.intencity = intencity
+            }
+            
+            public var filter: Filter {
+                return { image in
+                    
+                    let grainColor = CIColor(red: 0.7, green: 0.7, blue: 0.7)
+                    
+                    let grainSource = LightRoom.ColorAdjustment.ColorControls(saturation: 0, brightness: 0, contrast: 1).filter(LightRoom.Generator.randomGenerator()())
+                        .imageByCroppingToRect(image.extent)
+
+                    
+//                    let grainSource = LightRoom.ColorEffect.ColorMonochrome(
+//                        color: grainColor, intensity: 1).filter(
+//                            LightRoom.Generator.randomGenerator()()
+//                        )
+//                        .imageByCroppingToRect(image.extent)
+                    
+                    let blendGrain = LightRoom.ColorAdjustment.ColorMatrix(rVector: [1,0,0,0], gVector: [0,1,0,0], bVector: [0,0,1,0], aVector: [0,0,0,CGFloat(self.intencity)], biasVector: [0,0,0,0]).filter(grainSource)
+                    
+                    return LightRoom.CompositeOperation.linearBurnBlendMode()(image: blendGrain, backgroundImage: image)
+                }
+            }
+            
+            public var json: JSON {
+                var rawJSON: [String: AnyObject] = [ : ]
+                
+                var parameters: [String: AnyObject] = [ : ]
+                parameters["intencity"] = self.intencity
+                
+                rawJSON[LightRoomJSONKeys.FilterName] = self.filterName
+                rawJSON[LightRoomJSONKeys.Parameters] = CIFilterParametersToStringParameters(parameters)
+                
+                return JSON(rawJSON)
+            }
+            
+            public required init(json: JSON) throws {
+                
+                guard let _parameters = json[LightRoomJSONKeys.Parameters].dictionaryObject else {
+                    
+                    fatalError("")
+                }
+                
+                let parameters = StringParametersToCIFilterParameters(_parameters)
+                
+                self.intencity = parameters["intencity"] as! Double
+                
+                guard json[LightRoomJSONKeys.FilterName].string == self.filterName else {
+                    throw FilterJSONConvertErrorType.CanNotConvertJSON(filterGen: self)
+                }
+            }
+        }
+        
         public class RGBToneCurve: FilterGen, FilterJSONConvertible {
             
             public var filterName: String {

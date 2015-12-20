@@ -33,5 +33,14 @@ public extension LightRoom {
                 return filter!.outputImage!
             }
         }
+        
+        @available(iOS 6.0, OSX 10.4, *)
+        public static func randomGenerator() -> ImageGenerator {
+            
+            return {
+                let filter = CIFilter(name: "CIRandomGenerator", withInputParameters: [:])
+                return filter!.outputImage!
+            }
+        }
     }
 }
