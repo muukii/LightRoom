@@ -150,7 +150,7 @@ public extension FilterJSONConvertible where Self: CIFilterGen {
     }
 }
 
-func CIFilterParametersToStringParameters(parameters: [String: AnyObject]) -> [String: String] {
+public func CIFilterParametersToStringParameters(parameters: [String: AnyObject]) -> [String: String] {
     
     var parametersJSON: [String: String] = [ : ]
     for param in parameters {
@@ -177,7 +177,7 @@ func CIFilterParametersToStringParameters(parameters: [String: AnyObject]) -> [S
     return parametersJSON
 }
 
-func StringParametersToCIFilterParameters(parameters: [String: AnyObject]) -> [String: AnyObject] {
+public func StringParametersToCIFilterParameters(parameters: [String: AnyObject]) -> [String: AnyObject] {
     
     var objectParameters: [String: AnyObject] = [ : ]
     

@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 # Created by https://www.gitignore.io
 .DS_Store
 
 ### Swift ###
->>>>>>> Tidy up
 # Xcode
 #
 build/
