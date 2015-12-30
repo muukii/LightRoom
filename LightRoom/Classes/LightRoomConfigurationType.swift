@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public protocol LightRoomConfigurationType: class {
     
-    func filterGen(json: JSON) throws -> FilterGen
+    func filterGen(filterName: String, json: JSON) throws -> FilterGen
 }
 
 

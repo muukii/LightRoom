@@ -57,7 +57,7 @@ public func CreateFilterGen(json json: JSON) throws -> [FilterGen] {
             filterGens.append(gen)
         } else {
             
-            if let gen = try LightRoom.configuration?.filterGen(json) {
+            if let gen = try LightRoom.configuration?.filterGen(filterName, json: json) {
                 filterGens.append(gen)
             }
         }
