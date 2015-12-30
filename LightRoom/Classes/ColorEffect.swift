@@ -69,7 +69,7 @@ public extension LightRoom {
                 cubeData: NSData,
                 colorSpace: CGColorSpaceRef) {
                     
-                    super.init(filterName: "CIColorCube", parameters: [
+                    super.init(filterName: "CIColorCubeWithColorSpace", parameters: [
                         "inputCubeDimension": cubeDimension,
                         "inputCubeData": cubeData,
                         "inputColorSpace": colorSpace,
