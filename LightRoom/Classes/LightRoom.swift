@@ -17,7 +17,9 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
-public struct LightRoom {
+public enum LightRoom {
+    
+    public static var configuration: LightRoomConfigurationType?
     
     public static func createCombinedFilter(filterGens: [FilterGen]) -> Filter? {
         return filterGens.reduce({ image in return image }) {
@@ -35,7 +37,6 @@ public struct LightRoom {
             return CIFilter(name: name, withInputParameters: parameters)!.outputImage!
         }
     }
-    
 }
 
 public struct Vector2: ArrayLiteralConvertible {

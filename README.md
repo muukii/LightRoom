@@ -3,10 +3,9 @@ ImageFilter with CoreImage
 
 ---
 
-Steadily in development.
+# A Work In Progress
 
-**I'm waiting your Pull Request!**
-
+In order to better interface, API might change frequently.
 
 # Example
 
@@ -15,14 +14,16 @@ import LightRoom
 
 let image: CIImage = ...
 
-LightRoom.Sharpen.sharpenLuminance(sharpness: 0.2)(image)
+let filterGen: FilterGen = LightRoom.Sharpen.SharpenLuminance(sharpness: 0.2)
+
+filterGen.filter(image)
 ```
 
 # Create Combined Filter
 
 ```swift
-let colorMatrixFilter = LightRoom.ColorAdjustment.exposureAdjust(ev: 0.1)
-let motionBlurFilter = LightRoom.Blur.motionBlur(radius: 10, angle: 0.2)
+let colorMatrixFilter = LightRoom.ColorAdjustment.ExposureAdjust(ev: 0.1).filter
+let motionBlurFilter = LightRoom.Blur.MotionBlur(radius: 10, angle: 0.2).filter
 
 let combinedFilter = colorMatrixFilter >>> motionBlurFilter
 

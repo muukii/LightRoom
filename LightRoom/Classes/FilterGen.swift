@@ -49,7 +49,7 @@ public func CreateFilterGen(json json: JSON) throws -> [FilterGen] {
         default:
             break
         }
-*/
+        */
         
         if filterName.hasPrefix("CI") {
             
@@ -57,17 +57,8 @@ public func CreateFilterGen(json json: JSON) throws -> [FilterGen] {
             filterGens.append(gen)
         } else {
             
-            switch filterName {
-            case "HighlightShadowTint":
-                filterGens.append(try LightRoom.CombinedFilter.HighlightShadowTint(json: json))
-            case "RGBToneCurve":
-                filterGens.append(try LightRoom.CombinedFilter.RGBToneCurve(json: json))
-            case "Fade":
-                filterGens.append(try LightRoom.CombinedFilter.Fade(json: json))
-            case "Structure":
-                filterGens.append(try LightRoom.CombinedFilter.Structure(json: json))
-            default:
-                break
+            if let gen = try LightRoom.configuration?.filterGen(json) {
+                filterGens.append(gen)
             }
         }
     }

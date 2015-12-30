@@ -13,7 +13,7 @@ public extension LightRoom {
     /**
     CICategoryGenerator
      */
-    public struct Generator {
+    public enum Generator {
         
         /**
         CIConstantColorGenerator

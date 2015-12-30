@@ -12,7 +12,7 @@ public extension LightRoom {
     /*!
     CICategoryColorAdjustment
     */
-    public struct ColorAdjustment {
+    public enum ColorAdjustment {
         
         /*!
         CIColorClamp

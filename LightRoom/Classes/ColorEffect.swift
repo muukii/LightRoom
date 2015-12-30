@@ -13,7 +13,7 @@ public extension LightRoom {
     /**
     CICategoryColorEffect
     */
-    public struct ColorEffect {
+    public enum ColorEffect {
         
         /**
         CIColorCrossPolynomial
