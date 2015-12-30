@@ -85,9 +85,9 @@ public func ExportFilterGen(filterGens filterGens: [FilterGen]) throws -> JSON {
 }
 
 
-public struct LightRoomJSONKeys {
-    static let FilterName = "filterName"
-    static let Parameters = "Parameters"
+public enum LightRoomJSONKeys {
+    public static let FilterName = "filterName"
+    public static let Parameters = "Parameters"
 }
 
 public class CIFilterGen: FilterGen {
