@@ -65,7 +65,7 @@ public extension LightRoom {
         Creates composite image samples by choosing the darker samples (from either the source image or the background).
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class CIDarkenBlendMode: CompositionFilterComponent {
+        public final class DarkenBlendMode: CompositionFilterComponent {
             public required init() {
                 super.init(filterName: "CIDarkenBlendMode")
             }
