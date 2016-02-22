@@ -21,7 +21,7 @@ public extension LightRoom {
         Modifies the pixel values in an image by applying a set of polynomial cross-products.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class CrossPolynomial: CIFilterGen, FilterJSONConvertible {
+        public final class CrossPolynomial: CIFilterComponent {
             
             public required init(
                 redCoefficients: Vector10,
@@ -42,7 +42,7 @@ public extension LightRoom {
         Uses a three-dimensional color table to transform the source image pixels.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class ColorCube: CIFilterGen {
+        public final class ColorCube: CIFilterComponent {
             
             public required init(
                 cubeDimension: Double,
@@ -62,7 +62,7 @@ public extension LightRoom {
         
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class ColorCubeWithColorSpace: CIFilterGen {
+        public final class ColorCubeWithColorSpace: CIFilterComponent {
             
             public required init(
                 cubeDimension: Double,
@@ -83,7 +83,7 @@ public extension LightRoom {
         Inverts the colors in an image.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class ColorInvert: CIFilterGen, FilterJSONConvertible {
+        public final class ColorInvert: CIFilterComponent {
             
             public required init() {
                 
@@ -96,7 +96,7 @@ public extension LightRoom {
         Performs a nonlinear transformation of source color values using mapping values provided in a table.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class ColorMap: CIFilterGen {
+        public final class ColorMap: CIFilterComponent {
             
             public required init(gradientImage: CIImage) {
                     
@@ -112,7 +112,7 @@ public extension LightRoom {
         Remaps colors so they fall within shades of a single color.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class ColorMonochrome: CIFilterGen, FilterJSONConvertible {
+        public final class ColorMonochrome: CIFilterComponent {
             
             public required init(color: CIColor, intensity: Double) {
                 
@@ -129,7 +129,7 @@ public extension LightRoom {
         Remaps red, green, and blue color components to the number of brightness values you specify for each color component.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class CIColorPosterize: CIFilterGen, FilterJSONConvertible {
+        public final class CIColorPosterize: CIFilterComponent {
             
             public required init(levels: Double) {
                 
@@ -145,7 +145,7 @@ public extension LightRoom {
         Maps luminance to a color ramp of two colors.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class FalseColor: CIFilterGen, FilterJSONConvertible {
+        public final class FalseColor: CIFilterComponent {
             
             public required init(color0: CIColor, color1: CIColor) {
                 
@@ -162,7 +162,7 @@ public extension LightRoom {
         Converts a grayscale image to a white image that is masked by alpha.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class MaskToAlpha: CIFilterGen, FilterJSONConvertible {
+        public final class MaskToAlpha: CIFilterComponent {
             
             public required init() {
                 
@@ -176,7 +176,7 @@ public extension LightRoom {
         Returns a grayscale image from max(r,g,b).
         */
         @available(iOS 6.0, OSX 10.5, *)
-        public final class MaximumComponent: CIFilterGen, FilterJSONConvertible {
+        public final class MaximumComponent: CIFilterComponent {
             
             public required init() {
                 
@@ -189,7 +189,7 @@ public extension LightRoom {
         Returns a grayscale image from min(r,g,b).
         */
         @available(iOS 6.0, OSX 10.5, *)
-        public final class MinimumComponent: CIFilterGen, FilterJSONConvertible {
+        public final class MinimumComponent: CIFilterComponent {
             
             public required init() {
                 
@@ -202,7 +202,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with exaggerated color.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectChrome: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectChrome: CIFilterComponent {
             
             public required init() {
                 
@@ -215,7 +215,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with diminished color.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectFade: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectFade: CIFilterComponent {
             
             public required init() {
                 
@@ -228,7 +228,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with distorted colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectInstant: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectInstant: CIFilterComponent {
             
             public required init() {
                 
@@ -242,7 +242,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate black-and-white photography film with low contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectMono: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectMono: CIFilterComponent {
             
             public required init() {
                 
@@ -255,7 +255,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate black-and-white photography film with exaggerated contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectNoir: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectNoir: CIFilterComponent {
             
             public required init() {
                 
@@ -268,7 +268,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with emphasized cool colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectProcess: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectProcess: CIFilterComponent {
             
             public required init() {
                 
@@ -282,7 +282,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate black-and-white photography film without significantly altering contrast.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectTonal: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectTonal: CIFilterComponent {
             
             public required init() {
                 
@@ -295,7 +295,7 @@ public extension LightRoom {
         Applies a preconfigured set of effects that imitate vintage photography film with emphasized warm colors.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class PhotoEffectTransfer: CIFilterGen, FilterJSONConvertible {
+        public final class PhotoEffectTransfer: CIFilterComponent {
             
             public required init() {
                 
@@ -308,7 +308,7 @@ public extension LightRoom {
         Maps the colors of an image to various shades of brown.
         */
         @available(iOS 5.0, OSX 10.4, *)
-        public final class SepiaTone: CIFilterGen, FilterJSONConvertible {
+        public final class SepiaTone: CIFilterComponent {
             
             public required init(intencity: Double) {
                 
@@ -323,7 +323,7 @@ public extension LightRoom {
         Reduces the brightness of an image at the periphery.
         */
         @available(iOS 5.0, OSX 10.9, *)
-        public final class Vignette: CIFilterGen, FilterJSONConvertible {
+        public final class Vignette: CIFilterComponent {
             
             public required init(radius: Double, intencity: Double) {
                 
@@ -339,7 +339,7 @@ public extension LightRoom {
         Modifies the brightness of an image around the periphery of a specified region.
         */
         @available(iOS 7.0, OSX 10.9, *)
-        public final class VignetteEffect: CIFilterGen, FilterJSONConvertible {
+        public final class VignetteEffect: CIFilterComponent {
             
             public required init(center: Vector2, radius: Double, intencity: Double) {
                 

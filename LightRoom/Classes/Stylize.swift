@@ -18,7 +18,7 @@ public extension LightRoom {
         Adjust the tonal mapping of an image while preserving spatial detail.
         */
         @available(iOS 5.0, OSX 10.7, *)
-        public final class HighlightShadowAdjust: CIFilterGen, FilterJSONConvertible {
+        public final class HighlightShadowAdjust: CIFilterComponent {
             
             public required init(
                 highlightAmount: Double? = nil,

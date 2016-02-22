@@ -12,7 +12,8 @@
 		4B2238631B668F23000F735E /* LightRoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2238621B668F23000F735E /* LightRoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B2E07AB1B6FD04E005B9278 /* CreateFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */; };
-		4BBB8A3E1C3355E900D20063 /* LightRoomConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB8A3D1C3355E900D20063 /* LightRoomConfigurationType.swift */; };
+		4B73F3F81C7B4FDD006AC34D /* FilterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */; };
+		4B73F3FF1C7B4FE7006AC34D /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */; };
 		4BD6CD351BD38E5700FFF931 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD281BD38E5700FFF931 /* Blur.swift */; };
 		4BD6CD361BD38E5700FFF931 /* ColorAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD291BD38E5700FFF931 /* ColorAdjustment.swift */; };
 		4BD6CD371BD38E5700FFF931 /* ColorEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD2A1BD38E5700FFF931 /* ColorEffect.swift */; };
@@ -131,8 +132,9 @@
 		4B2238701B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B22387A1B668F8E000F735E /* Main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Main.playground; sourceTree = "<group>"; };
 		4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFilterTests.swift; sourceTree = "<group>"; };
+		4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterComponent.swift; sourceTree = "<group>"; };
+		4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
 		4BA380E61BA5DA6000C98D59 /* Filter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Filter.playground; sourceTree = "<group>"; };
-		4BBB8A3D1C3355E900D20063 /* LightRoomConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRoomConfigurationType.swift; sourceTree = "<group>"; };
 		4BD351AA1B6DDEC500E7E038 /* QRCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QRCode.playground; sourceTree = "<group>"; };
 		4BD6CD281BD38E5700FFF931 /* Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		4BD6CD291BD38E5700FFF931 /* ColorAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorAdjustment.swift; sourceTree = "<group>"; };
@@ -323,7 +325,8 @@
 		4BD6CD271BD38E5700FFF931 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4BBB8A3D1C3355E900D20063 /* LightRoomConfigurationType.swift */,
+				4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */,
+				4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */,
 				4BD6CD321BD38E5700FFF931 /* LightRoom.swift */,
 				4BD6CD281BD38E5700FFF931 /* Blur.swift */,
 				4BD6CD291BD38E5700FFF931 /* ColorAdjustment.swift */,
@@ -508,15 +511,16 @@
 			files = (
 				4BD6CD391BD38E5700FFF931 /* CompositeOperation.swift in Sources */,
 				4BD6CD3A1BD38E5700FFF931 /* Detectors.swift in Sources */,
+				4B73F3F81C7B4FDD006AC34D /* FilterComponent.swift in Sources */,
 				4BD6CD351BD38E5700FFF931 /* Blur.swift in Sources */,
 				4BD6CD3F1BD38E5700FFF931 /* LightRoom.swift in Sources */,
+				4B73F3FF1C7B4FE7006AC34D /* FilterChain.swift in Sources */,
 				4BD6CD401BD38E5700FFF931 /* Sharpen.swift in Sources */,
 				4BD6CD3E1BD38E5700FFF931 /* Gradient.swift in Sources */,
 				4BD6CD371BD38E5700FFF931 /* ColorEffect.swift in Sources */,
 				4BD6CD3C1BD38E5700FFF931 /* FilterGen.swift in Sources */,
 				4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */,
 				4BD6CD411BD38E5700FFF931 /* Stylize.swift in Sources */,
-				4BBB8A3E1C3355E900D20063 /* LightRoomConfigurationType.swift in Sources */,
 				4BD6CD3B1BD38E5700FFF931 /* DistortionEffect.swift in Sources */,
 				4BD6CD3D1BD38E5700FFF931 /* Generator.swift in Sources */,
 				4BD6CD361BD38E5700FFF931 /* ColorAdjustment.swift in Sources */,

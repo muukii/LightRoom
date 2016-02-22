@@ -17,7 +17,7 @@ public extension LightRoom {
          CILanczosScaleTransform
          Produces a high-quality, scaled version of a source image.
          */
-        public final class Crop: CIFilterGen, FilterJSONConvertible {
+        public final class Crop: CIFilterComponent {
             
             public required init(rect: Vector4) {
                 
@@ -32,7 +32,7 @@ public extension LightRoom {
         CILanczosScaleTransform
         Produces a high-quality, scaled version of a source image.
         */      
-        public final class LanczosScaleTransform: CIFilterGen, FilterJSONConvertible {
+        public final class LanczosScaleTransform: CIFilterComponent {
             
             public required init(scale: Double, aspectRatio: Double) {
                 

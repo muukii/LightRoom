@@ -4,17 +4,13 @@ import UIKit
 import LightRoom
 import SwiftyJSON
 
-let image = CIImage(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("garden", ofType: "jpg")!)!)!
+let a = "muukii"
 
-//LightRoom.Stylize.HighlightShadowAdjust(highlightAmount: 2, shadowAmount: 0).filter(image)
-//LightRoom.ColorAdjustment.GammmaAdjust(power: 0.7).filter(image)
+let b = a + "hiroshi"
 
+let button = UIButton(type: .System)
 
-let image1 = LightRoom.CombinedFilter.Grain(intencity: 0.5).filter(image)
+button.setTitle("abc", forState: .Normal)
+button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
 
-
-
-
-
-
-
+button

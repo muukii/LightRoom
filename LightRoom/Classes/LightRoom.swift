@@ -17,26 +17,11 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
+
+
+
 public enum LightRoom {
     
-    public static var configuration: LightRoomConfigurationType?
-    
-    public static func createCombinedFilter(filterGens: [FilterGen]) -> Filter? {
-        return filterGens.reduce({ image in return image }) {
-            (stackFilter, filterGen) -> Filter in
-            let filter = stackFilter >>> filterGen.filter
-            return filter
-        }
-    }
-    
-    static func createFilter(CIFilterName name: String, var parameters: [String: AnyObject]?) -> Filter {
-        
-        return { image in
-            
-            parameters?[kCIInputImageKey] = image
-            return CIFilter(name: name, withInputParameters: parameters)!.outputImage!
-        }
-    }
 }
 
 public struct Vector2: ArrayLiteralConvertible {
