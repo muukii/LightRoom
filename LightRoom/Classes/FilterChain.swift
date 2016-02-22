@@ -38,7 +38,7 @@ public class FilterChain {
         guard self.inputImage != nil else {
             return nil
         }
-        return self.filterComponents.last?.outputImage
+        return self.filterComponents.last?.outputImage ?? self.inputImage
     }
     
     public init() {
