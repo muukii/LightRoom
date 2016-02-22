@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LightRoom"
-  s.version      = "0.0.2"
+  s.version      = "0.9.0"
   s.summary      = "CoreImage Library"
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "Functional ImageFilter with CoreImage."
+  s.description  = "Easy Chaining ImageFilter with CoreImage."
 
   s.homepage     = "https://github.com/muukii/LightRoom"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"

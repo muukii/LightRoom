@@ -1,47 +1,50 @@
 # LightRoom
-ImageFilter with CoreImage
+Easy Chaining ImageFilter with CoreImage
 
 ---
 
-# A Work In Progress
+## Instrallation
 
-In order to better interface, API might change frequently.
+LightRoom is available through CocoaPods. To install it, simply add the following line to your Podfile:
 
-# Example
-
-```swift
-import LightRoom
-
-let image: CIImage = ...
-
-let filterGen: FilterGen = LightRoom.Sharpen.SharpenLuminance(sharpness: 0.2)
-
-filterGen.filter(image)
+```
+pod "AppVersionMonitor"
 ```
 
-# Create Combined Filter
+## Usage
 
-```swift
-let colorMatrixFilter = LightRoom.ColorAdjustment.ExposureAdjust(ev: 0.1).filter
-let motionBlurFilter = LightRoom.Blur.MotionBlur(radius: 10, angle: 0.2).filter
+You need to create FilterComponent.
+Then, You add to FilterChain that.
 
-let combinedFilter = colorMatrixFilter >>> motionBlurFilter
+### Chaining
 
-let outputImage = combinedFilter(image)
+```
+let filter1 = LightRoom.ColorAdjustment.ColorControls(saturation: 1.2, brightness: 0, contrast: 1)
+let filter2 = LightRoom.ColorEffect.PhotoEffectChrome()
+let filterChain1 = FilterChain(filterComponents: [filter1, filter2])
 ```
 
-# Bridge Filter <-> JSON
-
-## Create Filter from JSON
-
-WIP
-
-## Export JSON from Filter
-
-WIP
+![](sample1.png)
 
 
+### Multiple Chaining
 
----
+You can be connected to FilterChain each other with `~~>`
 
-![](example1.png)
+```
+let filter3 = LightRoom.ColorAdjustment.ColorControls(saturation: 1, brightness: -0.2, contrast: 1)
+let filter4 = LightRoom.ColorEffect.PhotoEffectProcess()
+let filterChain2 = FilterChain(filterComponents: [filter3, filter4])
+```
+
+![](sample2.png)
+
+
+### Performance
+
+FilterComponent has CIFilter.
+CIFilter are cached, it will be created only once.
+
+This structure is advantageous in performance.
+
+To exert the performance at the time of the real-time filtering camera implementation.
