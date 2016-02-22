@@ -64,6 +64,7 @@ public class FilterComponent: FilterComponentType {
 public class CompositionFilterComponent: FilterComponentType {
     
     public let filterFactory: CIFilterFactory
+    public let invertInput: Bool
     
     public var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
@@ -74,19 +75,44 @@ public class CompositionFilterComponent: FilterComponentType {
         return filter
     }
     
-    public init(filterName: String) {
-        
+    public init(filterName: String, invertInput: Bool = false) {
+        self.invertInput = invertInput
         self.filterFactory = {
             return CIFilter(name: filterName)!
         }
     }
     
-    public var backgroundImage: CIImage? {
+    public var inputImage: CIImage? {
         get {
-            return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
+            if self.invertInput {
+                return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
+            } else {
+                return self.filter.valueForKey(kCIInputImageKey) as? CIImage
+            }
         }
         set {
-            self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
+            if self.invertInput {
+                self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
+            } else {
+                self.filter.setValue(newValue, forKey: kCIInputImageKey)
+            }
+        }
+    }
+    
+    public var backgroundImage: CIImage? {
+        get {
+            if self.invertInput {
+                return self.filter.valueForKey(kCIInputImageKey) as? CIImage
+            } else {
+                return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
+            }
+        }
+        set {
+            if self.invertInput {
+                self.filter.setValue(newValue, forKey: kCIInputImageKey)
+            } else {
+                self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
+            }
         }
     }
     
