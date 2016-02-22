@@ -81,7 +81,7 @@ public class CompositionFilterComponent: FilterComponentType {
         }
     }
     
-    internal var backgroundImage: CIImage? {
+    public var backgroundImage: CIImage? {
         get {
             return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
         }
