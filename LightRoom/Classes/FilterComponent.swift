@@ -64,7 +64,7 @@ public class FilterComponent: FilterComponentType {
 public class CompositionFilterComponent: FilterComponentType {
     
     public let filterFactory: CIFilterFactory
-    public let invertInput: Bool
+    public var invertInput: Bool = false
     
     public var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
@@ -75,8 +75,7 @@ public class CompositionFilterComponent: FilterComponentType {
         return filter
     }
     
-    public init(filterName: String, invertInput: Bool = false) {
-        self.invertInput = invertInput
+    public init(filterName: String) {
         self.filterFactory = {
             return CIFilter(name: filterName)!
         }
