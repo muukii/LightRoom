@@ -17,13 +17,13 @@ public func ~~> (chain1: FilterChain, chain2: FilterChain) -> FilterChain {
 
 public class FilterChain {
     
-    public private(set) var filterComponents: [FilterComponent] = [] {
+    public private(set) var filterComponents: [FilterComponentType] = [] {
         didSet {
             self.connectFilters()
         }
     }
     
-    public func addFilterComponent(filterComponent: FilterComponent) {
+    public func addFilterComponent(filterComponent: FilterComponentType) {
         self.filterComponents.append(filterComponent)
     }
     
@@ -45,11 +45,11 @@ public class FilterChain {
         
     }
     
-    public init(filterComponent: FilterComponent) {
+    public init(filterComponent: FilterComponentType) {
         self.filterComponents = [filterComponent]
     }
     
-    public init(filterComponents: [FilterComponent]) {
+    public init(filterComponents: [FilterComponentType]) {
         self.filterComponents = filterComponents
     }
     
