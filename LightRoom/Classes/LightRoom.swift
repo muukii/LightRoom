@@ -18,8 +18,6 @@ https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging
 */
 
 
-
-
 public enum LightRoom {
     
 }
@@ -99,14 +97,3 @@ public struct Vector10: ArrayLiteralConvertible {
         }
     }
 }
-
-public typealias Filter = CIImage -> CIImage
-
-infix operator >>> { associativity left }
-public func >>> (filter1: Filter, filter2: Filter) -> Filter {
-    return { image in filter2(filter1(image)) }
-}
-
-
-
-

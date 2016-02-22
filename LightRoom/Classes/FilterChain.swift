@@ -8,6 +8,13 @@
 
 import Foundation
 
+infix operator ~~> { associativity left }
+public func ~~> (chain1: FilterChain, chain2: FilterChain) -> FilterChain {
+    let components = chain1.filterComponents + chain2.filterComponents
+    return FilterChain(filterComponents: components)
+}
+
+
 public class FilterChain {
     
     public private(set) var filterComponents: [FilterComponent] = [] {
@@ -28,16 +35,29 @@ public class FilterChain {
     }
     
     public var outputImage: CIImage? {
+        guard self.inputImage != nil else {
+            return nil
+        }
         return self.filterComponents.last?.outputImage
     }
     
-    public required init() {
+    public init() {
         
+    }
+    
+    public init(filterComponent: FilterComponent) {
+        self.filterComponents = [filterComponent]
+    }
+    
+    public init(filterComponents: [FilterComponent]) {
+        self.filterComponents = filterComponents
     }
     
     private func connectFilters() {
         
-        self.filterComponents.first?.inputImage = self.inputImage
+        guard let inputImage = self.inputImage else { return }
+        
+        self.filterComponents.first?.inputImage = inputImage
         
         var outputImage: CIImage?
         for components in self.filterComponents {

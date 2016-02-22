@@ -23,7 +23,7 @@ public extension LightRoom {
         :returns: Filter
         */
         @available(iOS 9.0, OSX 10.5, *)
-        public final class BoxBlur: CIFilterComponent {
+        public final class BoxBlur: FilterComponent {
 
             public required init(radius: Double) {
 
@@ -44,7 +44,7 @@ public extension LightRoom {
         :returns: Filter
         */
         @available(iOS 9.0, OSX 10.5, *)
-        public final class DiscBlur: CIFilterComponent {
+        public final class DiscBlur: FilterComponent {
 
             public required init(radius: Double) {
 
@@ -65,7 +65,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class GaussianBlur: CIFilterComponent {
+        public final class GaussianBlur: FilterComponent {
 
             public required init(radius: Double) {
 
@@ -85,7 +85,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public final class MedianBlur: CIFilterComponent {
+        public final class MedianBlur: FilterComponent {
 
             public required init() {
 
@@ -104,7 +104,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public final class MotionBlur: CIFilterComponent {
+        public final class MotionBlur: FilterComponent {
 
             public required init(radius: Double, angle: Double) {
 
@@ -125,7 +125,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public final class NoiseReduction: CIFilterComponent {
+        public final class NoiseReduction: FilterComponent {
 
             public required init(noiseLevel: Double, sharpness: Double) {
 
@@ -148,7 +148,7 @@ public extension LightRoom {
         :returns:
         */
         @available(iOS 9.0, OSX 10.4, *)
-        public final class ZoomBlur: CIFilterComponent {
+        public final class ZoomBlur: FilterComponent {
 
             public required init(center: Vector2, amount: Double) {
 

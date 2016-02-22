@@ -8,15 +8,34 @@
 
 import Foundation
 
-public class FilterComponent {
+public typealias CIFilterFactory = () -> CIFilter
+
+public protocol FilterComponentType: class {
+
+    var filter: CIFilter { get }
+    var outputImage: CIImage? { get }
+    var inputImage: CIImage? { get }
+}
+
+extension FilterComponentType {
     
-    public typealias FilterFactory = () -> CIFilter
-    
-    public let filterFactory: FilterFactory
-    
-    public init(filterFactory: FilterFactory) {
-        self.filterFactory = filterFactory
+    public var outputImage: CIImage? {
+        return self.filter.outputImage
     }
+    
+    public var inputImage: CIImage? {
+        get {
+            return self.filter.valueForKey(kCIInputImageKey) as? CIImage
+        }
+        set {
+            self.filter.setValue(newValue, forKey: kCIInputImageKey)
+        }
+    }
+}
+
+public class FilterComponent: FilterComponentType {
+    
+    public let filterFactory: CIFilterFactory
     
     public var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
@@ -27,24 +46,6 @@ public class FilterComponent {
         return filter
     }
     
-    internal var inputImage: CIImage? {
-        get {
-            return self.filter.valueForKey("inputImage") as? CIImage
-        }
-        set {
-            self.filter.setValue(newValue, forKey: "inputImage")
-        }
-    }
-    
-    internal var outputImage: CIImage? {
-        return self.filter.outputImage
-    }
-    
-    private var cachedCIFilter: CIFilter?
-}
-
-public class CIFilterComponent: FilterComponent {
-
     public let filterName: String
     public let parameters: [String: AnyObject]
     
@@ -52,10 +53,44 @@ public class CIFilterComponent: FilterComponent {
         
         self.filterName = filterName
         self.parameters = parameters
-        
-        super.init { () -> CIFilter in
-            
+        self.filterFactory = {
             return CIFilter(name: filterName, withInputParameters: parameters)!
         }
     }
+    
+    private var cachedCIFilter: CIFilter?
 }
+
+public class CompositionFilterComponent: FilterComponentType {
+    
+    public let filterFactory: CIFilterFactory
+    
+    public var filter: CIFilter {
+        if let cachedCIFilter = self.cachedCIFilter {
+            return cachedCIFilter
+        }
+        let filter = self.filterFactory()
+        self.cachedCIFilter = filter
+        return filter
+    }
+    
+    public init(filterName: String) {
+        
+        self.filterFactory = {
+            return CIFilter(name: filterName)!
+        }
+    }
+    
+    internal var backgroundImage: CIImage? {
+        get {
+            return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
+        }
+        set {
+            self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
+        }
+    }
+    
+    private var cachedCIFilter: CIFilter?
+
+}
+

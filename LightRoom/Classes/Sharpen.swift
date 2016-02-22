@@ -17,7 +17,7 @@ public extension LightRoom {
         Increases image detail by sharpening.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class SharpenLuminance: CIFilterComponent {
+        public final class SharpenLuminance: FilterComponent {
             
             public required init(sharpness: Double) {
                 
@@ -32,7 +32,7 @@ public extension LightRoom {
         Increases the contrast of the edges between pixels of different colors in an image.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class UnsharpMask: CIFilterComponent {
+        public final class UnsharpMask: FilterComponent {
             
             public required init(radius: Double, intencity: Double) {
                 
