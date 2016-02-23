@@ -39,7 +39,7 @@ public func >>> (chain1: FilterComponentType, component: FilterComponentType) ->
     return component
 }
 
-public func >>> (gen: GeneratorComponent, component: CompositionFilterComponent) -> FilterComponentType {
+public func >>> (gen: GeneratorComponent, component: FilterComponentType) -> FilterComponentType {
     component.inputImage = gen.outputImage
     return component
 }
