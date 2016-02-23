@@ -8,7 +8,7 @@ Easy Chaining ImageFilter with CoreImage
 LightRoom is available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
-pod "AppVersionMonitor"
+pod "LightRoom"
 ```
 
 ## Usage
