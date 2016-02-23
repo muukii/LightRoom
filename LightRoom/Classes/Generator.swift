@@ -35,12 +35,12 @@ public extension LightRoom {
         
         @available(iOS 6.0, OSX 10.4, *)
         public final class RandomGenerator: GeneratorComponent {
-            public required init(cropRect: CGRect, color: CIColor) {
+            public required init(cropRect: CGRect) {
                 super.init(
                     filterName: "CIRandomGenerator",
                     cropRect: cropRect,
                     parameters: [
-                        kCIInputColorKey: color
+                        :
                     ]
                 )
             }
