@@ -21,10 +21,8 @@ infix operator >>> { associativity left }
 Set inputBackgroundImage on CompositionComponentType
 */
 infix operator --* { associativity left }
-infix operator --> { associativity left }
-infix operator <-- { associativity left }
 
-public func --> (image: CIImage?, chain: FilterChain) -> FilterChain {
+public func >>> (image: CIImage?, chain: FilterChain) -> FilterChain {
     chain.inputImage = image
     return chain
 }
@@ -63,7 +61,7 @@ public class FilterChain {
     
     public let factory: CIImage? -> CIImage?
     
-    public init(factory: CIImage? -> CIImage?) {
+    public init(_ factory: CIImage? -> CIImage?) {
         self.factory = factory
     }
     

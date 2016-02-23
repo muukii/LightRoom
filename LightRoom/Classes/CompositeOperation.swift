@@ -184,7 +184,7 @@ public extension LightRoom {
         Either multiplies or screens the input image samples with the background image samples, depending on the background color.
         */
         @available(iOS 6.0, OSX 10.4, *)
-        public final class CIOverlayBlendMode: CompositionFilterComponent {
+        public final class OverlayBlendMode: CompositionFilterComponent {
             public required init() {
                 super.init(filterName: "CIOverlayBlendMode")
             }
