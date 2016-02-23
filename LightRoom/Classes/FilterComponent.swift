@@ -13,23 +13,14 @@ public typealias CIFilterFactory = () -> CIFilter
 public protocol FilterComponentType: class {
 
     var filter: CIFilter { get }
+    var inputImage: CIImage? { get set }
     var outputImage: CIImage? { get }
-    var inputImage: CIImage? { get }
 }
 
 extension FilterComponentType {
     
     public var outputImage: CIImage? {
         return self.filter.outputImage
-    }
-    
-    public var inputImage: CIImage? {
-        get {
-            return self.filter.valueForKey(kCIInputImageKey) as? CIImage
-        }
-        set {
-            self.filter.setValue(newValue, forKey: kCIInputImageKey)
-        }
     }
 }
 
@@ -49,6 +40,15 @@ public class FilterComponent: FilterComponentType {
     public let filterName: String
     public let parameters: [String: AnyObject]
     
+    public var inputImage: CIImage? {
+        get {
+            return self.filter.valueForKey(kCIInputImageKey) as? CIImage
+        }
+        set {
+            self.filter.setValue(newValue, forKey: kCIInputImageKey)
+        }
+    }
+    
     public init(filterName: String, parameters: [String: AnyObject]) {
         
         self.filterName = filterName
@@ -61,10 +61,44 @@ public class FilterComponent: FilterComponentType {
     private var cachedCIFilter: CIFilter?
 }
 
+public class GeneratorComponent {
+    
+    public let filterFactory: CIFilterFactory
+    
+    public var filter: CIFilter {
+        if let cachedCIFilter = self.cachedCIFilter {
+            return cachedCIFilter
+        }
+        let filter = self.filterFactory()
+        self.cachedCIFilter = filter
+        return filter
+    }
+    
+    public var outputImage: CIImage? {
+        return self.filter.outputImage?.imageByCroppingToRect(self.cropRect)
+    }
+    
+    public let filterName: String
+    public let parameters: [String: AnyObject]
+    public var cropRect: CGRect = .zero
+    
+    public init(filterName: String, cropRect: CGRect, parameters: [String: AnyObject]) {
+        
+        self.filterName = filterName
+        self.parameters = parameters
+        self.cropRect = cropRect
+        
+        self.filterFactory = {
+            return CIFilter(name: filterName, withInputParameters: parameters)!
+        }
+    }
+    
+    private var cachedCIFilter: CIFilter?
+}
+
 public class CompositionFilterComponent: FilterComponentType {
     
     public let filterFactory: CIFilterFactory
-    public var invertInput: Bool = false
     
     public var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
@@ -83,39 +117,22 @@ public class CompositionFilterComponent: FilterComponentType {
     
     public var inputImage: CIImage? {
         get {
-            if self.invertInput {
-                return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
-            } else {
-                return self.filter.valueForKey(kCIInputImageKey) as? CIImage
-            }
+            return self.filter.valueForKey(kCIInputImageKey) as? CIImage
         }
         set {
-            if self.invertInput {
-                self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
-            } else {
-                self.filter.setValue(newValue, forKey: kCIInputImageKey)
-            }
+            self.filter.setValue(newValue, forKey: kCIInputImageKey)
         }
     }
     
-    public var backgroundImage: CIImage? {
+    public var inputBackgroundImage: CIImage? {
         get {
-            if self.invertInput {
-                return self.filter.valueForKey(kCIInputImageKey) as? CIImage
-            } else {
-                return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
-            }
+            return self.filter.valueForKey(kCIInputBackgroundImageKey) as? CIImage
         }
         set {
-            if self.invertInput {
-                self.filter.setValue(newValue, forKey: kCIInputImageKey)
-            } else {
-                self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
-            }
+            self.filter.setValue(newValue, forKey: kCIInputBackgroundImageKey)
         }
     }
     
     private var cachedCIFilter: CIFilter?
-
 }
 

@@ -3,5 +3,6 @@
     <pages>
         <page name='OneChain'/>
         <page name='MultiChain'/>
+        <page name='Struct'/>
     </pages>
 </playground>

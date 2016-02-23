@@ -21,26 +21,30 @@ public extension LightRoom {
         Generates a solid color.
          */
         @available(iOS 5.0, OSX 10.4, *)
-        public static func constantColorGenerator(color color: CIColor) -> ImageGenerator {
-            
-             return {
-                
-                let parameters = [
-                    kCIInputColorKey: color
-                ]
-                
-                let filter = CIFilter(name: "CIConstantColorGenerator", withInputParameters: parameters)
-                return filter!.outputImage!
+        public final class ConstantColorGenerator: GeneratorComponent {
+            public required init(cropRect: CGRect, color: CIColor) {
+                super.init(
+                    filterName: "CIConstantColorGenerator",
+                    cropRect: cropRect,
+                    parameters: [
+                        kCIInputColorKey: color
+                    ]
+                )
             }
         }
         
         @available(iOS 6.0, OSX 10.4, *)
-        public static func randomGenerator() -> ImageGenerator {
-            
-            return {
-                let filter = CIFilter(name: "CIRandomGenerator", withInputParameters: [:])
-                return filter!.outputImage!
+        public final class RandomGenerator: GeneratorComponent {
+            public required init(cropRect: CGRect, color: CIColor) {
+                super.init(
+                    filterName: "CIRandomGenerator",
+                    cropRect: cropRect,
+                    parameters: [
+                        kCIInputColorKey: color
+                    ]
+                )
             }
         }
+        
     }
 }

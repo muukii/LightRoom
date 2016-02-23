@@ -20,7 +20,6 @@
 		4BD6CD391BD38E5700FFF931 /* CompositeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD2C1BD38E5700FFF931 /* CompositeOperation.swift */; };
 		4BD6CD3A1BD38E5700FFF931 /* Detectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD2D1BD38E5700FFF931 /* Detectors.swift */; };
 		4BD6CD3B1BD38E5700FFF931 /* DistortionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD2E1BD38E5700FFF931 /* DistortionEffect.swift */; };
-		4BD6CD3C1BD38E5700FFF931 /* FilterGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD2F1BD38E5700FFF931 /* FilterGen.swift */; };
 		4BD6CD3D1BD38E5700FFF931 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD301BD38E5700FFF931 /* Generator.swift */; };
 		4BD6CD3E1BD38E5700FFF931 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD311BD38E5700FFF931 /* Gradient.swift */; };
 		4BD6CD3F1BD38E5700FFF931 /* LightRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD321BD38E5700FFF931 /* LightRoom.swift */; };
@@ -142,7 +141,6 @@
 		4BD6CD2C1BD38E5700FFF931 /* CompositeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeOperation.swift; sourceTree = "<group>"; };
 		4BD6CD2D1BD38E5700FFF931 /* Detectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detectors.swift; sourceTree = "<group>"; };
 		4BD6CD2E1BD38E5700FFF931 /* DistortionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistortionEffect.swift; sourceTree = "<group>"; };
-		4BD6CD2F1BD38E5700FFF931 /* FilterGen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterGen.swift; sourceTree = "<group>"; };
 		4BD6CD301BD38E5700FFF931 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		4BD6CD311BD38E5700FFF931 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		4BD6CD321BD38E5700FFF931 /* LightRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightRoom.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				4BD6CD2D1BD38E5700FFF931 /* Detectors.swift */,
 				4BD6CD2E1BD38E5700FFF931 /* DistortionEffect.swift */,
 				4B0EDDDF1BD64C5800490467 /* GeometryAdjustment.swift */,
-				4BD6CD2F1BD38E5700FFF931 /* FilterGen.swift */,
 				4BD6CD301BD38E5700FFF931 /* Generator.swift */,
 				4BD6CD311BD38E5700FFF931 /* Gradient.swift */,
 				4BD6CD331BD38E5700FFF931 /* Sharpen.swift */,
@@ -518,7 +515,6 @@
 				4BD6CD401BD38E5700FFF931 /* Sharpen.swift in Sources */,
 				4BD6CD3E1BD38E5700FFF931 /* Gradient.swift in Sources */,
 				4BD6CD371BD38E5700FFF931 /* ColorEffect.swift in Sources */,
-				4BD6CD3C1BD38E5700FFF931 /* FilterGen.swift in Sources */,
 				4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */,
 				4BD6CD411BD38E5700FFF931 /* Stylize.swift in Sources */,
 				4BD6CD3B1BD38E5700FFF931 /* DistortionEffect.swift in Sources */,
