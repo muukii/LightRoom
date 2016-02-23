@@ -3,7 +3,7 @@ Easy Chaining ImageFilter with CoreImage
 
 ---
 
-## Installation
+## Instrallation
 
 LightRoom is available through CocoaPods. To install it, simply add the following line to your Podfile:
 
@@ -13,8 +13,8 @@ pod "AppVersionMonitor"
 
 ## Usage
 
-First, create `FilterComponent`s.
-Then create a `FilterChain` using them.
+You need to create FilterComponent.
+Then, You add to FilterChain that.
 
 ### Chaining
 
@@ -29,12 +29,24 @@ image1 >>> colorControl --* addition
 
 ### Multiple Chaining
 
-You can connect `FilterChain`s with each other using `>>>`
+You can be connected to FilterChain each other with `>>>`
 
 ```
-let filter3 = LightRoom.ColorAdjustment.ColorControls(saturation: 1, brightness: -0.2, contrast: 1)
-let filter4 = LightRoom.ColorEffect.PhotoEffectProcess()
-let filterChain2 = FilterChain(filterComponents: [filter3, filter4])
+let colorControl = LightRoom.ColorAdjustment.ExposureAdjust(ev: 1)
+
+let chain1 = FilterChain { (image: CIImage?) -> CIImage? in
+    image >>> colorControl
+    return colorControl.outputImage
+}
+
+let colorControl2 = LightRoom.ColorAdjustment.ColorControls(saturation: 0.3, brightness: 0, contrast: 1)
+let chain2 = FilterChain { (image: CIImage?) -> CIImage? in
+    image >>> colorControl2
+    return colorControl2.outputImage
+}
+
+image1 >>> chain1 >>> chain2
+chain2.outputImage
 ```
 
 ![](sample2.png)
@@ -42,6 +54,9 @@ let filterChain2 = FilterChain(filterComponents: [filter3, filter4])
 
 ### Performance
 
-FilterComponent has a CIFilter, which is cached and will be created only once.
+FilterComponent has CIFilter.
+CIFilter are cached, it will be created only once.
 
-This structure is advantageous in performance, and is great for real-time filtering camera implementation.
+This structure is advantageous in performance.
+
+To exert the performance at the time of the real-time filtering camera implementation.
