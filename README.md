@@ -3,7 +3,7 @@ Easy Chaining ImageFilter with CoreImage
 
 ---
 
-## Instrallation
+## Installation
 
 LightRoom is available through CocoaPods. To install it, simply add the following line to your Podfile:
 
@@ -13,8 +13,8 @@ pod "AppVersionMonitor"
 
 ## Usage
 
-You need to create FilterComponent.
-Then, You add to FilterChain that.
+First, create `FilterComponent`s.
+Then create a `FilterChain` using them.
 
 ### Chaining
 
@@ -29,7 +29,7 @@ let filterChain1 = FilterChain(filterComponents: [filter1, filter2])
 
 ### Multiple Chaining
 
-You can be connected to FilterChain each other with `~~>`
+You can connect `FilterChain`s with each other using `~~>`
 
 ```
 let filter3 = LightRoom.ColorAdjustment.ColorControls(saturation: 1, brightness: -0.2, contrast: 1)
@@ -42,9 +42,6 @@ let filterChain2 = FilterChain(filterComponents: [filter3, filter4])
 
 ### Performance
 
-FilterComponent has CIFilter.
-CIFilter are cached, it will be created only once.
+FilterComponent has a CIFilter, which is cached and will be created only once.
 
-This structure is advantageous in performance.
-
-To exert the performance at the time of the real-time filtering camera implementation.
+This structure is advantageous in performance, and is great for real-time filtering camera implementation.
