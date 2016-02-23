@@ -24,7 +24,7 @@ image1 >>> colorControl --* addition
             image2 >>> colorControl2 >>> overlay
 ```
 
-![](sample1.png)
+![](sample_1.png)
 
 
 ### Multiple Chaining
@@ -49,7 +49,7 @@ image1 >>> chain1 >>> chain2
 chain2.outputImage
 ```
 
-![](sample2.png)
+![](sample_2.png)
 
 
 ### Performance
