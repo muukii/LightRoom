@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import QuartzCore
+import CoreImage
 
 /**
 About Core Image
@@ -17,6 +17,9 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
+public enum LightRoomError: ErrorType {
+    case InvalidOutputImage
+}
 
 public enum LightRoom {
     

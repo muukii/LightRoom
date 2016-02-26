@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4B0C9F141BB8319D006C3CF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0C9F0B1BB83195006C3CF8 /* SwiftyJSON.framework */; };
 		4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EDDDF1BD64C5800490467 /* GeometryAdjustment.swift */; };
+		4B153D101C80AA70001116E8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153D0F1C80AA70001116E8 /* Operators.swift */; };
+		4B153D171C80B9CA001116E8 /* FilterComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153D161C80B9CA001116E8 /* FilterComponentTests.swift */; };
+		4B153D191C80B9D6001116E8 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B153D181C80B9D6001116E8 /* sample.jpg */; };
+		4B153D1B1C80BA53001116E8 /* sample3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B153D1A1C80BA53001116E8 /* sample3.jpg */; };
+		4B153D1D1C80BA5A001116E8 /* sample2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B153D1C1C80BA5A001116E8 /* sample2.jpg */; };
+		4B153D1F1C80BFD9001116E8 /* CIImage+LightRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153D1E1C80BFD9001116E8 /* CIImage+LightRoom.swift */; };
 		4B2238631B668F23000F735E /* LightRoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2238621B668F23000F735E /* LightRoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B2E07AB1B6FD04E005B9278 /* CreateFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */; };
@@ -124,6 +130,12 @@
 		4B0C9F001BB83195006C3CF8 /* SubscriptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptTests.swift; sourceTree = "<group>"; };
 		4B0C9F011BB83195006C3CF8 /* Tests.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tests.json; sourceTree = "<group>"; };
 		4B0EDDDF1BD64C5800490467 /* GeometryAdjustment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryAdjustment.swift; sourceTree = "<group>"; };
+		4B153D0F1C80AA70001116E8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		4B153D161C80B9CA001116E8 /* FilterComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterComponentTests.swift; sourceTree = "<group>"; };
+		4B153D181C80B9D6001116E8 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		4B153D1A1C80BA53001116E8 /* sample3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample3.jpg; sourceTree = "<group>"; };
+		4B153D1C1C80BA5A001116E8 /* sample2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample2.jpg; sourceTree = "<group>"; };
+		4B153D1E1C80BFD9001116E8 /* CIImage+LightRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CIImage+LightRoom.swift"; sourceTree = "<group>"; };
 		4B22385F1B668F23000F735E /* LightRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2238621B668F23000F735E /* LightRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightRoom.h; sourceTree = "<group>"; };
 		4B2238641B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -305,7 +317,11 @@
 			isa = PBXGroup;
 			children = (
 				4B2238701B668F23000F735E /* Info.plist */,
+				4B153D181C80B9D6001116E8 /* sample.jpg */,
+				4B153D1C1C80BA5A001116E8 /* sample2.jpg */,
+				4B153D1A1C80BA53001116E8 /* sample3.jpg */,
 				4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */,
+				4B153D161C80B9CA001116E8 /* FilterComponentTests.swift */,
 			);
 			path = LightRoomTests;
 			sourceTree = "<group>";
@@ -323,8 +339,10 @@
 		4BD6CD271BD38E5700FFF931 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4B153D0F1C80AA70001116E8 /* Operators.swift */,
 				4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */,
 				4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */,
+				4B153D1E1C80BFD9001116E8 /* CIImage+LightRoom.swift */,
 				4BD6CD321BD38E5700FFF931 /* LightRoom.swift */,
 				4BD6CD281BD38E5700FFF931 /* Blur.swift */,
 				4BD6CD291BD38E5700FFF931 /* ColorAdjustment.swift */,
@@ -496,6 +514,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B153D191C80B9D6001116E8 /* sample.jpg in Resources */,
+				4B153D1B1C80BA53001116E8 /* sample3.jpg in Resources */,
+				4B153D1D1C80BA5A001116E8 /* sample2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BD6CD391BD38E5700FFF931 /* CompositeOperation.swift in Sources */,
+				4B153D1F1C80BFD9001116E8 /* CIImage+LightRoom.swift in Sources */,
 				4BD6CD3A1BD38E5700FFF931 /* Detectors.swift in Sources */,
 				4B73F3F81C7B4FDD006AC34D /* FilterComponent.swift in Sources */,
 				4BD6CD351BD38E5700FFF931 /* Blur.swift in Sources */,
@@ -517,6 +539,7 @@
 				4BD6CD371BD38E5700FFF931 /* ColorEffect.swift in Sources */,
 				4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */,
 				4BD6CD411BD38E5700FFF931 /* Stylize.swift in Sources */,
+				4B153D101C80AA70001116E8 /* Operators.swift in Sources */,
 				4BD6CD3B1BD38E5700FFF931 /* DistortionEffect.swift in Sources */,
 				4BD6CD3D1BD38E5700FFF931 /* Generator.swift in Sources */,
 				4BD6CD361BD38E5700FFF931 /* ColorAdjustment.swift in Sources */,
@@ -528,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2E07AB1B6FD04E005B9278 /* CreateFilterTests.swift in Sources */,
+				4B153D171C80B9CA001116E8 /* FilterComponentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

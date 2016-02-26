@@ -7,6 +7,7 @@
 //
 
 import SwiftyJSON
+import CoreImage
 
 public extension LightRoom {
     /*!

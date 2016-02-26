@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreImage
 
 public typealias CIFilterFactory = () -> CIFilter
 
@@ -91,6 +92,53 @@ public class GeneratorComponent {
         self.filterFactory = {
             return CIFilter(name: filterName, withInputParameters: parameters)!
         }
+    }
+    
+    public func crop(rect: CGRect) throws -> CIImage {
+        guard let image = self.filter.outputImage else {
+            throw LightRoomError.InvalidOutputImage
+        }
+        
+        return image.imageByCroppingToRect(rect)
+    }
+    
+    public func effect(chain: FilterChain) throws -> CIImage {
+        
+        chain.inputImage = self.outputImage
+        
+        guard let image = chain.outputImage else {
+            throw LightRoomError.InvalidOutputImage
+        }
+        
+        return image
+    }
+    
+    public func effect(component: FilterComponentType) throws -> CIImage {
+        
+        component.inputImage = self.outputImage
+        
+        guard let image = component.outputImage else {
+            throw LightRoomError.InvalidOutputImage
+        }
+        
+        return image
+    }
+    
+    public func compose(component: CompositionFilterComponent, _ backgroundImageBlock: () throws -> CIImage?) throws -> CIImage {
+        
+        return try self.compose(component, backgroundImageBlock())
+    }
+    
+    public func compose(component: CompositionFilterComponent, _ backgroundImage: CIImage?) throws -> CIImage {
+        
+        component.inputImage = self.outputImage
+        component.inputBackgroundImage = backgroundImage
+        
+        guard let image = component.outputImage else {
+            throw LightRoomError.InvalidOutputImage
+        }
+        
+        return image
     }
     
     private var cachedCIFilter: CIFilter?
