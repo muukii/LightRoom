@@ -1,10 +1,14 @@
 # LightRoom
+
 [![CI Status](http://img.shields.io/travis/muukii/LightRoom.svg?style=flat)](https://travis-ci.org/muukii/LightRoom)
 [![Version](https://img.shields.io/cocoapods/v/LightRoom.svg?style=flat)](http://cocoapods.org/pods/LightRoom)
 [![License](https://img.shields.io/cocoapods/l/LightRoom.svg?style=flat)](http://cocoapods.org/pods/LightRoom)
 [![Platform](https://img.shields.io/cocoapods/p/LightRoom.svg?style=flat)](http://cocoapods.org/pods/LightRoom)
 
 Easy Chaining ImageFilter with CoreImage
+
+My App Fil is powered by LightRoom.
+<a href="https://geo.itunes.apple.com/us/app/fil-cam-photo-filter-for-instagram/id1032563998?mt=8" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg) no-repeat;width:165px;height:40px;"></a>
 
 ---
 
