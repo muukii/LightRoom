@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LightRoom"
-  s.version      = "0.9.8"
+  s.version      = "0.9.9"
   s.summary      = "CoreImage Library"
 
   # This description is used to generate tags and improve search results.
