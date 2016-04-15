@@ -13,6 +13,26 @@ public extension LightRoom {
     public enum Stylize {
         
         /**
+         CICrystallize
+         
+         Creates polygon-shaped color blocks by aggregating source pixel-color values.
+         */
+        @available(iOS 9.0, OSX 10.4, *)
+        public final class Crystallize: FilterComponent {
+            
+            public required init(
+                radius: Double? = nil,
+                center: Vector2? = nil) {
+                
+                var parameters: [String: AnyObject] = [:]
+                parameters["inputRadius"] = radius
+                parameters["inputCenter"] = center?.CIVector
+                
+                super.init(filterName: "CICrystallize", parameters: parameters)
+            }
+        }
+        
+        /**
         CIHighlightShadowAdjust
         
         Adjust the tonal mapping of an image while preserving spatial detail.
