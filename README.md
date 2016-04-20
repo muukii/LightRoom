@@ -8,7 +8,7 @@
 
 Easy Chaining ImageFilter with CoreImage
 
-[My App Fil is powered by LightRoom.](http://apple.co/1RphFKD)
+[My App Fil is powered by LightRoom.](http://apple.co/1WyaJj4)
 
 
 ---
