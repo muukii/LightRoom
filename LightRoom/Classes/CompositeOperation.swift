@@ -6,9 +6,7 @@
 //  Copyright (c) 2015 muukii. All rights reserved.
 //
 
-import Foundation
-
-public typealias Composite = (image: CIImage, backgroundImage: CIImage) -> CIImage
+import CoreImage
 
 public extension LightRoom {
     
@@ -163,22 +161,57 @@ public extension LightRoom {
         CILuminosityBlendMode
         Uses the hue and saturation of the background image with the luminance of the input image.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class LuminosityBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CILuminosityBlendMode")
+            }
+        }
+        
         /**
         CIMaximumCompositing
         Computes the maximum value, by color component, of two input images and creates an output image using the maximum values.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class MaximumCompositing: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CIMaximumCompositing")
+            }
+        }
+        
         /**
         CIMinimumCompositing
         Computes the minimum value, by color component, of two input images and creates an output image using the minimum values.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class MinimumCompositing: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CIMinimumCompositing")
+            }
+        }
+        
         /**
         CIMultiplyBlendMode
         Multiplies the input image samples with the background image samples.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class MultiplyBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CIMultiplyBlendMode")
+            }
+        }
+        
         /**
         CIMultiplyCompositing
         Multiplies the color component of two input images and creates an output image using the multiplied values.
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class MultiplyCompositing: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CIMultiplyCompositing")
+            }
+        }
+        
         /**
         CIOverlayBlendMode
         Either multiplies or screens the input image samples with the background image samples, depending on the background color.
@@ -194,12 +227,23 @@ public extension LightRoom {
         CIPinLightBlendMode
         Conditionally replaces background image samples with source image samples depending on the brightness of the source image samples.
         */
+        @available(iOS 8.0, OSX 10.10, *)
+        public final class PinLightBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CIPinLightBlendMode")
+            }
+        }
+        
         /**
         CISaturationBlendMode
         Uses the luminance and hue values of the background image with the saturation of the input image.
-        
-
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class SaturationBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CISaturationBlendMode")
+            }
+        }
         /**
         CIScreenBlendMode
         Multiplies the inverse of the input image samples with the inverse of the background image samples.
@@ -214,9 +258,14 @@ public extension LightRoom {
         /**
         CISoftLightBlendMode
         Either darkens or lightens colors, depending on the input image sample color.
-        
-
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class CISoftLightBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "SoftLightBlendMode")
+            }
+        }
+        
         /**
         CISourceAtopCompositing
         Places the input image over the background image, then uses the luminance of the background image to determine what to show.
@@ -231,15 +280,25 @@ public extension LightRoom {
         /**
         CISourceInCompositing
         Uses the background image to define what to leave in the input image, effectively cropping the input image.
-        
-
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class SourceInCompositing: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CISourceInCompositing")
+            }
+        }
+        
         /**
         CISourceOutCompositing
         Uses the background image to define what to take out of the input image.
-        
-
         */
+        @available(iOS 6.0, OSX 10.4, *)
+        public final class SourceOutCompositing: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "CISourceOutCompositing")
+            }
+        }
+        
         /**
         
         CISourceOverCompositing
@@ -255,9 +314,12 @@ public extension LightRoom {
         /**
         CISubtractBlendMode
         Subtracts the background image sample color from the source image sample color.
-        
-
         */
-        
+        @available(iOS 8.0, OSX 10.10, *)
+        public final class CISubtractBlendMode: CompositionFilterComponent {
+            public required init() {
+                super.init(filterName: "SubtractBlendMode")
+            }
+        }
     }
 }

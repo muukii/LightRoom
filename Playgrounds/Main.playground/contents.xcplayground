@@ -2,7 +2,7 @@
 <playground version='6.0' target-platform='ios' auto-termination-delay='29'>
     <pages>
         <page name='OneChain'/>
-        <page name='Untitled Page'/>
+        <page name='Blur'/>
         <page name='MultiChain'/>
         <page name='Struct'/>
     </pages>
