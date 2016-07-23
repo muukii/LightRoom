@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 muukii. All rights reserved.
 //
 
-import SwiftyJSON
 import CoreImage
 
 public extension LightRoom {

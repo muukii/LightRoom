@@ -17,8 +17,8 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
-public enum LightRoomError: ErrorType {
-    case InvalidOutputImage
+public enum LightRoomError: ErrorProtocol {
+    case invalidOutputImage
 }
 
 public enum LightRoom {

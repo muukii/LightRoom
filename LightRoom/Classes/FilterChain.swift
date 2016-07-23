@@ -11,9 +11,9 @@ import CoreImage
 
 public class FilterChain {
     
-    public let factory: CIImage? -> CIImage?
+    public let factory: (CIImage?) -> CIImage?
     
-    public init(_ factory: CIImage? -> CIImage?) {
+    public init(_ factory: (CIImage?) -> CIImage?) {
         self.factory = factory
     }
     
@@ -29,7 +29,7 @@ public class FilterChain {
         }
     }
     
-    public func connect(chain: FilterChain) -> FilterChain {
+    public func connect(_ chain: FilterChain) -> FilterChain {
         chain.inputImage = self.outputImage
         return self
     }

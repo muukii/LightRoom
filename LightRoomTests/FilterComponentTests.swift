@@ -12,8 +12,8 @@ import XCTest
 
 class FilterComponentTests: XCTestCase {
 
-    static let image1 = CIImage(image: UIImage(named: "sample.jpg", inBundle: NSBundle(forClass: FilterComponentTests.self), compatibleWithTraitCollection: nil)!)!
-    static let image2 = CIImage(image: UIImage(named: "sample3.jpg", inBundle: NSBundle(forClass: FilterComponentTests.self), compatibleWithTraitCollection: nil)!)!
+    static let image1 = CIImage(image: UIImage(named: "sample.jpg", in: Bundle(for: FilterComponentTests.self), compatibleWith: nil)!)!
+    static let image2 = CIImage(image: UIImage(named: "sample3.jpg", in: Bundle(for: FilterComponentTests.self), compatibleWith: nil)!)!
     
     static let color = CIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
     let blendImage = LightRoom.Generator.ConstantColorGenerator(cropRect:FilterComponentTests.image1.extent, color: FilterComponentTests.color)
@@ -73,19 +73,19 @@ class FilterComponentTests: XCTestCase {
         
         let context = CIContext()
         
-        let uiimage1 = UIImagePNGRepresentation(UIImage(CGImage: context.createCGImage(image1, fromRect: image1.extent)))
-        let uiimage2 = UIImagePNGRepresentation(UIImage(CGImage: context.createCGImage(image2, fromRect: image2.extent)))
+        let uiimage1 = UIImagePNGRepresentation(UIImage(cgImage: context.createCGImage(image1, from: image1.extent)!))
+        let uiimage2 = UIImagePNGRepresentation(UIImage(cgImage: context.createCGImage(image2, from: image2.extent)!))
         
-        XCTAssert(uiimage1?.isEqualToData(uiimage2!) == true)
+        XCTAssert((uiimage1 == uiimage2!) == true)
     }
 
     func testPerformanceMethodChain() {
         // This is an example of a performance test case.
         let context = CIContext()
 
-        self.measureBlock {
+        self.measure {
             let image = self.methodChain()!
-            _ = UIImage(CGImage: context.createCGImage(image, fromRect: image.extent))
+            _ = UIImage(cgImage: context.createCGImage(image, from: image.extent)!)
         }
     }
     
@@ -93,9 +93,9 @@ class FilterComponentTests: XCTestCase {
         // This is an example of a performance test case.
         let context = CIContext()
         
-        self.measureBlock {
+        self.measure {
             let image = self.customOperator()!
-            _ = UIImage(CGImage: context.createCGImage(image, fromRect: image.extent))
+            _ = UIImage(cgImage: context.createCGImage(image, from: image.extent)!)
         }
     }
 
