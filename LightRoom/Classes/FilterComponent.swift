@@ -25,11 +25,11 @@ extension FilterComponentType {
     }
 }
 
-public class FilterComponent: FilterComponentType {
+open class FilterComponent: FilterComponentType {
     
-    public let filterFactory: CIFilterFactory
+    open let filterFactory: CIFilterFactory
     
-    public var filter: CIFilter {
+    open var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
             return cachedCIFilter
         }
@@ -38,10 +38,10 @@ public class FilterComponent: FilterComponentType {
         return filter
     }
     
-    public let filterName: String
-    public let parameters: [String: AnyObject]
+    open let filterName: String
+    open let parameters: [String: AnyObject]
     
-    public var inputImage: CIImage? {
+    open var inputImage: CIImage? {
         get {
             return self.filter.value(forKey: kCIInputImageKey) as? CIImage
         }
@@ -59,14 +59,14 @@ public class FilterComponent: FilterComponentType {
         }
     }
     
-    private var cachedCIFilter: CIFilter?
+    fileprivate var cachedCIFilter: CIFilter?
 }
 
-public class GeneratorComponent {
+open class GeneratorComponent {
     
-    public let filterFactory: CIFilterFactory
+    open let filterFactory: CIFilterFactory
     
-    public var filter: CIFilter {
+    open var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
             return cachedCIFilter
         }
@@ -75,13 +75,13 @@ public class GeneratorComponent {
         return filter
     }
     
-    public var outputImage: CIImage? {
+    open var outputImage: CIImage? {
         return self.filter.outputImage?.cropping(to: self.cropRect)
     }
     
-    public let filterName: String
-    public let parameters: [String: AnyObject]
-    public var cropRect: CGRect = .zero
+    open let filterName: String
+    open let parameters: [String: AnyObject]
+    open var cropRect: CGRect = .zero
     
     public init(filterName: String, cropRect: CGRect, parameters: [String: AnyObject]) {
         
@@ -94,7 +94,7 @@ public class GeneratorComponent {
         }
     }
     
-    public func crop(_ rect: CGRect) throws -> CIImage {
+    open func crop(_ rect: CGRect) throws -> CIImage {
         guard let image = self.filter.outputImage else {
             throw LightRoomError.invalidOutputImage
         }
@@ -102,7 +102,7 @@ public class GeneratorComponent {
         return image.cropping(to: rect)
     }
     
-    public func effect(_ chain: FilterChain) throws -> CIImage {
+    open func effect(_ chain: FilterChain) throws -> CIImage {
         
         chain.inputImage = self.outputImage
         
@@ -113,7 +113,7 @@ public class GeneratorComponent {
         return image
     }
     
-    public func effect(_ component: FilterComponentType) throws -> CIImage {
+    open func effect(_ component: FilterComponentType) throws -> CIImage {
         
         component.inputImage = self.outputImage
         
@@ -124,12 +124,12 @@ public class GeneratorComponent {
         return image
     }
     
-    public func compose(_ component: CompositionFilterComponent, _ backgroundImageBlock: () throws -> CIImage?) throws -> CIImage {
+    open func compose(_ component: CompositionFilterComponent, _ backgroundImageBlock: () throws -> CIImage?) throws -> CIImage {
         
         return try self.compose(component, backgroundImageBlock())
     }
     
-    public func compose(_ component: CompositionFilterComponent, _ backgroundImage: CIImage?) throws -> CIImage {
+    open func compose(_ component: CompositionFilterComponent, _ backgroundImage: CIImage?) throws -> CIImage {
         
         component.inputImage = self.outputImage
         component.inputBackgroundImage = backgroundImage
@@ -141,14 +141,14 @@ public class GeneratorComponent {
         return image
     }
     
-    private var cachedCIFilter: CIFilter?
+    fileprivate var cachedCIFilter: CIFilter?
 }
 
-public class CompositionFilterComponent: FilterComponentType {
+open class CompositionFilterComponent: FilterComponentType {
     
-    public let filterFactory: CIFilterFactory
+    open let filterFactory: CIFilterFactory
     
-    public var filter: CIFilter {
+    open var filter: CIFilter {
         if let cachedCIFilter = self.cachedCIFilter {
             return cachedCIFilter
         }
@@ -163,7 +163,7 @@ public class CompositionFilterComponent: FilterComponentType {
         }
     }
     
-    public var inputImage: CIImage? {
+    open var inputImage: CIImage? {
         get {
             return self.filter.value(forKey: kCIInputImageKey) as? CIImage
         }
@@ -172,7 +172,7 @@ public class CompositionFilterComponent: FilterComponentType {
         }
     }
     
-    public var inputBackgroundImage: CIImage? {
+    open var inputBackgroundImage: CIImage? {
         get {
             return self.filter.value(forKey: kCIInputBackgroundImageKey) as? CIImage
         }
@@ -181,6 +181,6 @@ public class CompositionFilterComponent: FilterComponentType {
         }
     }
     
-    private var cachedCIFilter: CIFilter?
+    fileprivate var cachedCIFilter: CIFilter?
 }
 

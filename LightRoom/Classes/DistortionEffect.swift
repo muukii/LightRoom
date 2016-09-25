@@ -26,8 +26,8 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, scale: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputScale"] = scale
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputScale"] = scale as AnyObject?
                 super.init(filterName: "CIBumpDistortion", parameters: parameters)
             }
         }
@@ -42,9 +42,9 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, angle: Double, scale: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputAngle"] = angle
-                parameters["inputScale"] = scale
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputAngle"] = angle as AnyObject?
+                parameters["inputScale"] = scale as AnyObject?
                 super.init(filterName: "CIBumpDistortionLinear", parameters: parameters)
             }
         }
@@ -59,7 +59,7 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
+                parameters["inputRadius"] = radius as AnyObject?
                 super.init(filterName: "CICircleSplashDistortion", parameters: parameters)
             }
         }
@@ -74,8 +74,8 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, angle: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputAngle"] = angle
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputAngle"] = angle as AnyObject?
                 super.init(filterName: "CICircularWrap", parameters: parameters)
             }
         }
@@ -91,10 +91,10 @@ public extension LightRoom {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputInsetPoint0"] = insetPoint0.CIVector
                 parameters["inputInsetPoint1"] = insetPoint1.CIVector
-                parameters["inputStrands"] = strands
-                parameters["inputPeriodicity"] = periodicity
-                parameters["inputRotation"] = rotation
-                parameters["inputZoom"] = zoom
+                parameters["inputStrands"] = strands as AnyObject?
+                parameters["inputPeriodicity"] = periodicity as AnyObject?
+                parameters["inputRotation"] = rotation as AnyObject?
+                parameters["inputZoom"] = zoom as AnyObject?
                 super.init(filterName: "CIDroste", parameters: parameters)
             }
         }
@@ -109,7 +109,7 @@ public extension LightRoom {
             public required init(displacementImage: CIImage, scale: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputDisplacementImage"] = displacementImage
-                parameters["inputScale"] = scale
+                parameters["inputScale"] = scale as AnyObject?
                 super.init(filterName: "CIDisplacementDistortion", parameters: parameters)
             }
         }
@@ -125,7 +125,7 @@ public extension LightRoom {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputTexture"] = texture
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputScale"] = scale
+                parameters["inputScale"] = scale as AnyObject?
                 super.init(filterName: "CIGlassDistortion", parameters: parameters)
             }
         }
@@ -141,8 +141,8 @@ public extension LightRoom {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputPoint0"] = point0.CIVector
                 parameters["inputPoint1"] = point1.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputRefraction"] = refraction
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputRefraction"] = refraction as AnyObject?
                 super.init(filterName: "CIGlassLozenge", parameters: parameters)
             }
         }
@@ -157,7 +157,7 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
+                parameters["inputRadius"] = radius as AnyObject?
                 super.init(filterName: "CIHoleDistortion", parameters: parameters)
             }
         }
@@ -172,8 +172,8 @@ public extension LightRoom {
             public required init(center: Vector2, rotation: Double, radius: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRotation"] = rotation
-                parameters["inputRadius"] = radius
+                parameters["inputRotation"] = rotation as AnyObject?
+                parameters["inputRadius"] = radius as AnyObject?
                 super.init(filterName: "CILightTunnel", parameters: parameters)
             }
         }
@@ -188,8 +188,8 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, scale: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputScale"] = scale
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputScale"] = scale as AnyObject?
                 super.init(filterName: "CIPinchDistortion", parameters: parameters)
             }
         }
@@ -204,8 +204,8 @@ public extension LightRoom {
             public required init(size: Vector2, cropAmount: Double, centerStrechAmount: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputSize"] = size.CIVector
-                parameters["inputCropAmount"] = cropAmount
-                parameters["inputCenterStrechAmount"] = centerStrechAmount
+                parameters["inputCropAmount"] = cropAmount as AnyObject?
+                parameters["inputCenterStrechAmount"] = centerStrechAmount as AnyObject?
                 super.init(filterName: "StretchCrop", parameters: parameters)
             }
         }
@@ -220,9 +220,9 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, width: Double, refraction: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputWidth"] = width
-                parameters["inputRefraction"] = refraction
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputWidth"] = width as AnyObject?
+                parameters["inputRefraction"] = refraction as AnyObject?
                 super.init(filterName: "CITorusLensDistortion", parameters: parameters)
             }
         }
@@ -237,8 +237,8 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, angle: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputAngle"] = angle
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputAngle"] = angle as AnyObject?
                 super.init(filterName: "CITwirlDistortion", parameters: parameters)
             }
         }
@@ -252,8 +252,8 @@ public extension LightRoom {
             public required init(center: Vector2, radius: Double, angle: Double) {
                 var parameters: [String : AnyObject] = [:]
                 parameters["inputCenter"] = center.CIVector
-                parameters["inputRadius"] = radius
-                parameters["inputAngle"] = angle
+                parameters["inputRadius"] = radius as AnyObject?
+                parameters["inputAngle"] = angle as AnyObject?
                 super.init(filterName: "CIVortexDistortion", parameters: parameters)
             }
         }

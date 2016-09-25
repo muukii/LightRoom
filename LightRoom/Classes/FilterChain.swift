@@ -9,32 +9,32 @@
 import Foundation
 import CoreImage
 
-public class FilterChain {
+open class FilterChain {
     
-    public let factory: (CIImage?) -> CIImage?
+    open let factory: (CIImage?) -> CIImage?
     
-    public init(_ factory: (CIImage?) -> CIImage?) {
+    public init(_ factory: @escaping (CIImage?) -> CIImage?) {
         self.factory = factory
     }
     
-    public var inputImage: CIImage? {
+    open var inputImage: CIImage? {
         didSet {
             self.outputImage = self.factory(self.inputImage)
         }
     }
     
-    public var outputImage: CIImage? {
+    open var outputImage: CIImage? {
         didSet {
             
         }
     }
     
-    public func connect(_ chain: FilterChain) -> FilterChain {
+    open func connect(_ chain: FilterChain) -> FilterChain {
         chain.inputImage = self.outputImage
         return self
     }
     
-    public func output() -> CIImage? {
+    open func output() -> CIImage? {
         return self.outputImage
     }
 }

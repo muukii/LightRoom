@@ -44,8 +44,8 @@ public extension LightRoom {
                 
                 super.init(filterName: "CIAreaHistogram", parameters: [
                     "inputExtent": extent.CIVector,
-                    "inputCount": count,
-                    "inputScale": scale,
+                    "inputCount": count as AnyObject,
+                    "inputScale": scale as AnyObject,
                     ]
                 )
             }
@@ -99,9 +99,9 @@ public extension LightRoom {
                 lowLimit: Double) {
                 
                 super.init(filterName: "CIHistogramDisplayFilter", parameters: [
-                    "inputHeight": height,
-                    "inputHighLimit": highLimit,
-                    "inputLowLimit": lowLimit,
+                    "inputHeight": height as AnyObject,
+                    "inputHighLimit": highLimit as AnyObject,
+                    "inputLowLimit": lowLimit as AnyObject,
                     ]
                 )
             }

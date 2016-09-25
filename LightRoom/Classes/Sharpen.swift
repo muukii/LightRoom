@@ -22,7 +22,7 @@ public extension LightRoom {
             public required init(sharpness: Double) {
                 
                 super.init(filterName: "CISharpenLuminance", parameters: [
-                    kCIInputSharpnessKey: sharpness,
+                    kCIInputSharpnessKey: sharpness as AnyObject,
                     ])
             }
         }
@@ -37,8 +37,8 @@ public extension LightRoom {
             public required init(radius: Double, intencity: Double) {
                 
                 super.init(filterName: "CIUnsharpMask", parameters: [
-                    kCIInputRadiusKey: radius,
-                    kCIInputIntensityKey: intencity,
+                    kCIInputRadiusKey: radius as AnyObject,
+                    kCIInputIntensityKey: intencity as AnyObject,
                     ])
             }
         }
