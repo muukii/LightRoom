@@ -9,7 +9,7 @@
 import Foundation
 import CoreImage
 
-public typealias QRCodeDetector = CIImage -> [String]
+public typealias QRCodeDetector = (CIImage) -> [String]
 public enum Detectors {
     
     public static func QRCode() -> QRCodeDetector {
@@ -21,9 +21,9 @@ public enum Detectors {
                 options: [
                     CIDetectorAccuracy: CIDetectorAccuracyHigh,
                 ])
-            let features = detector.featuresInImage(image) as! [CIQRCodeFeature]
+            let features = detector?.features(in: image) as! [CIQRCodeFeature]
             
-            let messageStrings: [String] = features.map { $0.messageString } ?? []
+            let messageStrings: [String] = features.map { $0.messageString! } ?? []
             return messageStrings
         }
     }

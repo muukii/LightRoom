@@ -37,8 +37,8 @@ public extension LightRoom {
             public required init(scale: Double, aspectRatio: Double) {
                 
                 super.init(filterName: "CILanczosScaleTransform", parameters: [
-                    "inputScale": scale,
-                    "inputAspectRatio" : aspectRatio,
+                    "inputScale": scale as AnyObject,
+                    "inputAspectRatio" : aspectRatio as AnyObject,
                     ]
                 )
             }

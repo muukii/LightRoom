@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B0C9F141BB8319D006C3CF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0C9F0B1BB83195006C3CF8 /* SwiftyJSON.framework */; };
 		4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EDDDF1BD64C5800490467 /* GeometryAdjustment.swift */; };
 		4B104E4B1CC150B9002BA5A5 /* TileEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B104E4A1CC150B9002BA5A5 /* TileEffect.swift */; };
 		4B153D101C80AA70001116E8 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B153D0F1C80AA70001116E8 /* Operators.swift */; };
@@ -19,6 +18,7 @@
 		4B2238631B668F23000F735E /* LightRoom.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2238621B668F23000F735E /* LightRoom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B22386A1B668F23000F735E /* LightRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B22385F1B668F23000F735E /* LightRoom.framework */; };
 		4B2E07AB1B6FD04E005B9278 /* CreateFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */; };
+		4B39B6691D42872900409C4F /* Reduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39B6681D42872900409C4F /* Reduction.swift */; };
 		4B73F3F81C7B4FDD006AC34D /* FilterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */; };
 		4B73F3FF1C7B4FE7006AC34D /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */; };
 		4BD6CD351BD38E5700FFF931 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6CD281BD38E5700FFF931 /* Blur.swift */; };
@@ -145,6 +145,7 @@
 		4B2238701B668F23000F735E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B22387A1B668F8E000F735E /* Main.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Main.playground; sourceTree = "<group>"; };
 		4B2E07AA1B6FD04E005B9278 /* CreateFilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFilterTests.swift; sourceTree = "<group>"; };
+		4B39B6681D42872900409C4F /* Reduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reduction.swift; sourceTree = "<group>"; };
 		4B73F3F71C7B4FDD006AC34D /* FilterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterComponent.swift; sourceTree = "<group>"; };
 		4B73F3FE1C7B4FE7006AC34D /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
 		4BA380E61BA5DA6000C98D59 /* Filter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Filter.playground; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B0C9F141BB8319D006C3CF8 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +349,7 @@
 				4BD6CD281BD38E5700FFF931 /* Blur.swift */,
 				4BD6CD291BD38E5700FFF931 /* ColorAdjustment.swift */,
 				4BD6CD2A1BD38E5700FFF931 /* ColorEffect.swift */,
+				4B39B6681D42872900409C4F /* Reduction.swift */,
 				4B104E4A1CC150B9002BA5A5 /* TileEffect.swift */,
 				4BD6CD2C1BD38E5700FFF931 /* CompositeOperation.swift */,
 				4BD6CD2D1BD38E5700FFF931 /* Detectors.swift */,
@@ -425,9 +426,11 @@
 				TargetAttributes = {
 					4B22385E1B668F23000F735E = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					4B2238681B668F23000F735E = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -541,6 +544,7 @@
 				4BD6CD401BD38E5700FFF931 /* Sharpen.swift in Sources */,
 				4BD6CD3E1BD38E5700FFF931 /* Gradient.swift in Sources */,
 				4BD6CD371BD38E5700FFF931 /* ColorEffect.swift in Sources */,
+				4B39B6691D42872900409C4F /* Reduction.swift in Sources */,
 				4B0EDDE01BD64C5800490467 /* GeometryAdjustment.swift in Sources */,
 				4BD6CD411BD38E5700FFF931 /* Stylize.swift in Sources */,
 				4B153D101C80AA70001116E8 /* Operators.swift in Sources */,
@@ -698,6 +702,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -715,6 +720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.muukii.LightRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -727,6 +733,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.muukii.LightRoomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -738,6 +745,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.muukii.LightRoomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

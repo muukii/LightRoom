@@ -17,17 +17,17 @@ Filters
 https://developer.apple.com/library/prerelease/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html
 */
 
-public enum LightRoomError: ErrorType {
-    case InvalidOutputImage
+public enum LightRoomError: Error {
+    case invalidOutputImage
 }
 
 public enum LightRoom {
     
 }
 
-public struct Vector2: ArrayLiteralConvertible {
+public struct Vector2: ExpressibleByArrayLiteral {
     
-    private let v: [CGFloat]
+    fileprivate let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
         
         self.v = elements
@@ -44,9 +44,9 @@ public struct Vector2: ArrayLiteralConvertible {
     }
 }
 
-public struct Vector3: ArrayLiteralConvertible {
+public struct Vector3: ExpressibleByArrayLiteral {
     
-    private let v: [CGFloat]
+    fileprivate let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
         
         self.v = elements
@@ -63,9 +63,9 @@ public struct Vector3: ArrayLiteralConvertible {
     }
 }
 
-public struct Vector4: ArrayLiteralConvertible {
+public struct Vector4: ExpressibleByArrayLiteral {
     
-    private let v: [CGFloat]
+    fileprivate let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
         
         self.v = elements
@@ -82,9 +82,9 @@ public struct Vector4: ArrayLiteralConvertible {
     }
 }
 
-public struct Vector10: ArrayLiteralConvertible {
+public struct Vector10: ExpressibleByArrayLiteral {
     
-    private let v: [CGFloat]
+    fileprivate let v: [CGFloat]
     public init(arrayLiteral elements: CGFloat...) {
         
         self.v = elements

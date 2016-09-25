@@ -28,7 +28,7 @@ public extension LightRoom {
             public required init(radius: Double) {
 
                 super.init(filterName: "CIBoxBlur", parameters: [
-                    kCIInputRadiusKey: radius,
+                    kCIInputRadiusKey: radius as AnyObject,
                     ]
                 )
             }
@@ -49,7 +49,7 @@ public extension LightRoom {
             public required init(radius: Double) {
 
                 super.init(filterName: "CIDiscBlur", parameters: [
-                    kCIInputRadiusKey: radius,
+                    kCIInputRadiusKey: radius as AnyObject,
                     ]
                 )
             }
@@ -70,7 +70,7 @@ public extension LightRoom {
             public required init(radius: Double) {
 
                 super.init(filterName: "CIGaussianBlur", parameters: [
-                    kCIInputRadiusKey: radius,
+                    kCIInputRadiusKey: radius as AnyObject,
                     ]
                 )
             }
@@ -109,8 +109,8 @@ public extension LightRoom {
             public required init(radius: Double, angle: Double) {
 
                 super.init(filterName: "CIMotionBlur", parameters: [
-                    kCIInputRadiusKey: radius,
-                    kCIInputAngleKey: angle,
+                    kCIInputRadiusKey: radius as AnyObject,
+                    kCIInputAngleKey: angle as AnyObject,
                     ]
                 )
             }
@@ -130,8 +130,8 @@ public extension LightRoom {
             public required init(noiseLevel: Double, sharpness: Double) {
 
                 super.init(filterName: "CINoiseReduction", parameters: [
-                    "inputNoiseLevel": noiseLevel,
-                    kCIInputSharpnessKey: sharpness,
+                    "inputNoiseLevel": noiseLevel as AnyObject,
+                    kCIInputSharpnessKey: sharpness as AnyObject,
                     ]
                 )
             }
@@ -154,7 +154,7 @@ public extension LightRoom {
 
                 super.init(filterName: "CIZoomBlur", parameters: [
                     kCIInputCenterKey: center.CIVector,
-                    "inputAmount": amount,
+                    "inputAmount": amount as AnyObject,
                     ]
                 )
             }

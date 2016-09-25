@@ -25,7 +25,7 @@ public extension LightRoom {
                 center: Vector2? = nil) {
                 
                 var parameters: [String: AnyObject] = [:]
-                parameters["inputRadius"] = radius
+                parameters["inputRadius"] = radius as AnyObject?
                 parameters["inputCenter"] = center?.CIVector
                 
                 super.init(filterName: "CICrystallize", parameters: parameters)
@@ -45,8 +45,8 @@ public extension LightRoom {
                 shadowAmount: Double? = nil) {
                 
                     var parameters: [String: AnyObject] = [:]
-                    parameters["inputHighlightAmount"] = highlightAmount
-                    parameters["inputShadowAmount"] = shadowAmount
+                    parameters["inputHighlightAmount"] = highlightAmount as AnyObject?
+                    parameters["inputShadowAmount"] = shadowAmount as AnyObject?
                     
                     super.init(filterName: "CIHighlightShadowAdjust", parameters: parameters)
             }

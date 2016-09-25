@@ -83,8 +83,8 @@ public extension LightRoom {
                         cropRect: cropRect,
                         parameters:[
                             kCIInputCenterKey: center.CIVector,
-                            "inputRadius0": radius0,
-                            "inputRadius1": radius1,
+                            "inputRadius0": radius0 as AnyObject,
+                            "inputRadius1": radius1 as AnyObject,
                             "inputColor0": color0,
                             "inputColor1": color1,
                         ]

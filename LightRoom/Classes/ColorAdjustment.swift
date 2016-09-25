@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 muukii. All rights reserved.
 //
 
-import SwiftyJSON
 import CoreImage
 
 public extension LightRoom {
@@ -56,9 +55,9 @@ public extension LightRoom {
                 contrast: Double = 1) {
                     
                     super.init(filterName: "CIColorControls", parameters: [
-                        kCIInputSaturationKey: saturation,
-                        kCIInputBrightnessKey: brightness,
-                        kCIInputContrastKey: contrast,
+                        kCIInputSaturationKey: saturation as AnyObject,
+                        kCIInputBrightnessKey: brightness as AnyObject,
+                        kCIInputContrastKey: contrast as AnyObject,
                         ]
                     )
             }
@@ -141,7 +140,7 @@ public extension LightRoom {
             public required init(ev: Double) {
                     
                     super.init(filterName: "CIExposureAdjust", parameters: [
-                        kCIInputEVKey: ev,
+                        kCIInputEVKey: ev as AnyObject,
                         ]
                     )
             }
@@ -160,7 +159,7 @@ public extension LightRoom {
             public required init(power: Double) {
                 
                 super.init(filterName: "CIGammaAdjust", parameters: [
-                    "inputPower": power,
+                    "inputPower": power as AnyObject,
                     ]
                 )
             }
@@ -179,7 +178,7 @@ public extension LightRoom {
             public required init(angle: Double) {
                 
                 super.init(filterName: "CIHueAdjust", parameters: [
-                    kCIInputAngleKey: angle,
+                    kCIInputAngleKey: angle as AnyObject,
                     ]
                 )
             }
@@ -280,7 +279,7 @@ public extension LightRoom {
             public required init(amount: Double) {
                     
                     super.init(filterName: "CIVibrance", parameters: [
-                        "inputAmount": amount,
+                        "inputAmount": amount as AnyObject,
                         ]
                     )
             }

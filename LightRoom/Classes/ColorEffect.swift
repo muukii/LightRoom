@@ -46,11 +46,11 @@ public extension LightRoom {
             
             public required init(
                 cubeDimension: Double,
-                cubeData: NSData) {
+                cubeData: Data) {
                     
                     super.init(filterName: "CIColorCube", parameters: [
-                        "inputCubeDimension": cubeDimension,
-                        "inputCubeData": cubeData,
+                        "inputCubeDimension": cubeDimension as AnyObject,
+                        "inputCubeData": cubeData as AnyObject,
                         ]
                     )
             }
@@ -66,12 +66,12 @@ public extension LightRoom {
             
             public required init(
                 cubeDimension: Double,
-                cubeData: NSData,
-                colorSpace: CGColorSpaceRef) {
+                cubeData: Data,
+                colorSpace: CGColorSpace) {
                     
                     super.init(filterName: "CIColorCubeWithColorSpace", parameters: [
-                        "inputCubeDimension": cubeDimension,
-                        "inputCubeData": cubeData,
+                        "inputCubeDimension": cubeDimension as AnyObject,
+                        "inputCubeData": cubeData as AnyObject,
                         "inputColorSpace": colorSpace,
                         ]
                     )
@@ -118,7 +118,7 @@ public extension LightRoom {
                 
                 super.init(filterName: "CIColorMonochrome", parameters: [
                     kCIInputColorKey: color,
-                    "inputIntensity": intensity,
+                    "inputIntensity": intensity as AnyObject,
                     ]
                 )
             }
@@ -134,7 +134,7 @@ public extension LightRoom {
             public required init(levels: Double) {
                 
                 super.init(filterName: "CIColorPosterize", parameters: [
-                    "input": levels,
+                    "input": levels as AnyObject,
                     ]
                 )
             }
@@ -313,7 +313,7 @@ public extension LightRoom {
             public required init(intencity: Double) {
                 
                 super.init(filterName: "CISepiaTone", parameters: [
-                    kCIInputIntensityKey: intencity,
+                    kCIInputIntensityKey: intencity as AnyObject,
                     ])
             }
         }
@@ -328,8 +328,8 @@ public extension LightRoom {
             public required init(radius: Double, intencity: Double) {
                 
                 super.init(filterName: "CIVignette", parameters: [
-                    kCIInputRadiusKey: radius,
-                    kCIInputIntensityKey: intencity,
+                    kCIInputRadiusKey: radius as AnyObject,
+                    kCIInputIntensityKey: intencity as AnyObject,
                     ])
             }
         }
@@ -345,8 +345,8 @@ public extension LightRoom {
                 
                 super.init(filterName: "CIVignetteEffect", parameters: [
                     kCIInputCenterKey: center.CIVector,
-                    kCIInputRadiusKey: radius,
-                    kCIInputIntensityKey: intencity,
+                    kCIInputRadiusKey: radius as AnyObject,
+                    kCIInputIntensityKey: intencity as AnyObject,
                     ])
             }
         }

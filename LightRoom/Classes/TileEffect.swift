@@ -25,7 +25,7 @@ public extension LightRoom {
             
             public required init(transform: CGAffineTransform?) {
                 var parameters: [String:AnyObject] = [:]
-                parameters["inputTransform"] = transform.map{ NSValue(CGAffineTransform: $0) }
+                parameters["inputTransform"] = transform.map{ NSValue(cgAffineTransform: $0) }
                 super.init(filterName: "CIAffineClamp", parameters: parameters)
             }
         }
