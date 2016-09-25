@@ -12,15 +12,15 @@ import CoreImage
 /**
 Connect FilterComponentType to FilterComponentType
 */
-infix operator >>> { associativity left }
+infix operator >>> : MultiplicationPrecedence
 /**
 Set inputBackgroundImage on CompositionComponentType
 */
-infix operator --* { associativity left }
+infix operator --* : MultiplicationPrecedence
 
 public func >>> (chain1: FilterChain, chain2: FilterChain) -> FilterChain {
     chain2.inputImage = chain1.outputImage
-    chain1.connect(chain2)
+    _ = chain1.connect(chain2)
     return chain2
 }
 

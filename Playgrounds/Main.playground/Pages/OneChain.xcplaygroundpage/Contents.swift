@@ -1,8 +1,8 @@
 import UIKit
 import LightRoom
 
-let image1 = CIImage(image: [#Image(imageLiteral: "sample.jpg")#])!
-let image2 = CIImage(image: [#Image(imageLiteral: "sample3.jpg")#])!
+let image1 = CIImage(image: #imageLiteral(resourceName: "sample.jpg"))!
+let image2 = CIImage(image: #imageLiteral(resourceName: "sample2.jpg"))!
 
 let color = CIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
 let blendImage = LightRoom.Generator.ConstantColorGenerator(cropRect: image1.extent, color: color)
@@ -16,9 +16,6 @@ image1 >>> colorControl --* addition
              blendImage >>> addition --* overlay
             image2 >>> colorControl2 >>> overlay
 
-let areaHistogram = LightRoom.Reduction.AreaHistogram(extent: image1.extent, count: 100, scale: 1)
-
-let image = overlay >>> areaHistogram.outputImage
 (overlay >>> crystal).outputImage
 
 
